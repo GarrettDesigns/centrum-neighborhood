@@ -6,6 +6,7 @@
 
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
+@import "../../bower_components/meyer-reset/stylesheets/_meyer-reset.scss";
 @import "../../bower_components/foundation/scss/normalize.scss";
 @import "../../bower_components/foundation/scss/foundation.scss";
 // endbower
@@ -55,4 +56,3 @@
 		position: fixed !important;
 	}
 }
-            

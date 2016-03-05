@@ -7,6 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "meyer-reset": "*",
     "modernizr": "2.8.2",
     "foundation": "~5.5.2"
   },
@@ -14,16 +15,14 @@
     "modernizr": {
       "main": "./modernizr.js"
     },
+    "meyer-reset": {
+      "main": "stylesheets/_meyer-reset.scss"
+    },
     "foundation": {
       "main": [
-
         "./scss/normalize.scss",
         "./scss/foundation.scss",
-
-
         "../fastclick/lib/fastclick.js",
-
-    
         "./js/foundation/foundation.js",
         "./js/foundation/foundation.abide.js",
         "./js/foundation/foundation.accordion.js",
@@ -41,7 +40,6 @@
         "./js/foundation/foundation.tab.js",
         "./js/foundation/foundation.tooltip.js",
         "./js/foundation/foundation.topbar.js"
-
       ]
     }
   }
