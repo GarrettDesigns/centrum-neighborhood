@@ -1,5 +1,17 @@
-<?php use Roots\Sage\Titles; ?>
 
 <div class="page-header">
-  <h1><?= Titles\title(); ?></h1>
+  <section class="color-overlay">
+    <?php
+      $menu_args = array(
+        'menu_class' => 'main-menu',
+        'container' => 'nav',
+        'theme_location' => 'primary_navigation'
+      );
+      wp_nav_menu($menu_args);
+    ?>
+    <ul class="info-links">
+      <li><a href="#">contact us</a></li>
+      <li><a href="#">check availability</a></li>
+    </ul>
+  </section>
 </div>

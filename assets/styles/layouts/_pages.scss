@@ -1,0 +1,29 @@
+.page-header {
+  position: relative;
+  background: url('../../assets/images/centrum-property.jpg') center center no-repeat;
+  background-size: cover;
+  min-height: 1050px;
+  transform: skewY(-1.5deg);
+  transform-origin: 100%;
+  top: -40px;
+  &:after {
+    content: '';
+    position: absolute;
+    background:transparentize(map-fetch($brand-colors, main-blue), 0.1);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    height: 100%;
+  }
+}
+
+.color-overlay {
+  transform: skewY(1.5deg);
+  transform-origin: 100%;
+  position: relative;
+  padding-top: 40px;
+  z-index: 9999;;
+}

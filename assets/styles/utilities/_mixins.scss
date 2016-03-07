@@ -1,0 +1,259 @@
+
+// ==========
+// CLEARFIX FOR IE8 & ABOVE
+// -----
+// http://css-tricks.com/snippets/css/clear-fix/
+// ==========
+
+@mixin cf {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// ==========
+// TYPE-SCALE
+// -----
+// Gets font-size and baseline from typography map located
+// in variables/typography and creates the necessary
+// font-size and line-height property in CSS with the
+// compass vertical rhythm.
+//
+// This uses the @include adjust-font-size-to mixin and
+// requires Compass Vertical Rhythm to be used.
+//
+// https://medium.com/p/8e51498c3713
+// ==========
+
+@mixin type-scale($scale, $map: $type-scale) {
+  $font-size: map-get(map-get($map, $scale), font-size);
+  $base-lines: map-get(map-get($map, $scale), base-lines);
+  @include adjust-font-size-to($font-size, $base-lines);
+}
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+// ========
+// Generic component creation mixin
+// --------
+// mainly used as a base to create custom components
+// ========
+
+@mixin comp-gen($palette) {
+	@each $name, $color in map-get($palettes, $palette) {
+		.#{$name}.#{$palette} {
+			background: $color;
+			color: darken($color, 40%);
+			&:before {
+				content: '#{$name}';
+			}
+			@if $name == disabled {
+				cursor: not-allowed;
+				&:hover {
+					border: 1px solid $app-background;
+				}
+        &:active {
+          background: $color;
+          color: darken($color, 40%);
+        }
+			}
+      @if $palette == alerts {
+        border: 1px solid darken($color, 40%);
+        &:before {
+          content: 'This is a #{$name} alert!';
+        }
+      }
+			@content;
+		}
+	}
+}
+
+// ========
+// Custom Button Creation Mixin
+// -----
+// generates classes to be applied to any html element
+// ========
+
+@mixin button-base() {
+  @include comp-gen(buttons) {
+		@extend %button-defaults;
+	}
+}
+
+@mixin custom-buttons($map) {
+  @include button-base();
+  @each $button, $button-color in $map {
+    .#{$button} {
+	    &:hover {
+	    	border: 1px solid darken($button-color, 40%);
+	    }
+	    &:active {
+	    	background: darken($button-color, 30%);
+	    	color: $white;
+	    	transition: 0.1s;
+	    }
+    }
+  }
+}
+
+// ==========
+// IS-INVISIBLE
+// -----
+// Makes element invisible!
+// Remains visible for accessibility
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+// ==========
+
+@mixin is-invisible {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+}
+
+// ==========
+// IS-VISIBLE
+// -----
+// Turns off the element-invisible effect.
+// ==========
+
+@mixin is-visible {
+  position: static;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+// ==========
+// SELECTION
+// -----
+// Changes background color and text color when text is selected
+// ==========
+
+@mixin selection($bgColor, $textColor) {
+  &::-moz-selection {
+    background: $bgColor;
+    color: $textColor;
+  }
+  &::selection {
+    background: $bgColor;
+    color: $textColor;
+  }
+}
+
+// ==========
+// SHAPE MIXINS
+// -----
+// Shapes availble within this mixin files are:
+//
+// Circle
+// Triangle
+// ==========
+
+@mixin circle($width) {
+  width: $width;
+  height: $width;
+  border-radius: 100%;
+}
+
+@mixin triangle($dir, $size, $color) {
+  border: $size transparent solid;
+  @if $dir == "top" or $dir == "up" {
+    border-bottom-color: $color;
+  }
+  @else if $dir == "right" or $dir == "after" {
+    border-left-color: $color;
+  }
+  @else if $dir == "bottom" or $dir == "down" {
+    border-top-color: $color;
+  }
+  @else if $dir == "left" or $dir == "before" {
+    border-right-color: $color;
+  }
+}
+
+// Mixin for creating angled edges on containing elements
+@mixin angle($pseudo, $flip: false, $angle: 1.5deg) {
+  // Possible values for $pseudo are: before, after, both
+  @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+    position: relative;
+    z-index: 1;
+    $selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+    #{$selector} {
+      background: inherit;
+      content: '';
+      display: block;
+      height: 50%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      -webkit-backface-visibility: hidden; // for Chrome Windows
+    }
+
+    @if $pseudo == 'before' {
+      #{$selector} {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'after' {
+      #{$selector} {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 100%;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+
+    @if $pseudo == 'both' {
+      &:before {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &:after {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+  }
+}

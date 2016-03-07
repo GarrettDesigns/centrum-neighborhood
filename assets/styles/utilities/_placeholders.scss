@@ -1,0 +1,45 @@
+%color-palette-defaults {
+	height: 100px;
+	font-weight: bold;
+	font-family: $body-font;
+	text-align: center;
+	position: relative;
+	&:before {
+		position: absolute;
+		top: 40%;
+		width: 50%;
+		left: 25%;
+	}
+}
+
+%alert-panel-defaults {
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+	font-size: 1.2rem;
+	font-family: $body-font;
+	.iconic {
+		float: right;
+		cursor: pointer;
+	}
+}
+
+%button-defaults {
+	border-radius: 5px;
+	border: 1px solid map-fetch($brand-colors, main-blue);
+	padding: 10px;
+	min-width: 100px;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: $body-font;
+	outline: none;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+// Define Heading styles
+
+%base-heading-styles {
+	font-family: $header-font;
+}

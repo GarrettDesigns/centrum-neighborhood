@@ -9,9 +9,13 @@
 @import "../../bower_components/meyer-reset/stylesheets/_meyer-reset.scss";
 @import "../../bower_components/foundation/scss/normalize.scss";
 @import "../../bower_components/foundation/scss/foundation.scss";
+@import "../../bower_components/vertical-rhythms-without-compass/_vertical-rhythms.scss";
 // endbower
 
-
+// Custom Sass file imports
+@import "utilities/placeholders";
+@import "utilities/functions";
+@import "utilities/mixins";
 
 @import "common/_global";
 @import "components/_buttons";
