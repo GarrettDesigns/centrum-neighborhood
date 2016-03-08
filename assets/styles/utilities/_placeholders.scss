@@ -10,7 +10,7 @@
 		width: 50%;
 		left: 25%;
 	}
-}
+} // End %color-palette-defaults
 
 %alert-panel-defaults {
 	border-radius: 5px;
@@ -18,11 +18,7 @@
 	text-align: center;
 	font-size: 1.2rem;
 	font-family: $body-font;
-	.iconic {
-		float: right;
-		cursor: pointer;
-	}
-}
+} // End %alert-panel-defaults
 
 %button-defaults {
 	border-radius: 5px;
@@ -36,10 +32,20 @@
 	outline: none;
   cursor: pointer;
   transition: all .5s;
-}
+} // End %button-defaults
 
 // Define Heading styles
 
 %base-heading-styles {
 	font-family: $header-font;
-}
+} // End %base-heading-styles
+
+// Header Link Style Defaults
+%header-link-defaults {
+  a {
+    color: $white;
+    &:hover {
+      color: map-fetch($brand-colors, main-blue);
+    }
+  }
+} // End %header-link-defaults
