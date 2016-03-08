@@ -1,6 +1,6 @@
 
 <div class="page-header">
-  <section class="color-overlay">
+  <section class="page-header-content">
     <?php
       $menu_args = array(
         'menu_class' => 'main-menu',

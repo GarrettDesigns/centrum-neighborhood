@@ -1,3 +1,8 @@
+.main-header {
+  overflow: hidden;
+  height: 100%;
+  min-height: 1050px;
+}
 .page-header {
   position: relative;
   background: url('../../assets/images/centrum-property.jpg') center center no-repeat;
@@ -5,7 +10,8 @@
   min-height: 1050px;
   transform: skewY(-1.5deg);
   transform-origin: 100%;
-  top: -40px;
+  margin-top: -60px;
+  padding-top: 65px;
   &:after {
     content: '';
     position: absolute;
@@ -18,12 +24,10 @@
     display: block;
     height: 100%;
   }
-}
-
-.color-overlay {
-  transform: skewY(1.5deg);
-  transform-origin: 100%;
-  position: relative;
-  padding-top: 40px;
-  z-index: 9999;;
+  &-content {
+    transform: skewY(1.5deg);
+    transform-origin: 100%;
+    z-index: 9999;
+    position: absolute;
+  }
 }
