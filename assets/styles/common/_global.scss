@@ -1,8 +1,15 @@
+img {
+  max-width: 100%;
+}
 
 body{
-  font-family: $body-font;
+  font-family: $serif-font;
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: $header-font;
+  font-family: $sans-serif-font;
+}
+
+a {
+  font-family: $sans-serif-font;;
 }

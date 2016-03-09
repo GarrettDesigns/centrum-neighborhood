@@ -1,34 +1,19 @@
-%color-palette-defaults {
-	height: 100px;
-	font-weight: bold;
-	font-family: $body-font;
-	text-align: center;
-	position: relative;
-	&:before {
-		position: absolute;
-		top: 40%;
-		width: 50%;
-		left: 25%;
-	}
-} // End %color-palette-defaults
 
 %alert-panel-defaults {
 	border-radius: 5px;
 	padding: 10px;
 	text-align: center;
 	font-size: 1.2rem;
-	font-family: $body-font;
+	font-family: $serif-font;
 } // End %alert-panel-defaults
 
 %button-defaults {
-	border-radius: 5px;
-	border: 1px solid map-fetch($brand-colors, main-blue);
-	padding: 10px;
+  padding: 20px 40px;
+  border-radius: 50px;
 	min-width: 100px;
 	text-align: center;
 	font-size: 1rem;
-	font-weight: bold;
-	font-family: $body-font;
+	font-family: $sans-serif-font;
 	outline: none;
   cursor: pointer;
   transition: all .5s;
@@ -37,7 +22,7 @@
 // Define Heading styles
 
 %base-heading-styles {
-	font-family: $header-font;
+	font-family: $sans-serif-font;
 } // End %base-heading-styles
 
 // Header Link Style Defaults
@@ -45,7 +30,7 @@
   a {
     color: $white;
     &:hover {
-      color: map-fetch($brand-colors, main-blue);
+      color: gc(brand-colors, main-blue);
     }
   }
 } // End %header-link-defaults

@@ -22,7 +22,14 @@
     },
     "modernizr.js": {
       "bower": ["modernizr"]
+    },
+    "fonts": {
+      "files": ["fonts/**/*"]
     }
+  },
+  "paths": {
+    "source": "assets/",
+    "dist": "dist/"
   },
   "config": {
     "devUrl": "http://centrum-full.local"

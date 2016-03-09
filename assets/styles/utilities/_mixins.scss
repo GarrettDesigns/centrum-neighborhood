@@ -48,18 +48,20 @@
 	@each $name, $color in map-get($palettes, $palette) {
 		.#{$name}.#{$palette} {
 			background: $color;
-			color: darken($color, 40%);
-			&:before {
+			color: $white;
+      border: 1px solid $color;
+			/*&:before {
 				content: '#{$name}';
-			}
+			}*/
 			@if $name == disabled {
 				cursor: not-allowed;
 				&:hover {
-					border: 1px solid $app-background;
+          background: none;
+          border: 1px solid $white;
 				}
         &:active {
-          background: $color;
-          color: darken($color, 40%);
+          background: $white;
+          color: $color;
         }
 			}
       @if $palette == alerts {
@@ -90,11 +92,12 @@
   @each $button, $button-color in $map {
     .#{$button} {
 	    &:hover {
-	    	border: 1px solid darken($button-color, 40%);
+	    	border: 1px solid $white;
+        background: none;
 	    }
 	    &:active {
-	    	background: darken($button-color, 30%);
-	    	color: $white;
+	    	background: $white;
+	    	color: $button-color;
 	    	transition: 0.1s;
 	    }
     }
@@ -256,4 +259,29 @@
       }
     }
   }
+}
+
+// mixin to skew one side of an element
+@mixin skew($side: bottom, $deg: -20deg, $bottom: -15px, $width: 100%, $bg: $centrum-primary-blue) {
+    position: relative;
+
+    &:before {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        @if $side == bottom {
+          bottom: $bottom;
+        }
+
+        display: block;
+        width: $width;
+        background: $bg;
+        -webkit-transform: skew($deg);
+            -ms-transform: skew($deg);
+                transform: skew($deg);
+    }
 }

@@ -32,31 +32,12 @@ $round-to-nearest-half-line: true;
 $rhythm-unit: "rem";
 
 // Sets different font families for us with
-$body-font:"adobe-garamond-pro", "georgia", serif;
-$header-font:"brandon-grotesque", Helvetica, Arial, sans-serif;
+$serif-font:"adobe-garamond-pro", "georgia", serif;
+$sans-serif-font:"brandon-grotesque", Helvetica, Arial, sans-serif;
 $code-font:'Anonymous Pro', 'Source Code Pro';
 
 // Glyphicons font path
 $icon-font-path:        "../fonts/";
-
-// Grid settings
-$main-sm-columns:       12;
-$sidebar-sm-columns:    4;
-
-// Colors
-$white: #ffffff;
-$black: #333333;
-
-// Brand Colors
-$centrum-primary-blue: #173e73;
-$brand-secondary-blue: #1a6ad6;
-
-// Mapping Brand Colors
-$brand-colors: (
-  main-blue: $centrum-primary-blue,
-  secondary-blue: $brand-secondary-blue
-  );
-
 
 // ==========
 // Sets Typograhy sizes
@@ -66,7 +47,7 @@ $brand-colors: (
 // areas of your project.
 //
 // DEPENDENCY:
-// ------
+// -----
 // This uses the @include adjust-font-size-to mixin and
 // requires Compass Vertical Rhythm to be used. A version
 // of compass vertical rhythms that is decoupled from Compass
@@ -74,7 +55,7 @@ $brand-colors: (
 //
 //
 // USAGE:
-// ------
+// -----
 // This will output h1 font size and line height
 //
 // .example {
@@ -114,3 +95,53 @@ $type-scale: (
    base-lines: 1
    )
   );
+
+
+// ========
+// Color Variables
+//
+// Maps
+// --------
+// Colors are assigned to sass maps to easily access them
+// maps also aid in modularity, if you want to change a color variable
+// name you only need to change it in this file.
+// ========
+
+// Colors
+$white: #ffffff;
+$black: #333333;
+
+// Brand Colors
+$centrum-primary-blue: #173e73;
+$centrum-secondary-blue: #1a6ad6;
+
+// Mapping Brand Colors
+$palettes: (
+  brand-colors: (
+    main-blue: $centrum-primary-blue,
+    secondary-blue: $centrum-secondary-blue
+    ),
+  buttons: (
+    primary: $centrum-secondary-blue,
+    secondary: $centrum-primary-blue,
+    )
+);
+// ========
+// Responsive Breakpoints
+// -----
+// breakpoints are defined using sass variables and then
+// implemented using the breakpoint-sass mixin
+//
+// breakpoints are defined as needed instead of at
+// arbitrary device widths
+//
+// USAGE:
+// -----
+// @include breakpoint($breakpoint-var) {
+//    styles
+//  }
+// ========
+
+$cinema: 2100px;
+$lg-desktop: 1620px;
+$sm-tablet: 600px;

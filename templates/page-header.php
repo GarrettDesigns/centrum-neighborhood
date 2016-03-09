@@ -1,6 +1,7 @@
 
 <div class="page-header">
-  <section class="page-header-content">
+  <span class="color-overlay">
+  <section class="page-header--content">
     <?php
       $menu_args = array(
         'menu_class' => 'main-menu',
@@ -9,9 +10,17 @@
       );
       wp_nav_menu($menu_args);
     ?>
+
+    <span class="menu-icon"></span>
+
     <ul class="info-links">
-      <li><a href="#">contact us</a></li>
-      <li><a href="#">check availability</a></li>
+      <li class="info-links--item"><a class="info-links--inner error buttons" href="#">contact us</a></li>
+      <li class="info-links--item"><a class="info-links--inner primary buttons" href="#">check availability</a></li>
     </ul>
+
+    <div class="site-logo--container">
+      <img class="site-logo" src="<?php echo get_template_directory_uri(); ?>/dist/images/centrum-lakeview-logo.png" alt="Centrum Lakview Logo">
+    </div>
   </section>
+</span>
 </div>

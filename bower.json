@@ -10,7 +10,9 @@
     "meyer-reset": "*",
     "modernizr": "2.8.2",
     "foundation": "~5.5.2",
-    "vertical-rhythms-without-compass": "^1.0.1"
+    "vertical-rhythms-without-compass": "^1.0.1",
+    "breakpoint-sass": "^2.7.0",
+    "font-awesome": "^4.5.0"
   },
   "overrides": {
     "modernizr": {

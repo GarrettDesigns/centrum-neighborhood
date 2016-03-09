@@ -19,6 +19,9 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        setTimeout(function() {
+          $('.page-header--content, .color-overlay').css({"opacity" : "1"});
+        }, 500);
 
         $(document).foundation(); // Foundation JavaScript
 

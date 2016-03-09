@@ -10,6 +10,9 @@
 @import "../../bower_components/foundation/scss/normalize.scss";
 @import "../../bower_components/foundation/scss/foundation.scss";
 @import "../../bower_components/vertical-rhythms-without-compass/_vertical-rhythms.scss";
+@import "../../bower_components/sassy-maps/sass/_sassy-maps.scss";
+@import "../../bower_components/breakpoint-sass/stylesheets/_breakpoint.scss";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
 
 // Custom Sass file imports
@@ -21,13 +24,13 @@
 @import "components/_buttons";
 @import "components/_comments";
 @import "components/_forms";
-@import "components/_grid";
 @import "components/_wp-classes";
 @import "layouts/_header";
 @import "layouts/_sidebar";
 @import "layouts/_footer";
 @import "layouts/_pages";
 @import "layouts/_posts";
+@import "components/_grid";
 
 
 
