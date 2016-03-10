@@ -88,7 +88,7 @@
     width: 100%;
     background: url('../../assets/images/amenity-deck.png') center center no-repeat;
     background-size: cover;
-    min-height: 800px;
+    min-height: 920px;
     position: relative;
   }
   &-main {
@@ -379,7 +379,7 @@
       top: 580px;
     }
     @at-root {
-      .features--trap {
+      .features--trap, .amenities--trap {
         &-heading {
           font-size: $base-font-size*1.5;
           text-transform: uppercase;
@@ -390,4 +390,32 @@
         }
       }
     }
+}
+
+.amenities-main {
+  position: relative;
+}
+
+.amenities--trap-article {
+  position: absolute;
+  color: white;
+  top: 0;
+  z-index: 999;;
+  padding: 370px 20px 520px;
+  text-align: center;
+  right: 0;
+  background: url('../../assets/images/interior-trapezoid.svg') no-repeat -20px 0;
+}
+
+.amenities--trap {
+  &-heading {
+    font-size: $base-font-size*1.5;
+    text-transform: uppercase;
+    margin-top: 250px;
+    margin-bottom: 20px;
+  }
+  &-body {
+    line-height: 1.5;
+    max-width: 445px;
+  }
 }
