@@ -7,12 +7,12 @@
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
 @import "../../bower_components/meyer-reset/stylesheets/_meyer-reset.scss";
-@import "../../bower_components/foundation/scss/normalize.scss";
-@import "../../bower_components/foundation/scss/foundation.scss";
 @import "../../bower_components/vertical-rhythms-without-compass/_vertical-rhythms.scss";
 @import "../../bower_components/sassy-maps/sass/_sassy-maps.scss";
 @import "../../bower_components/breakpoint-sass/stylesheets/_breakpoint.scss";
 @import "../../bower_components/font-awesome/scss/font-awesome.scss";
+@import "../../bower_components/susy/sass/_susy.scss";
+@import "../../bower_components/normalize-scss/_normalize.scss";
 // endbower
 
 // Custom Sass file imports
@@ -31,28 +31,6 @@
 @import "layouts/_pages";
 @import "layouts/_posts";
 @import "components/_grid";
-
-
-
-
-/*==========  Foundation Media Queries - copy/paste from here if needed  ==========*/
-
-@media #{$small-up} { }
-@media #{$small-only} { }
-
-@media #{$medium-up} { }
-@media #{$medium-only} { }
-
-@media #{$large-up} { }
-@media #{$large-only} { }
-
-@media #{$xlarge-up} { }
-@media #{$xlarge-only} { }
-
-@media #{$xxlarge-up} { }
-@media #{$xxlarge-only} { }
-
-
 
 
 /*==========  Fixes overlapping admin bar  ==========*/

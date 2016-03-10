@@ -126,6 +126,21 @@ $palettes: (
     secondary: $centrum-primary-blue,
     )
 );
+
+// ========
+// Responsive Grid Setup
+// -----
+// Use this Sass Map to define the grid settings
+// that all of the other grid mixins will base their
+// widths off of
+// ========
+
+$susy: (
+  container: 100%,
+  columns: 12,
+  global-box-sizing: border-box
+);
+
 // ========
 // Responsive Breakpoints
 // -----

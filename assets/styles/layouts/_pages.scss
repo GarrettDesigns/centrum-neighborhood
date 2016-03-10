@@ -83,10 +83,116 @@
   }
 }
 
-.amenities-hero {
-  width: 100%;
-  background: url('../../assets/images/amenity-deck.png') center center no-repeat;
-  background-size: cover;
-  min-height: 800px;
-  position: relative;
+.amenities {
+  &-hero {
+    width: 100%;
+    background: url('../../assets/images/amenity-deck.png') center center no-repeat;
+    background-size: cover;
+    min-height: 800px;
+    position: relative;
+  }
+  &-main {
+    background: gc(brand-colors, secondary-blue);
+    min-height: 600px;
+    position: relative;
+    &:after {
+      content: '';
+      @include triangle(down, 40px, gc(brand-colors, secondary-blue));
+      position: absolute;
+      bottom: -80px;
+      margin-left: 48%;
+    }
+  }
+}
+
+.neighborhood {
+  &-hero {
+    min-height: 1200px;
+    padding-top: 110px;
+    text-align: center;
+    z-index: 7;
+    color: gc(brand-colors, secondary-blue);
+    background: url('../../assets/images/neighborhood.png') center center no-repeat;
+    background-size: cover;
+    &--heading {
+      text-transform: uppercase;
+      color: inherit;
+      font-size: $base-font-size * 1.75;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    &--content {
+      max-width: 35%;
+      margin: 0 auto;
+      font-size: $base-font-size * 1.25;
+      line-height: $base-line-height / .75;
+      font-weight: 400;
+    }
+  }
+
+  &-main {
+    &--lifestyle-list{
+      &-item {
+        padding: 15% 0;
+        color: $white;
+        position: relative;
+        font-family: $sans-serif-font;
+        letter-spacing: 2px;
+        text-align: center;
+        text-transform: uppercase;
+        z-index: 1;
+        &:nth-child(1) {
+          background: url('../../assets/images/amenity-feature-grid.png') center center no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(2) {
+          background: url('../../assets/images/aquanaut.png') center center no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(3) {
+          background: url('../../assets/images/bowtruss.png') center center no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(4) {
+          background: url('../../assets/images/bathroom.png') center center no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(5) {
+          background: url('../../assets/images/paulina.png') center center no-repeat;
+          background-size: cover;
+        }
+        &:nth-child(6) {
+          background: url('../../assets/images/living-space.png') center center no-repeat;
+          background-size: cover;
+        }
+        &:after {
+          content: '';
+          background: transparentize(gc(brand-colors, main-blue), 0.1);
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          z-index: 1;
+        }
+        @at-root {
+          .list-item--text {
+            z-index: 8;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features {
+  background: gc(brand-colors, secondary-blue);
+  color: $white;
+  &-list {
+    &--heading {
+      text-align: center;
+    }
+  }
 }
