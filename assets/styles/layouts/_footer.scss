@@ -1,0 +1,50 @@
+.content-info {
+  background: gc(brand-colors, main-blue);
+  height: 260px;
+}
+
+.footer-info {
+  width: 44%;
+  margin: 0 auto;
+  position: relative;
+  &--list {
+    float: left;
+    color: $white;
+    margin-right: 70px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:nth-child(n+2) {
+      margin-top: 70px;
+    }
+  }
+  &--heading {
+    font-size: $base-font-size*1.5;
+    text-transform: uppercase;
+    font-family: $sans-serif-font;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &--address {
+    line-height: 1.5;
+    text-align: center;
+  }
+  &--item {;
+    line-height: 2;
+    text-transform: uppercase;
+    color: gc(brand-colors, secondary-blue);
+    font-family: $sans-serif-font;
+    font-size: $base-font-size/1.25;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+  &--social-media {
+    line-height: 2;
+    color: gc(brand-colors, secondary-blue);
+    font-family: $sans-serif-font;
+    font-size: $base-font-size/1.25;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+}

@@ -4,6 +4,8 @@ img {
 
 body{
   font-family: $serif-font;
+  // this goes in the shame file -- definitely fix for real later
+  overflow-x: hidden;
 }
 
 h1,h2,h3,h4,h5,h6 {

@@ -1,8 +1,8 @@
 @include custom-buttons(map-get($palettes, buttons));
 
 .menu-icon {
-  width: 40px;
-  height: 15px;
+  width: 35px;
+  height: 8px;
   border-bottom: 3px solid $white;
   border-top: 3px solid $white;
   display: block;
