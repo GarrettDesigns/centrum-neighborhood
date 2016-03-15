@@ -1,40 +1,39 @@
 <?php while (have_posts()) : the_post(); ?>
-  <section class="main-header">
-    <?php get_template_part('templates/page', 'header'); ?>
-  </section>
 
-  <section class="mission-body">
+  <article class="mission-body">
     <?php get_template_part('templates/page', 'body'); ?>
-  </section>
+  </article>
 
-  <section class="amenities-hero">
+  <article class="amenities-hero">
     <article class="amenities--trap-article left">
       <h2 class="amenities--trap-heading">Section Title</h2>
       <p class="amenities--trap-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
     </article>
-  </section>
+  </article>
 
-  <section class="amenities-main">
-    <ul class="amenities-main--list">
-      <li class="amenities-main--heading">Amenities</li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/house.svg" alt="a house icon"></li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/barbell.svg" alt="a barbell icon"></li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/swimming.svg" alt="a swimming icon"></li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/washer.svg" alt="a washer icon"></li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/bicycle.svg" alt="a bicycle icon"></li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/envelope.svg" alt="an envelope icon"></li>
-      <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/coffee.svg" alt="a coffee icon"></li>
-    </ul>
-  </section>
+  <article class="amenities-main">
+    <div class="amenities-main--content">
+      <header class="amenities-main--heading">Amenities</header>
+      <ul class="amenities-main--list">
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/house.svg" alt="a house icon"></li>
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/barbell.svg" alt="a barbell icon"></li>
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/swimming.svg" alt="a swimming icon"></li>
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/washer.svg" alt="a washer icon"></li>
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/bicycle.svg" alt="a bicycle icon"></li>
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/envelope.svg" alt="an envelope icon"></li>
+        <li class="amenities-main--list-item"><img src="<?php echo get_template_directory_uri(); ?>/dist/images/coffee.svg" alt="a coffee icon"></li>
+      </ul>
+    </div>
+  </article>
 
-  <section class="neighborhood-hero">
+  <article class="neighborhood-hero">
     <h2 class="neighborhood-hero--heading">the neighborhood</h2>
     <p class="neighborhood-hero--content">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
     </p>
-  </section>
+  </article>
 
-  <section class="neighborhood-main">
+  <article class="neighborhood-main">
     <ul class="neighborhood-main--lifstyle-list">
       <li class="neighborhood-main--lifestyle-list-item"><span class="list-item--text">party room</span></li>
       <li class="neighborhood-main--lifestyle-list-item"><span class="list-item--text">aquanaut brewery</span></li>
@@ -43,16 +42,9 @@
       <li class="neighborhood-main--lifestyle-list-item"><span class="list-item--text">transportation oriented</span></li>
       <li class="neighborhood-main--lifestyle-list-item"><span class="list-item--text">acoustically treated windows</span></li>
     </ul>
-  </section>
+  </article>
 
-  <section class="features">
-    <div class="features--trapezoid">
-      <article class="features--trap-article right">
-        <h2 class="features--trap-heading">Section Title</h2>
-        <p class="features--trap-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-      </article>
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/feature-trapezoid.svg" alt="blue trapezoid">
-    </div>
+  <article class="features">
     <article class="features-list">
     <h2 class="features-list--heading">Features</h2>
     <ul>
@@ -110,23 +102,27 @@ north side to help mitigate L noise</p></li>
   </li>
 </ul>
 </article>
-  </section>
+  </article>
 
-  <section class="interior-view-one">
+  <article class="interior-view-one">
     <div class="interior-view-one--trapezoid">
       <article class="features--trap-article left">
         <h2 class="features--trap-heading">Section Title</h2>
         <p class="features--trap-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
       </article>
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/interior-trapezoid.svg" alt="a trapezoid">
     </div>
-  </section>
+  </article>
 
-  <section class="interior-view-two">
+  <article class="interior-view-two">
+    <div class="interior-view-two--trap">
+      <article class="interior-view-two--trap-article right">
+        <h2 class="interior-view-two--trap-heading">Section Title</h2>
+        <p class="interior-view-two--trap-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+      </article>
+    </div>
+  </article>
 
-  </section>
-
-  <section class="current-availability">
+  <article class="current-availability">
     <h2 class="current-availability--heading">Current Availability</h2>
     <ul class="bedroom-options">
       <li class="bedroom-options--label">Number of Bedrooms</li>
@@ -208,5 +204,5 @@ north side to help mitigate L noise</p></li>
         <span class="availability-table--cell">View</span>
       </li>
     </ul>
-  </section>
+  </article>
 <?php endwhile; ?>

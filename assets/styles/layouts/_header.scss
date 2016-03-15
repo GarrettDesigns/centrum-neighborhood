@@ -7,6 +7,7 @@
   border-top: 3px solid $white;
   display: block;
   float: left;
+  cursor: pointer;
 }
 
 .site-logo {
@@ -24,8 +25,30 @@
   }
 }
 
+.menu-main-nav-container {
+
+}
+
 .main-menu {
   @extend %header-link-defaults;
+  @extend %absolute-center;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 2;
+  font-size: $base-font-size*2.5;
+  font-weight: 500;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  &-close {
+    position: absolute;
+    color: $white;
+    max-width: 50px;
+    max-height: 50px;
+    top: 50px;
+    left: 50px;
+  }
 } // End .main-menu
 
 .info-links {
@@ -43,3 +66,42 @@
     }
   } // End .info-links--item
 } // End .info-links
+
+.nav-items-group {
+  max-height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  background: gc(brand-colors, secondary-blue);
+  overflow: hidden;
+  opacity: 0;
+	visibility: hidden;
+	transform: scale(0.2);
+	transition: transform 1s, opacity 0.6s, visibility 1s;
+	transition-timing-function: ease-in-out;
+  	&.show-nav {
+  		opacity: 1;
+  		visibility: visible;
+  		transform: scale(1);
+  		transition-delay: .5s;
+  	} // End .nav-items-group.get-info
+}
+
+.iconic {
+  * {
+		fill: $white;
+		stroke: $white;
+	} // End .iconic *
+	&-x {
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+	} // End .iconic-x
+	&-chevron {
+		width: 15px;
+		height: 15px;
+	} // End .iconic-chevron
+}

@@ -23,6 +23,26 @@
           $('.page-header--content, .color-overlay').css({"opacity" : "1"});
         }, 500);
 
+        var navMenuIcon = $('.menu-icon');
+        var navCloseIcon = $('.main-menu-close');
+        var siteContainer = $('.main-site-container');
+        var navItems = $('.nav-items-group');
+        var pageHeader = $('.page-header');
+        var contentInfo = $('.content-info');
+        var animationContainer = $('.animation-container');
+
+        navMenuIcon.on('click', function(event) {
+      		navItems.addClass('show-nav');
+          pageHeader.addClass('show-nav');
+          animationContainer.addClass('show-nav');
+      	});
+
+      	navCloseIcon.on('click', function() {
+      		navItems.removeClass('show-nav');
+          pageHeader.removeClass('show-nav');
+          animationContainer.removeClass('show-nav');
+      	});
+
         $(document).foundation(); // Foundation JavaScript
 
       },

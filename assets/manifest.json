@@ -23,6 +23,9 @@
     "modernizr.js": {
       "bower": ["modernizr"]
     },
+    "iconic.min.js": {
+      "files": ["scripts/iconic.min.js"]
+    },
     "fonts": {
       "files": ["fonts/**/*"]
     }
