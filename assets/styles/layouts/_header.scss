@@ -1,5 +1,11 @@
 @include custom-buttons(map-get($palettes, buttons));
 
+@keyframes fade-in {
+  0% { opacity: 0; padding-top: 50px; }
+  50% { opacity: 0; }
+  100% { opacity: 1; padding-top: 0; }
+}
+
 .menu-icon {
   width: 35px;
   height: 8px;
@@ -22,6 +28,9 @@
     min-width: 200px;
     height: 33%;
     margin: auto;
+    z-index: 20;
+    opacity: 0;
+    animation: fade-in 1500ms forwards;
   }
 }
 

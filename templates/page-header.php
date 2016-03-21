@@ -11,6 +11,9 @@
 </section>
 
 <section class="page-header">
+  <div class="site-logo--container">
+    <img class="site-logo" src="<?php echo get_template_directory_uri(); ?>/dist/images/centrum-lakeview-logo.png" alt="Centrum Lakview Logo">
+  </div>
   <span class="color-overlay">
   <section class="page-header--content">
 
@@ -24,8 +27,5 @@
 
   </section>
 
-    <div class="site-logo--container">
-      <img class="site-logo" src="<?php echo get_template_directory_uri(); ?>/dist/images/centrum-lakeview-logo.png" alt="Centrum Lakview Logo">
-    </div>
 </span>
 </section>
