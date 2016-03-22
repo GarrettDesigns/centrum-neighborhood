@@ -91,22 +91,10 @@
     width: 85%;
     padding-top:  60px;
     position: relative;
-    opacity: 0;
-    transition: opacity 2s ease-in;
     margin: 0 auto;
     z-index: 5;
   } // End .page-header-content
 } // End .page-header
-
-.flash-intro {
-  background: white;
-  position: absolute;
-  display: block;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  animation: flash 300ms ease-in-out forwards 500ms;
-}
 
 .mission-body {
   color: gc(brand-colors, secondary-blue);

@@ -16,7 +16,7 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <header class="main-header">
       <?php get_template_part('templates/page', 'header'); ?>
-     </header><!-- /.main-header -->
+    </header><!-- /.main-header -->
      <div class="animation-container">
       <main class="main-site-container" role="main">
         <?php include Wrapper\template_path(); ?>

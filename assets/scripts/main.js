@@ -38,9 +38,6 @@
           pageHeader.removeClass('show-nav');
           animationContainer.removeClass('show-nav');
       	});
-
-        $(document).foundation(); // Foundation JavaScript
-
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

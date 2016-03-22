@@ -6,6 +6,11 @@
   100% { opacity: 1; padding-top: 0; }
 }
 
+@keyframes fade-in-and-scale {
+  0% { opacity: 0; transform: scale(.5,.5); }
+  100% { opacity: 1; transform: scale(1,1); }
+}
+
 .menu-icon {
   width: 35px;
   height: 8px;
@@ -30,7 +35,7 @@
     margin: auto;
     z-index: 20;
     opacity: 0;
-    animation: fade-in 1500ms forwards;
+    animation: fade-in-and-scale 1500ms forwards;
   }
 }
 
