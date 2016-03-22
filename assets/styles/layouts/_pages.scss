@@ -256,26 +256,67 @@
         &:nth-child(6) {
           background: url('../../assets/images/living-space.png') center center no-repeat;
         } // End nth-child(6)
-        &:after {
-          content: '';
-          background: transparentize(gc(brand-colors, main-blue), 0.1);
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-          z-index: 1;
-        }
         @at-root {
           .list-item--text {
             z-index: 8;
             position: relative;
+            transition: all 0.5s;
           } // End .list-item--text
         }
       } // End .neighborhood-main--lifestyle-list-item
     } // End .neighborhood-main--lifestyle-list
   } // End .neighborhood-main
 } // End .neighborhood
+
+.neighborhood-main--color-overlay {
+  background: transparentize(gc(brand-colors, main-blue), 0.1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  transition: all 0.5s;
+} // End .neighborhood-main--color-overlay
+
+.gallery-button {
+  display: block;
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease-out 0.05s;
+  &.primary.buttons {
+    max-width: 30%;
+    margin: 0 auto;
+  } // End .gallery-button.primary.buttons
+} // End .gallery-button
+
+.neighborhood-main--lifestyle-list-item:hover {
+  .neighborhood-main--color-overlay {
+    opacity: 0;
+    transition: all 0.5s;
+    z-index: 0;
+  } // End .neighborhood-main--lifestyle-list-item:hover .neighborhood-main--color-overlay
+  .list-item--text {
+    opacity: 0;
+    transition: all 0.5s;
+  } // End .neighborhood-main--lifestyle-list-item:hover .list-item--text
+  .gallery-button {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.5s ease-out 0.05s;
+    z-index: 999;
+    &.primary.buttons {
+      max-width: 30%;
+      margin: 0 auto;
+      &:hover {
+        background: transparentize(gc(brand-colors, secondary-blue), 0.5);
+        border: 1px solid gc(brand-colors, secondary-blue);
+      } // End .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons:hover
+    } // .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons
+  } // .neighborhood-main--lifestyle-list-item:hover .gallery-button
+} // .neighborhood-main--lifestyle-list-item:hover
+
 
 .features {
   clear: both;
