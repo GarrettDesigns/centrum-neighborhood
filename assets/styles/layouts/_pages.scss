@@ -4,22 +4,15 @@
   100% { opacity: 1; }
 }
 
-@keyframes flash {
- 0% { opacity: 0; }
- 50% {opacity: 1; }
- 100% { opacity: 0; }
-}
-
 .animation-container {
   opacity: 1;
 	visibility: visible;
-	transform: scale(1);
-	transition: transform 1s, opacity 0.6s, visibility 1s;
+	transition: opacity 0.8s, visibility 1s;
 	transition-timing-function: ease-in-out;
+  animation-delay: 0.5s;
 	&.show-nav {
 		opacity: 0;
 		visibility: hidden;
-		transform: scale(0.2);
     overflow: hidden;
     max-height: 100vh;
     position: fixed;
@@ -40,13 +33,11 @@
   z-index: 0;
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
-  transition: transform 1s, opacity 0.6s, visibility 1s;
+  transition: opacity 0.6s, visibility 1s;
   transition-timing-function: ease-in-out;
   &.show-nav {
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.2);
     overflow: hidden;
   } // End .page-header.show-nav
   &:after {
@@ -56,6 +47,7 @@
     transform-origin: 100%;
     position: absolute;
     bottom: 0;
+    left: 0;
     height: 200px;
     width: 100%;
     z-index: 2;
@@ -65,7 +57,7 @@
     background:transparentize(gc(brand-colors, main-blue), 0.1);
     z-index: 1;
     opacity: 0;
-    animation: fade-in 2s ease-out 1.75s both;
+    animation: fade-in 3.5s ease-out 3s both;
     top: 0;
     bottom: 0;
     left: 0;

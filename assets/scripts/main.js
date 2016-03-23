@@ -30,14 +30,29 @@
         navMenuIcon.on('click', function(event) {
       		navItems.addClass('show-nav');
           pageHeader.addClass('show-nav');
-          animationContainer.addClass('show-nav');
       	});
 
       	navCloseIcon.on('click', function() {
       		navItems.removeClass('show-nav');
           pageHeader.removeClass('show-nav');
-          animationContainer.removeClass('show-nav');
       	});
+
+        $(function() {
+          $('a[href*="#"]:not([href="#"])').click(function() {
+            navItems.removeClass('show-nav');
+            pageHeader.removeClass('show-nav');
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
+          });
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

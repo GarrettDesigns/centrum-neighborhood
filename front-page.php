@@ -1,6 +1,6 @@
 <?php while (have_posts()) : the_post(); ?>
 
-  <article class="mission-body">
+  <article id="ourmission" class="mission-body">
     <?php get_template_part('templates/page', 'body'); ?>
   </article>
 
@@ -8,11 +8,11 @@
     <?php get_template_part('templates/content', 'amenities-trap'); ?>
   </article>
 
-  <article class="amenities-main">
+  <article id="amenities" class="amenities-main">
     <?php get_template_part('templates/content', 'amenities'); ?>
   </article>
 
-  <article class="neighborhood-hero">
+  <article id="residences" class="neighborhood-hero">
     <?php get_template_part('templates/content', 'neighborhood-hero'); ?>
   </article>
 
@@ -32,7 +32,7 @@
     <?php get_template_part('templates/content', 'interior-trap-two'); ?>
   </article>
 
-  <article class="current-availability">
+  <article id="availability" class="current-availability">
     <?php get_template_part('templates/content', 'current-availability'); ?>
   </article>
 

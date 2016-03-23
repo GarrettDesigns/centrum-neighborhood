@@ -35,7 +35,7 @@
     margin: auto;
     z-index: 20;
     opacity: 0;
-    animation: fade-in-and-scale 1500ms forwards;
+    animation: fade-in-and-scale 700ms forwards 700ms;
   }
 }
 
@@ -93,14 +93,27 @@
   overflow: hidden;
   opacity: 0;
 	visibility: hidden;
-	transform: scale(0.2);
-	transition: transform 1s, opacity 0.6s, visibility 1s;
+	transition: opacity 0.6s, visibility 1s;
 	transition-timing-function: ease-in-out;
+  .menu-item {
+    transform: translateY(0px);
+    transition: transform 1s ease-out;
+  }
   	&.show-nav {
   		opacity: 1;
   		visibility: visible;
-  		transform: scale(1);
   		transition-delay: .5s;
+      .menu-item {
+        transform: translateY(-40px);
+        transition: transform .7s ease-in-out;
+        $delay: .35s;
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) {
+            transition-delay: $delay;
+          }
+          $delay: $delay  + .05;
+        }
+      }
   	} // End .nav-items-group.get-info
 }
 
