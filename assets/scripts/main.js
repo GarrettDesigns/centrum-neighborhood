@@ -71,12 +71,15 @@
 
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
-          $(this).parents('li').find('.gallery-modal').fadeIn();
+          $(this).parents('li').find('.gallery-modal').fadeIn('slow');
         });
 
         $('.map-modal-button').on('click', function(e) {
           e.preventDefault();
-          $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn();
+          $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
+        });
+        $('.close-map').on('click', function() {
+          $('.neighborhood-map-modal').fadeOut('slow');
         });
       },
       finalize: function() {
