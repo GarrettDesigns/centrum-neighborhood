@@ -17,8 +17,21 @@
         "styles/editor-style.scss"
       ]
     },
+    "owl-carousel.css": {
+      "files": [
+        "../bower_components/owl.carousel/dist/assets/owl.carousel.min.css"
+      ]
+    },
+    "owl-theme.css": {
+      "files": [
+        "../bower_components/owl.carousel/dist/assets/owl.theme.default.min.css"
+      ]
+    },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "owl-carousel.js": {
+      "bower": ["owl.carousel"]
     },
     "modernizr.js": {
       "bower": ["modernizr"]

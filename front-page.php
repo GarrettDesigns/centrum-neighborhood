@@ -16,7 +16,7 @@
     <?php get_template_part('templates/content', 'neighborhood-hero'); ?>
   </article>
 
-  <article class="neighborhood-main">
+  <article id="gallery" class="neighborhood-main">
     <?php get_template_part('templates/content', 'neighborhood'); ?>
   </article>
 
@@ -35,5 +35,7 @@
   <article id="availability" class="current-availability">
     <?php get_template_part('templates/content', 'current-availability'); ?>
   </article>
+
+  <a href="#top" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 <?php endwhile; ?>

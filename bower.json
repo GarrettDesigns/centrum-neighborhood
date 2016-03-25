@@ -13,7 +13,8 @@
     "breakpoint-sass": "^2.7.0",
     "font-awesome": "^4.5.0",
     "susy": "^2.2.12",
-    "normalize-scss": "^3.0.3"
+    "normalize-scss": "^3.0.3",
+    "owl.carousel": "original-owl-carousel#^2.0.0-beta.3"
   },
   "overrides": {
     "modernizr": {

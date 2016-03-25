@@ -19,28 +19,36 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        var body = $('body');
+
         var navMenuIcon = $('.menu-icon');
         var navCloseIcon = $('.main-menu-close');
-        var siteContainer = $('.main-site-container');
         var navItems = $('.nav-items-group');
         var pageHeader = $('.page-header');
-        var contentInfo = $('.content-info');
-        var animationContainer = $('.animation-container');
+        var toTop = $('.back-to-top');
+        var $window = $(window);
 
         navMenuIcon.on('click', function(event) {
       		navItems.addClass('show-nav');
           pageHeader.addClass('show-nav');
+          body.addClass('show-nav');
       	});
 
       	navCloseIcon.on('click', function() {
       		navItems.removeClass('show-nav');
           pageHeader.removeClass('show-nav');
+          body.removeClass('show-nav');
       	});
+
+        $window.on('scroll', function() {
+          $window.scrollTop() >= 820 ? toTop.addClass('scrolled') : toTop.removeClass('scrolled');
+        });
 
         $(function() {
           $('a[href*="#"]:not([href="#"])').click(function() {
             navItems.removeClass('show-nav');
             pageHeader.removeClass('show-nav');
+            body.removeClass('show-nav');
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
               var target = $(this.hash);
               target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -52,6 +60,23 @@
               }
             }
           });
+        });
+
+        $('.gallery-slider').owlCarousel({
+          animateOut: 'fadeOut',
+          items:1,
+          margin: 30,
+          smartSpeed:450
+        });
+
+        $('.gallery-button').on('click', function(e) {
+          e.preventDefault();
+          $(this).parents('li').find('.gallery-modal').fadeIn();
+        });
+
+        $('.map-modal-button').on('click', function(e) {
+          e.preventDefault();
+          $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn();
         });
       },
       finalize: function() {

@@ -4,19 +4,33 @@
   100% { opacity: 1; }
 }
 
-.animation-container {
-  opacity: 1;
-	visibility: visible;
-	transition: opacity 0.8s, visibility 1s;
-	transition-timing-function: ease-in-out;
-  animation-delay: 0.5s;
-	&.show-nav {
-		opacity: 0;
-		visibility: hidden;
-    overflow: hidden;
-    max-height: 100vh;
-    position: fixed;
-	} // End .site-container.show-nav
+body.show-nav {
+  overflow: hidden;
+}
+
+.back-to-top {
+  position: fixed;
+  opacity: 0;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background: gc(brand-colors, secondary-blue);
+  border-radius: 50%;
+  color: white;
+  font-family: $sans-serif-font;
+  height: 20px;
+  width: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 15px 18px 20px;
+  box-shadow: 0 0 20px rgba(3,3,3,0.4);
+  display: none;
+  transition: opacity .5s;
+  &.scrolled {
+    opacity: 1;
+    transition: opacity .5s;
+    display: block;
+  }
 }
 
 .main-header {
@@ -200,6 +214,7 @@
     color: gc(brand-colors, secondary-blue);
     background: url('../../assets/images/neighborhood.png') center center no-repeat;
     background-size: cover;
+    position: relative;
     &--heading {
       text-transform: uppercase;
       color: inherit;
@@ -217,44 +232,51 @@
     } // End .neighborhood-hero--content
   } // End .neighborhood-hero
 
+  @at-root {
+    .neighborhood-map-modal {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+  }
+
   &-main {
     position: relative;
     &--lifestyle-list {
+      position: relative;
+      width: 100%;
       &-item {
-        padding: 15% 0;
-        color: $white;
-        position: relative;
-        font-family: $sans-serif-font;
-        letter-spacing: 2px;
-        text-align: center;
-        text-transform: uppercase;
-        z-index: 1;
-        background-size: cover!important;
-        &:nth-child(1) {
-          background: url('../../assets/images/amenity-feature-grid.png') center center no-repeat;
-        } // End nth-child(1)
-        &:nth-child(2) {
-          background: url('../../assets/images/aquanaut.png') center center no-repeat;
-        } // End nth-child(2)
-        &:nth-child(3) {
-          background: url('../../assets/images/bowtruss.png') center center no-repeat;
-        } // End nth-child(3)
-        &:nth-child(4) {
-          background: url('../../assets/images/bathroom.png') center center no-repeat;
-        } // End nth-child(4)
-        &:nth-child(5) {
-          background: url('../../assets/images/paulina.png') center center no-repeat;
-        } // End nth-child(5)
-        &:nth-child(6) {
-          background: url('../../assets/images/living-space.png') center center no-repeat;
-        } // End nth-child(6)
-        @at-root {
-          .list-item--text {
-            z-index: 8;
-            position: relative;
-            transition: all 0.5s;
-          } // End .list-item--text
-        }
+        // lifestyle photo loop output variables
+        $lifestyles: paulina, interior, living-space, bowtruss, aquanaut, bathroom;
+        $i: 1;
+
+        @each $lifestyle in $lifestyles {
+          &:nth-child(#{$i}) .list-item-main {
+            background: url('../../assets/images/lifestyle-#{$lifestyle}.png') center center no-repeat;
+          } // End nth-child($i)
+          $i: $i +1;
+        } // End @each loop
+        .list-item-main {
+          padding: 15% 0;
+          color: $white;
+          position: relative;
+          font-family: $sans-serif-font;
+          letter-spacing: 2px;
+          text-align: center;
+          text-transform: uppercase;
+          z-index: 1;
+          background-size: cover!important;
+          @at-root {
+            .list-item--text {
+              z-index: 8;
+              position: relative;
+              transition: all 0.5s;
+            } // End .list-item--text
+          } // End @at-root
+        } // End .neighborhood-main--lifestyle-list-item .list-item-main
       } // End .neighborhood-main--lifestyle-list-item
     } // End .neighborhood-main--lifestyle-list
   } // End .neighborhood-main
@@ -495,3 +517,34 @@
     } // End .interior-view-two--trap-article .right
   } // End .interior-view-two--trap-article
 } // End .interior-view-two
+
+.gallery {
+  &-modal {
+    display: none;
+  }
+  &-slider {
+    position: absolute;
+    z-index: 999;
+    max-width: 80%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+.map-modal-button.primary.buttons {
+  text-transform: uppercase;
+  padding: 20px 60px;
+  font-size: 0.8rem;
+  margin-top: 60px;
+  display: block;
+  max-width: 100px;
+  margin: 45px auto 0;
+  &:hover {
+    background: transparentize(gc(brand-colors, secondary-blue), 0.6);
+    border: 1px solid gc(brand-colors, secondary-blue);
+    color: gc(brand-colors, main-blue);
+  }
+}
