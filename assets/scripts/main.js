@@ -25,8 +25,6 @@
         var navCloseIcon = $('.main-menu-close');
         var navItems = $('.nav-items-group');
         var pageHeader = $('.page-header');
-        var toTop = $('.back-to-top');
-        var $window = $(window);
 
         navMenuIcon.on('click', function(event) {
       		navItems.addClass('show-nav');
@@ -39,10 +37,6 @@
           pageHeader.removeClass('show-nav');
           body.removeClass('show-nav');
       	});
-
-        $window.on('scroll', function() {
-          $window.scrollTop() >= 820 ? toTop.addClass('scrolled') : toTop.removeClass('scrolled');
-        });
 
         $(function() {
           $('a[href*="#"]:not([href="#"])').click(function() {
@@ -70,12 +64,17 @@
           nav: true,
           dots: false,
           responsiveRefreshRate: 0,
-          loop: true
+          loop: true,
+          navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
         });
 
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
           $(this).parents('li').find('.gallery-modal').fadeIn('slow');
+        });
+
+        $('.gallery-close-button').on('click', function() {
+          $('.gallery-modal').fadeOut('slow');
         });
 
         $('.map-modal-button').on('click', function(e) {

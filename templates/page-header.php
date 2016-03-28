@@ -20,10 +20,10 @@
     <span class="menu-icon"></span>
     <ul class="info-links">
       <li class="info-links--item">
-        <a class="info-links--inner error buttons" href="#">contact us</a>
+        <a class="info-links--inner error buttons" href="#contact">contact us</a>
       </li>
       <li class="info-links--item">
-        <a class="info-links--inner primary buttons" href="#">check availability</a>
+        <a class="info-links--inner primary buttons" href="#availability">check availability</a>
       </li>
     </ul>
   </nav>

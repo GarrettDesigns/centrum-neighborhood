@@ -36,6 +36,4 @@
     <?php get_template_part('templates/content', 'current-availability'); ?>
   </article>
 
-  <a href="#top" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
 <?php endwhile; ?>
