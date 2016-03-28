@@ -66,7 +66,11 @@
           animateOut: 'fadeOut',
           items:1,
           margin: 30,
-          smartSpeed:450
+          smartSpeed:450,
+          nav: true,
+          dots: false,
+          responsiveRefreshRate: 0,
+          loop: true
         });
 
         $('.gallery-button').on('click', function(e) {
@@ -78,6 +82,7 @@
           e.preventDefault();
           $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
         });
+
         $('.close-map').on('click', function() {
           $('.neighborhood-map-modal').fadeOut('slow');
         });
