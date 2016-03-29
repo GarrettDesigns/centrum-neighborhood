@@ -6,7 +6,12 @@
       <a class="gallery-button primary buttons" href="#">View Gallery</a>
     </article>
     <article class="gallery-modal">
-      <i class="fa fa-close gallery-close-button"></i>
+      <button class="gallery-close-button"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+					<g class="icon">
+						<line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+						<line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+					</g>
+				</svg></button>
       <ul class="gallery-slider owl-carousel owl-theme">
         <li><img src="http://placehold.it/800x400?text=party+room+one"></li>
         <li><img src="http://placehold.it/800x400?text=party+room+two"></li>
@@ -23,7 +28,12 @@
       <a class="gallery-button primary buttons" href="#">View Gallery</a>
     </article>
     <article class="gallery-modal">
-      <i class="fa fa-close gallery-close-button"></i>
+      <button class="gallery-close-button"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+					<g class="icon">
+						<line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+						<line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+					</g>
+				</svg></button>
       <ul class="gallery-slider owl-carousel owl-theme">
         <li><img src="http://placehold.it/800x400?text=aquanaut+one"></li>
         <li><img src="http://placehold.it/800x400?text=aquanaut+two"></li>
@@ -40,7 +50,12 @@
       <a class="gallery-button primary buttons" href="#">View Gallery</a>
     </article>
     <article class="gallery-modal">
-      <i class="fa fa-close gallery-close-button"></i>
+      <button class="gallery-close-button"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+					<g class="icon">
+						<line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+						<line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+					</g>
+				</svg></button>
       <ul class="gallery-slider owl-carousel owl-theme">
         <li><img src="http://placehold.it/800x400?text=bow+truss+one"></li>
         <li><img src="http://placehold.it/800x400?text=bow+truss+two"></li>
@@ -57,7 +72,12 @@
       <a class="gallery-button primary buttons" href="#">View Gallery</a>
     </article>
     <article class="gallery-modal">
-      <i class="fa fa-close gallery-close-button"></i>
+      <button class="gallery-close-button"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+					<g class="icon">
+						<line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+						<line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+					</g>
+				</svg></button>
       <ul class="gallery-slider owl-carousel owl-theme">
         <li><img src="http://placehold.it/800x400?text=energy+one"></li>
         <li><img src="http://placehold.it/800x400?text=energy+two"></li>
@@ -74,7 +94,12 @@
       <a class="gallery-button primary buttons" href="#">View Gallery</a>
     </article>
     <article class="gallery-modal">
-      <i class="fa fa-close gallery-close-button"></i>
+      <button class="gallery-close-button"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+					<g class="icon">
+						<line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+						<line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+					</g>
+				</svg></button>
       <ul class="gallery-slider owl-carousel owl-theme">
         <li><img src="http://placehold.it/800x400?text=transportation+one"></li>
         <li><img src="http://placehold.it/800x400?text=transportation+two"></li>
@@ -91,7 +116,12 @@
       <a class="gallery-button primary buttons" href="#">View Gallery</a>
     </article>
     <article class="gallery-modal">
-      <i class="fa fa-close gallery-close-button"></i>
+      <button class="gallery-close-button"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+					<g class="icon">
+						<line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+						<line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+					</g>
+				</svg></button>
       <ul class="gallery-slider owl-carousel owl-theme">
         <li><img src="http://placehold.it/800x400?text=windows+one"></li>
         <li><img src="http://placehold.it/800x400?text=windows+two"></li>

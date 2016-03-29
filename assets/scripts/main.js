@@ -85,6 +85,13 @@
         $('.close-map').on('click', function() {
           $('.neighborhood-map-modal').fadeOut('slow');
         });
+
+        $('.amenities-main--list-item').on('click', function() {
+          $('.amenities-main--list-item').removeClass('detail-view')
+          $(this).find('img').addClass('detail-view');
+          $(this).siblings().fadeOut();
+          $(this).find('.amenity-description').addClass('animate-in');
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
