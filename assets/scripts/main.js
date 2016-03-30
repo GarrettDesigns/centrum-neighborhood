@@ -86,15 +86,16 @@
           $('.neighborhood-map-modal').fadeOut('slow');
         });
 
-        $('.amenities-main--list-item').on('click', function() {
-          $(this).find('img').toggleClass('detail-view')
-          $(this).siblings().fadeToggle();
-          $(this).find('.amenity-description').addClass('animate-in');
+        $('.amenities-main--list-item img').on('click', function() {
+          $(this).toggleClass('detail-view')
+          $(this).parent('li').siblings().fadeOut();
+          $(this).parent().find('.amenity-description').addClass('animate-in');
           console.log('clicked');
         });
 
         $('.amenity-close-button').on('click', function() {
           $(this).parents('li').find('img').toggleClass('detail-view');
+          $(this).parents('li').siblings().delay(1000).fadeIn();
           $(this).parent('article').toggleClass('animate-in');
           console.log($(this).parent());
           console.log('clicked');

@@ -145,10 +145,10 @@ body.show-nav {
           max-height: 100px;
           flex: 1 100%;
           align-items: center;
-          transition: margin 1s ease-out 0.75s;
+          transition: margin 1s ease-out 0.5s;
           margin-right: 0;
           &.detail-view {
-            transition: margin 1s ease-out 0.75s;
+            transition: margin 1s ease-out 0.5s;
             margin-right: 490px;
           }
         }
@@ -156,11 +156,6 @@ body.show-nav {
     } // End .amenities-main--list
   } // End .amenities-main
 } // End .amenities
-
-@keyframes icon-slide-left {
-  0% { margin-right: 0;}
-  100% { margin-right: 490px; }
-}
 
 .amenities--trap {
   &-heading {
@@ -199,11 +194,10 @@ body.show-nav {
   padding: 0 40px;
   z-index: 9999;
   text-align: center;
-  transition: right 1s ease-out 0.75s;
+  transition: right 1s ease-out 0.5s;
   right: -550px;
   &.animate-in {
-    transition: right 1s ease-out 0.75s;
-    display: block;
+    transition: right 1s ease-out 0.5s;
     right: 0;
   }
 }
