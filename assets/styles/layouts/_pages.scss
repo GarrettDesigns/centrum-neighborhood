@@ -145,9 +145,11 @@ body.show-nav {
           max-height: 100px;
           flex: 1 100%;
           align-items: center;
+          transition: margin 1s ease-out 0.75s;
+          margin-right: 0;
           &.detail-view {
-            position: absolute;
-            animation: icon-slide-left 1s ease-out both;
+            transition: margin 1s ease-out 0.75s;
+            margin-right: 490px;
           }
         }
       } // End .amenities-main--list-item
@@ -156,8 +158,8 @@ body.show-nav {
 } // End .amenities
 
 @keyframes icon-slide-left {
-  0% { left: 500px;}
-  100% { left: 400px; }
+  0% { margin-right: 0;}
+  100% { margin-right: 490px; }
 }
 
 .amenities--trap {
@@ -196,11 +198,27 @@ body.show-nav {
   height: 100%;
   padding: 0 40px;
   z-index: 9999;
-  right: -550px;
   text-align: center;
+  transition: right 1s ease-out 0.75s;
+  right: -550px;
   &.animate-in {
-    animation: panel-slide-left 1s ease-out both;
+    transition: right 1s ease-out 0.75s;
+    display: block;
+    right: 0;
   }
+}
+
+.amenity-close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  max-height: 40px;
+  max-width: 40px;
+  color: white;
+  z-index: 999;
+  cursor: pointer;
 }
 
 @keyframes panel-slide-left {

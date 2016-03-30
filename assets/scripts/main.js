@@ -87,10 +87,17 @@
         });
 
         $('.amenities-main--list-item').on('click', function() {
-          $('.amenities-main--list-item').removeClass('detail-view')
-          $(this).find('img').addClass('detail-view');
-          $(this).siblings().fadeOut();
+          $(this).find('img').toggleClass('detail-view')
+          $(this).siblings().fadeToggle();
           $(this).find('.amenity-description').addClass('animate-in');
+          console.log('clicked');
+        });
+
+        $('.amenity-close-button').on('click', function() {
+          $(this).parents('li').find('img').toggleClass('detail-view');
+          $(this).parent('article').toggleClass('animate-in');
+          console.log($(this).parent());
+          console.log('clicked');
         });
       },
       finalize: function() {
