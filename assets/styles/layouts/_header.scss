@@ -103,7 +103,7 @@
         transform: translateY(-40px);
         transition: transform .7s ease-in-out;
         $delay: .35s;
-        @for $i from 1 through 5 {
+        @for $i from 1 through 6 {
           &:nth-child(#{$i}) {
             transition-delay: $delay;
           }

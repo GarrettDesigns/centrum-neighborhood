@@ -13,7 +13,7 @@
     </section>
   </article>
 
-  <article id="residences" class="neighborhood-hero">
+  <article id="neighborhood" class="neighborhood-hero">
     <?php get_template_part('templates/content', 'neighborhood-hero'); ?>
   </article>
 
@@ -21,7 +21,7 @@
     <?php get_template_part('templates/content', 'neighborhood'); ?>
   </article>
 
-  <article class="features">
+  <article id="features" class="features">
     <?php get_template_part('templates/content', 'features-main'); ?>
   </article>
 
