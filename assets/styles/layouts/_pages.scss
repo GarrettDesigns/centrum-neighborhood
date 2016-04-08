@@ -132,6 +132,7 @@ body.show-nav {
       font-family: $sans-serif-font;
       text-align: center;
       min-height: 30px;
+      letter-spacing: 2px;
       font-size: $base-font-size*1.5;
       padding-bottom: 60px;
       text-transform: uppercase;
@@ -143,14 +144,6 @@ body.show-nav {
         @extend %display-flexbox;
         z-index: 7;
         flex-flow: row wrap;
-        @for $i from 1 through 3 {
-          &:nth-child(#{i}) {
-            img.detail-view {
-              transition: margin 1s ease-out 0.5s;
-              margin-right: 490px - ($i*10px);
-            }
-          }
-        }
         img {
           @extend %display-flexbox;
           width: 100px;
@@ -163,6 +156,22 @@ body.show-nav {
           &.detail-view {
             transition: margin 1s ease-out 0.5s;
             margin-right: 490px;
+          }
+        }
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            img.detail-view {
+              transition: margin 1s ease-out 0.5s;
+              margin-right: 490px - ($i*10px);
+            }
+          }
+        }
+        @for $i from 5 through 8 {
+          &:nth-child(#{$i}) {
+            img.detail-view {
+              transition: margin 1s ease-out 0.5s;
+              margin-right: 490px + ($i*15px);
+            }
           }
         }
       } // End .amenities-main--list-item
@@ -191,6 +200,7 @@ body.show-nav {
 .amenities--trap {
   &-heading {
     font-size: $base-font-size*1.5;
+    letter-spacing: 2px;
     text-transform: uppercase;
     margin-top: 250px;
     margin-bottom: 20px;
@@ -422,7 +432,7 @@ body.show-nav {
       text-align: center;
       margin: 0 auto;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       font-size: $base-font-size * 1.5;
       margin-bottom: 100px;
     } // End .features-list--heading
@@ -552,6 +562,7 @@ body.show-nav {
     font-size: $base-font-size*1.5;
     text-transform: uppercase;
     margin-bottom: 20px;
+    letter-spacing: 2px;
   } // End .features--trap-heading, .amenities--trap-heading
   &-body {
     line-height: 1.5;;
