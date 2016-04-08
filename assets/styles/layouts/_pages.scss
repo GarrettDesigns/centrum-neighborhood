@@ -102,6 +102,7 @@ body.show-nav {
 } // End .mission-body
 
 .amenities {
+  opacity: .99;
   &-hero {
     width: 100%;
     background: url('../../assets/images/amenity-deck.png') center center no-repeat;
@@ -123,12 +124,14 @@ body.show-nav {
       max-width: 69%;
       height: 189px;
       margin: auto;
+      z-index: 7;
       padding: 10% 0;
     } // End .amenities-main--content
     &--heading {
       color: $white;
       font-family: $sans-serif-font;
       text-align: center;
+      min-height: 30px;
       font-size: $base-font-size*1.5;
       padding-bottom: 60px;
       text-transform: uppercase;
@@ -138,15 +141,25 @@ body.show-nav {
       justify-content: space-around;
       &-item {
         @extend %display-flexbox;
+        z-index: 7;
         flex-flow: row wrap;
-        cursor: pointer;
+        @for $i from 1 through 3 {
+          &:nth-child(#{i}) {
+            img.detail-view {
+              transition: margin 1s ease-out 0.5s;
+              margin-right: 490px - ($i*10px);
+            }
+          }
+        }
         img {
+          @extend %display-flexbox;
           width: 100px;
+          cursor: pointer;
           max-height: 100px;
           flex: 1 100%;
           align-items: center;
-          transition: margin 1s ease-out 0.5s;
           margin-right: 0;
+          transition: margin 1s ease-out 0.5s;
           &.detail-view {
             transition: margin 1s ease-out 0.5s;
             margin-right: 490px;
@@ -156,6 +169,24 @@ body.show-nav {
     } // End .amenities-main--list
   } // End .amenities-main
 } // End .amenities
+
+.fade-in {
+  animation: fade-in 1s ease-out both 1.25s;
+}
+
+.fade-out {
+  animation: fade-out 1s ease-out both;
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 .amenities--trap {
   &-heading {
@@ -175,7 +206,7 @@ body.show-nav {
   color: white;
   top: 0;
   width: 385px;
-  z-index: 999;
+  z-index: 2;
   padding: 329px 50px 520px;
   text-align: center;
   right: 0;
@@ -188,17 +219,22 @@ body.show-nav {
   right: 0;
   top: 0;
   background: #173e73;
+  display: block;
   color: #fff;
   line-height: 1.5;
   height: 100%;
   padding: 0 40px;
-  z-index: 9999;
   text-align: center;
   transition: right 1s ease-out 0.5s;
-  right: -550px;
+  right: -595px;
+  z-index: 5;
+  &--text {
+    margin-top: 45%;
+  }
   &.animate-in {
     transition: right 1s ease-out 0.5s;
     right: 0;
+    z-index: 5;
   }
 }
 
@@ -212,12 +248,8 @@ body.show-nav {
   max-width: 40px;
   color: white;
   z-index: 999;
+  outline: none;
   cursor: pointer;
-}
-
-@keyframes panel-slide-left {
-  0% { right: -550px;}
-  100% { right: 0; }
 }
 
 .neighborhood {
@@ -339,6 +371,14 @@ body.show-nav {
     margin: 0 auto;
   } // End .gallery-button.primary.buttons
 } // End .gallery-button
+
+.load-next-gallery {
+  position: absolute;
+  bottom: 20px;
+  display: block;
+  color: white;
+  z-index: 9999;
+} // End .load-next-gallery
 
 .neighborhood-main--lifestyle-list-item:hover {
   .neighborhood-main--color-overlay {

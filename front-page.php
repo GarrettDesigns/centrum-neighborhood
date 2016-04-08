@@ -4,12 +4,13 @@
     <?php get_template_part('templates/page', 'body'); ?>
   </article>
 
-  <article class="amenities-hero">
-    <?php get_template_part('templates/content', 'amenities-trap'); ?>
-  </article>
-
-  <article id="amenities" class="amenities-main">
-    <?php get_template_part('templates/content', 'amenities'); ?>
+  <article class="amenities">
+    <section class="amenities-hero">
+      <?php get_template_part('templates/content', 'amenities-trap'); ?>
+    </section>
+    <section id="amenities" class="amenities-main">
+      <?php get_template_part('templates/content', 'amenities'); ?>
+    </section>
   </article>
 
   <article id="residences" class="neighborhood-hero">

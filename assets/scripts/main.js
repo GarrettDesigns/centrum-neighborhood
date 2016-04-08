@@ -86,19 +86,43 @@
           $('.neighborhood-map-modal').fadeOut('slow');
         });
 
-        $('.amenities-main--list-item img').on('click', function() {
-          $(this).toggleClass('detail-view')
-          $(this).parent('li').siblings().fadeOut();
-          $(this).parent().find('.amenity-description').addClass('animate-in');
-          console.log('clicked');
+        $('.amenities-main--list-item').on('click', 'img', function() {
+
+          var thisItem = $(this);
+          var parentListItems = thisItem.parents('li');
+          var siblingListItems = parentListItems.siblings();
+
+          $('.amenities-main--heading').find('.inner-heading').fadeOut('slow');
+
+          thisItem.toggleClass('detail-view')
+          siblingListItems.removeClass('fade-in');
+          siblingListItems.addClass('fade-out');
+          thisItem.parent().find('.amenity-description').addClass('animate-in');
         });
 
+
         $('.amenity-close-button').on('click', function() {
-          $(this).parents('li').find('img').toggleClass('detail-view');
-          $(this).parents('li').siblings().delay(1000).fadeIn();
-          $(this).parent('article').toggleClass('animate-in');
-          console.log($(this).parent());
-          console.log('clicked');
+
+          var thisItem = $(this);
+          var parentListItems = thisItem.parents('li');
+          var siblingListItems = parentListItems.siblings();
+
+          $('.amenities-main--heading').find('.inner-heading').fadeIn('slow');
+
+          parentListItems.find('img').toggleClass('detail-view');
+          siblingListItems.removeClass('fade-out');
+          siblingListItems.addClass('fade-in');
+          thisItem.parent('article').removeClass('animate-in');
+        });
+
+        $('.load-next-gallery').on('click', function(e) {
+
+          var thisItem = $(this);
+          var parentListItems = thisItem.parents('li');
+
+          e.preventDefault();
+          thisItem.parent().hide();
+          parentListItems.next().find('.gallery-modal').show();
         });
       },
       finalize: function() {

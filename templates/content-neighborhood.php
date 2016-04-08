@@ -21,6 +21,7 @@
         <li><img src="http://placehold.it/800x400?text=party+room+four"></li>
         <li><img src="http://placehold.it/800x400?text=party+room+five"></li>
       </ul>
+      <a class="load-next-gallery" href="#">Next Gallery</a>
     </article>
   </li>
   <li class="neighborhood-main--lifestyle-list-item">
@@ -43,8 +44,10 @@
         <li><img src="http://placehold.it/800x400?text=aquanaut+two"></li>
         <li><img src="http://placehold.it/800x400?text=aquanaut+three"></li>
         <li><img src="http://placehold.it/800x400?text=aquanaut+four"></li>
-        <li><img src="http://placehold.it/800x400?text=aquanaut+five"></li>
+        <li><img src="http://placehold.it/80
+          <a class="load-next-gallery" href="#">Next Gallery</a>0x400?text=aquanaut+five"></li>
       </ul>
+      <a class="load-next-gallery" href="#">Next Gallery</a>
     </article>
   </li>
   <li class="neighborhood-main--lifestyle-list-item">
@@ -67,8 +70,10 @@
         <li><img src="http://placehold.it/800x400?text=bow+truss+two"></li>
         <li><img src="http://placehold.it/800x400?text=bow+truss+three"></li>
         <li><img src="http://placehold.it/800x400?text=bow+truss+four"></li>
+        <a class="load-next-gallery" href="#">Next Gallery</a>
         <li><img src="http://placehold.it/800x400?text=bow+truss+five"></li>
       </ul>
+      <a class="load-next-gallery" href="#">Next Gallery</a>
     </article>
   </li>
   <li class="neighborhood-main--lifestyle-list-item">
@@ -93,6 +98,7 @@
         <li><img src="http://placehold.it/800x400?text=energy+four"></li>
         <li><img src="http://placehold.it/800x400?text=energy+five"></li>
       </ul>
+      <a class="load-next-gallery" href="#">Next Gallery</a>
     </article>
   </li>
   <li class="neighborhood-main--lifestyle-list-item">
@@ -115,8 +121,10 @@
         <li><img src="http://placehold.it/800x400?text=transportation+two"></li>
         <li><img src="http://placehold.it/800x400?text=transportation+three"></li>
         <li><img src="http://placehold.it/800x400?text=transportation+four"></li>
+        <a class="load-next-gallery" href="#">Next Gallery</a>
         <li><img src="http://placehold.it/800x400?text=transportation+five"></li>
       </ul>
+      <a class="load-next-gallery" href="#">Next Gallery</a>
     </article>
   </li>
   <li class="neighborhood-main--lifestyle-list-item">
@@ -141,6 +149,7 @@
         <li><img src="http://placehold.it/800x400?text=windows+four"></li>
         <li><img src="http://placehold.it/800x400?text=windows+five"></li>
       </ul>
+      <a class="load-next-gallery" href="#">Next Gallery</a>
     </article>
   </li>
 </ul>
