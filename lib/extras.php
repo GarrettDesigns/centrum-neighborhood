@@ -32,10 +32,12 @@ function excerpt_more() {
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
-
-
-
-
+function add_custom_mime_types($mimes){
+	return array_merge($mimes,array (
+    'svg' => 'image/svg+xml'
+	));
+}
+add_filter('upload_mimes', __NAMESPACE__ . '\\add_custom_mime_types');
 
 
 //

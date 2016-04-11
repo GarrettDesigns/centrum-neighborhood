@@ -426,8 +426,8 @@ body.show-nav {
   &-list {
     width: 63%;
     margin: 0 auto;
+    height: 500px;
     padding: 100px 0 0 20px;
-    overflow: hidden;
     &--heading {
       text-align: center;
       margin: 0 auto;
@@ -436,17 +436,18 @@ body.show-nav {
       font-size: $base-font-size * 1.5;
       margin-bottom: 100px;
     } // End .features-list--heading
-    &--column {
-      float: left;
-      margin-right: 65px;
-      &:last-child {
-        margin-right: 0;
-      }
+    &--columns {
+      -webkit-column-count: 3;
+         -moz-column-count: 3;
+              column-count: 3;
+              height: 500px;
     } // End .features-list--column
     &--item {
       width: 250px;
       margin-bottom: 20px;
       line-height: 1.5;
+      padding-left: 20px;
+      display: inline-block;
       i {
         margin-left: -20px;
         margin-top: 3px;
