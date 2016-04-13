@@ -4,11 +4,20 @@
 </p>
 <a href="#" class="map-modal-button primary buttons">check it out</a>
 <article class="neighborhood-map-modal">
-  <button class="close-map"><svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
-      <g class="icon">
-        <line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
-        <line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
-      </g>
-    </svg></button>
-  <img class="map" src="<?= get_template_directory_uri(); ?>/assets/images/map.png" alt="map of neighborhood">
+  <button class="close-map">
+    <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
+  </button>
+  <div class="map-legend">
+    <h2 class="map-legend--title">welcome to<br> lakeview</h2>
+    <ul class="map-legend--list">
+      <li class="map-legend--list-item"><span class="map-legend--icon dining"></span> restaurant</li>
+      <li class="map-legend--list-item"><span class="map-legend--icon grocery-pharmacy"></span> grocery/pharmacy</li>
+      <li class="map-legend--list-item"><span class="map-legend--icon fitness"></span> fitness</li>
+      <li class="map-legend--list-item"><span class="map-legend--icon salon-spa"></span> salon/spa</li>
+      <li class="map-legend--list-item"><span class="map-legend--icon coffee-shops"></span> coffee shops</li>
+      <li class="map-legend--list-item"><span class="map-legend--icon education"></span> education</li>
+      <li class="map-legend--list-item"><span class="map-legend--icon retail-stores"></span> retail stores</li>
+    </ul>
+  </div>
+  <div id="map"></div>
 </article>

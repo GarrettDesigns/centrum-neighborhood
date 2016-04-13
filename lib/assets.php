@@ -66,6 +66,7 @@ function asset_path($filename) {
 }
 
 function assets() {
+
   wp_enqueue_style('owl_css', asset_path('styles/owl-carousel.css'), false, null);
   wp_enqueue_style('owl_theme', asset_path('styles/owl-theme.css'), false, null);
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
@@ -78,7 +79,19 @@ function assets() {
   wp_enqueue_script('iconic', asset_path('scripts/iconic.min.js'), ['jquery'], null, false);
 
   wp_enqueue_script('owl-carousel', asset_path('scripts/owl-carousel.js'), ['jquery'], null, true);
-
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
+
+  // Localize the script with new data
+  $map_location_data = array(
+    'lakeview_dining_markers' => get_field('dining_location_coordinates', 7),
+    'lakeview_grocery_markers' => get_field('grocery_location_coordinates', 7),
+    'lakeview_fitness_markers' => get_field('fitness_location_coordinates', 7),
+    'lakeview_salons_markers' => get_field('salons_location_coordinates', 7),
+    'lakeview_coffee_markers' => get_field('coffee_location_coordinates', 7),
+    'lakeview_education_markers' => get_field('education_location_coordinates', 7),
+    'lakeview_retail_markers' => get_field('retail_location_coordinates', 7)
+  );
+
+  wp_localize_script( 'sage_js', 'map_locations', $map_location_data );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

@@ -39,6 +39,9 @@
     "iconic.min.js": {
       "files": ["scripts/iconic.min.js"]
     },
+    "maps.js": {
+      "files": ["scripts/maps.js"]
+    },
     "fonts": {
       "files": ["fonts/**/*"]
     }

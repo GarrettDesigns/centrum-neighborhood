@@ -236,10 +236,15 @@ body.show-nav {
   padding: 0 40px;
   text-align: center;
   transition: right 1s ease-out 0.5s;
-  right: -595px;
+  right: -40%;
   z-index: 5;
-  &--text {
+  &--title {
+    text-transform: uppercase;
     margin-top: 45%;
+    letter-spacing: 2px;
+  }
+  &--text {
+    margin-top: 20px;
   }
   &.animate-in {
     transition: right 1s ease-out 0.5s;
@@ -302,7 +307,9 @@ body.show-nav {
       .close-map {
         position: absolute;
         color: white;
-        background: none;
+        background: gc(brand-colors, secondary-blue);
+        padding: 5px;
+        outline: none;
         border: none;
         max-height: 40px;
         max-width: 40px;
@@ -313,7 +320,6 @@ body.show-nav {
       }
     }
   }
-
   &-main {
     position: relative;
     float: left;
@@ -358,6 +364,57 @@ body.show-nav {
     } // End .neighborhood-main--lifestyle-list
   } // End .neighborhood-main
 } // End .neighborhood
+
+.map-legend {
+  z-index: 999;
+  position: absolute;
+  background: transparentize(gc(brand-colors, main-blue), 0.1);
+  color: white;
+  font-family: brandon-grotesque;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 70px;
+  height: 80%;
+  bottom: -1px;
+  left: 10%;
+  &--title {
+    letter-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 70px;
+  }
+  &--list-item {
+    padding-bottom: 35px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+  &--icon {
+    border-radius: 50px;
+    height: 15px;
+    width: 15px;
+    margin-right: 10px;
+    margin-top: -2px;
+    display: block;
+    float: left;
+
+    $icon-map: (
+      icon-colors: (
+        dining: #1a6ad6,
+        grocery-pharmacy: #e56829,
+        fitness: #edc729,
+        salon-spa: #00a5b9,
+        coffee-shops: #af3c9b,
+        education: #647dd6,
+        retail-stores: #c84a81
+      )
+    );
+
+    @each $name, $color in map-get($icon-map, icon-colors) {
+      &.#{$name} {
+        background: $color;
+      }
+    }
+  }
+}
 
 .neighborhood-main--color-overlay {
   background: transparentize(gc(brand-colors, main-blue), 0.1);
@@ -416,18 +473,14 @@ body.show-nav {
   } // .neighborhood-main--lifestyle-list-item:hover .gallery-button
 } // .neighborhood-main--lifestyle-list-item:hover
 
-
 .features {
   clear: both;
   background: gc(brand-colors, secondary-blue);
   color: $white;
   position: relative;
-  min-height: 800px;
+  /*min-height: 800px;*/
+  padding: 40px;
   &-list {
-    width: 63%;
-    margin: 0 auto;
-    height: 500px;
-    padding: 100px 0 0 20px;
     &--heading {
       text-align: center;
       margin: 0 auto;
@@ -437,17 +490,26 @@ body.show-nav {
       margin-bottom: 100px;
     } // End .features-list--heading
     &--columns {
-      -webkit-column-count: 3;
-         -moz-column-count: 3;
-              column-count: 3;
-              height: 500px;
-    } // End .features-list--column
-    &--item {
-      width: 250px;
-      margin-bottom: 20px;
-      line-height: 1.5;
+      width: 73%;
+      min-height: 500px;
       padding-left: 20px;
-      display: inline-block;
+      margin: 0 auto;
+      padding-top: 100px;
+      padding-bottom: 40px;
+      @extend %display-flexbox;
+      justify-content: space-around;
+    } // End .features-list--columns
+    &--column {
+      @extend %display-flexbox;
+      flex-flow: row wrap;
+      margin-right: 40px;
+      &:last-child {
+        margin-right: 0;
+      }
+    } // End .features-list--columns
+    &--item {
+      line-height: 1.5;
+      padding-bottom: 10px;
       i {
         margin-left: -20px;
         margin-top: 3px;
@@ -668,6 +730,13 @@ body.show-nav {
   }
 }
 
+#map {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
 .owl-theme .owl-nav {
   position: absolute;
   width: 100%;
@@ -698,4 +767,13 @@ body.show-nav {
 	stroke: #dbdbdb;
 	fill: none;
 	stroke-width: 2px;
+}
+
+// Google Maps Info Window styles
+
+.infobox {
+  background: none repeat scroll 0 0 transparentize(gc(brand-colors, main-blue), 0.2);
+  color: #F1F1F1;
+  line-height: 20px;
+  position: absolute;
 }

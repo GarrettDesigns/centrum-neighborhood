@@ -1,5 +1,5 @@
-<?php while (have_posts()) : the_post(); ?>
 
+<?php while (have_posts()) : the_post(); ?>
   <article id="ourmission" class="mission-body">
     <?php get_template_part('templates/page', 'body'); ?>
   </article>
