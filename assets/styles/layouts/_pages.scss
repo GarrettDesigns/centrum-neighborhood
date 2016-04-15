@@ -308,13 +308,13 @@ body.show-nav {
         position: absolute;
         color: white;
         background: gc(brand-colors, secondary-blue);
-        padding: 5px;
+        padding: 10px 10px 10px 40px;
         outline: none;
         border: none;
-        max-height: 40px;
-        max-width: 40px;
+        max-height: 50px;
+        max-width: 100px;
         top: 20px;
-        left: 20px;
+        left: 0;
         cursor: pointer;
         z-index: 9999;
       }

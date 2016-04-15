@@ -141,13 +141,82 @@
           initMap();
         });
 
-        var lakeviewDiningLocations = map_locations.lakeview_dining_markers;
-        var lakeviewGroceryLocations = map_locations.lakeview_grocery_markers;
-        var lakeviewFitnessLocations = map_locations.lakeview_fitness_markers;
-        var lakeviewSalonsLocations = map_locations.lakeview_salons_markers;
-        var lakeviewCoffeeLocations = map_locations.lakeview_coffee_markers;
-        var lakeviewEducationLocations = map_locations.lakeview_education_markers;
-        var lakeviewRetailLocations = map_locations.lakeview_retail_markers;
+        var lakeviewLocations = {
+          dining: map_locations.lakeview_dining_markers,
+          grocery: map_locations.lakeview_grocery_markers,
+          fitness: map_locations.lakeview_fitness_markers,
+          salons: map_locations.lakeview_salons_markers,
+          coffee: map_locations.lakeview_coffee_markers,
+          education: map_locations.lakeview_education_markers,
+          retail: map_locations.lakeview_retail_markers
+        };
+
+        var categories = {
+          dining: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#1a6ad6',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#1a6ad6',
+            strokeWeight: 1
+          },
+          grocery: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#e56829',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#e56829',
+            strokeWeight: 1
+          },
+          fitness: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#edc729',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#edc729',
+            strokeWeight: 1
+          },
+          salons: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#00a5b9',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#00a5b9',
+            strokeWeight: 1
+          },
+          coffee: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#af3c9b',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#af3c9b',
+            strokeWeight: 1
+          },
+          education: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#647dd6',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#647dd6',
+            strokeWeight: 1
+          },
+          retail: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#c84a81',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#c84a81',
+            strokeWeight: 1
+          },
+          centrum: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#173e73',
+            fillOpacity: 0.8,
+            scale: 12,
+            strokeColor: '#173e73',
+            strokeWeight: 1
+          }
+        };
 
         // Basic options for a simple Google Map
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -431,130 +500,65 @@
         var map;
         var infoBubble;
 
-        var categories = {
-          dining: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#1a6ad6',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#1a6ad6',
-            strokeWeight: 1
-          },
-          grocery: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#e56829',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#e56829',
-            strokeWeight: 1
-          },
-          fitness: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#edc729',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#edc729',
-            strokeWeight: 1
-          },
-          salons: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#00a5b9',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#00a5b9',
-            strokeWeight: 1
-          },
-          coffee: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#af3c9b',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#af3c9b',
-            strokeWeight: 1
-          },
-          education: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#647dd6',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#647dd6',
-            strokeWeight: 1
-          },
-          retail: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#c84a81',
-            fillOpacity: 0.8,
-            scale: 7,
-            strokeColor: '#c84a81',
-            strokeWeight: 1
-          },
-          centrum: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: '#173e73',
-            fillOpacity: 0.8,
-            scale: 12,
-            strokeColor: '#173e73',
-            strokeWeight: 1
-          }
-        };
-
         function initMap() {
-            map = new google.maps.Map(mapElement, mapOptions);
+          map = new google.maps.Map(mapElement, mapOptions);
 
-            var marker = new google.maps.Marker({
-              map: map,
-              icon: categories.centrum,
-              title: 'Centrum Lakeview',
-              label: 'C',
-              position: {lat: 41.9432695, lng: -87.6713262}
-            });
+          map.addListener('click', function() {
+            infoBubble.close();
+          });
 
-            setMarkers(map, categories.dining, lakeviewDiningLocations);
-            setMarkers(map, categories.grocery, lakeviewGroceryLocations);
-            setMarkers(map, categories.fitness, lakeviewFitnessLocations);
-            setMarkers(map, categories.salons, lakeviewSalonsLocations);
-            setMarkers(map, categories.coffee, lakeviewCoffeeLocations);
-            setMarkers(map, categories.education, lakeviewEducationLocations);
-            setMarkers(map, categories.retail, lakeviewRetailLocations);
+          var marker = new google.maps.Marker({
+            map: map,
+            icon: categories.centrum,
+            title: 'Centrum Lakeview',
+            label: 'C',
+            position: {lat: 41.9432695, lng: -87.6713262}
+          });
+          for (var categoryName in categories) {
+            setMarkers(map, categories[categoryName], lakeviewLocations[categoryName]);
+          }
         }
 
         function setMarkers(map, icon, propertyLocation) {
           // Adds markers to the map.
-          var property;
-          var locationInfo = [];
+          var locationInfo = {};
 
-          for (var i = 0; i < propertyLocation.length; i++) {
-            property = propertyLocation[i];
-
-            locationInfo[i] = '<div class="location-info">' +
-            '<h2 class="location-title">' + property.location_name + '</h2>' +
-            '<a class="location-url" href="' + property.location_link + '">More Info</a>' +
-            '</div>';
-
+          for (var locationMarkers in propertyLocation) {
+            var locationMarker = propertyLocation[locationMarkers];
             var marker = new google.maps.Marker({
-              position: {lat: parseFloat(property.location_latitude), lng: parseFloat(property.location_longitude)},
+              position: {
+                lat: parseFloat(locationMarker.location_latitude),
+                lng: parseFloat(locationMarker.location_longitude)
+              },
               map: map,
               icon: icon
             });
-            setMarkerContent(marker, locationInfo[i]);
-            // console.log("Iteration " + i + ":");
-            // console.log(infoBubble[i]);
-        }
 
-        function setMarkerContent(marker, content) {
-          infoBubble = new InfoBubble({
-            backgroundColor: '#173e73',
-            hideCloseButton: true
-          });
-          marker.addListener('click', function() {
-            infoBubble.setContent(content);
-            infoBubble.open(map, marker);
-          });
+            locationInfo.categoryLocation = '<div class="location-info">' +
+            '<h2 class="location-title">' + locationMarker.location_name + '</h2>' +
+            '<a class="location-url" href="' + locationMarker.location_link + '">More Info</a>' +
+            '</div>';
+
+            setMarkerContent(marker, locationInfo.categoryLocation);
+          }
+
+          function setMarkerContent(marker, content) {
+            infoBubble = new InfoBubble({
+              backgroundColor: '#173e73',
+              borderColor: '#173e73',
+              borderRadius: 0,
+              borderWidth: 0,
+              shadowStyle: 0,
+              arrowPosition: 25,
+              arrowStyle: 2,
+              hideCloseButton: true
+            });
+            marker.addListener('click', function() {
+              infoBubble.setContent(content);
+              infoBubble.open(map, marker);
+            });
+          }
         }
-        map.addListener('click', function() {
-          infoBubble.close();
-        });
-      }
 
       },
       finalize: function() {
