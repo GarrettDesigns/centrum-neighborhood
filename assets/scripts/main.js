@@ -429,6 +429,7 @@
 
         // Create the Google Map using our element and options defined above
         var map;
+        var infoBubble;
 
         var categories = {
           dining: {
@@ -541,14 +542,18 @@
         }
 
         function setMarkerContent(marker, content) {
-          var infoBubble = new InfoBubble({
-            content: content,
-            backgroundColor: '#173e73'
+          infoBubble = new InfoBubble({
+            backgroundColor: '#173e73',
+            hideCloseButton: true
           });
           marker.addListener('click', function() {
+            infoBubble.setContent(content);
             infoBubble.open(map, marker);
           });
         }
+        map.addListener('click', function() {
+          infoBubble.close();
+        });
       }
 
       },
