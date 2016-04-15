@@ -374,8 +374,8 @@ body.show-nav {
   text-align: left;
   text-transform: uppercase;
   padding: 70px;
-  height: 80%;
-  bottom: -1px;
+  height: 60%;
+  bottom: 20%;
   left: 10%;
   &--title {
     letter-spacing: 2px;
@@ -771,9 +771,18 @@ body.show-nav {
 
 // Google Maps Info Window styles
 
-.infobox {
-  background: none repeat scroll 0 0 transparentize(gc(brand-colors, main-blue), 0.2);
-  color: #F1F1F1;
-  line-height: 20px;
-  position: absolute;
+.location-info {
+  color: white;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  .location-title {
+    padding: 10px 0;
+  }
+  a {
+    color: white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

@@ -149,404 +149,408 @@
         var lakeviewEducationLocations = map_locations.lakeview_education_markers;
         var lakeviewRetailLocations = map_locations.lakeview_retail_markers;
 
+        // Basic options for a simple Google Map
+        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+        var mapOptions = {
+            // How zoomed in you want the map to start at (always required)
+            zoom: 17,
+
+            mapTypeControl: false,
+
+            scrollwheel: false,
+
+            // The latitude and longitude to center the map (always required)
+            center: new google.maps.LatLng(41.9432695, -87.6713262), // Lakeview
+
+            // How you would like to style the map.
+            // This is where you would paste any style found on Snazzy Maps.
+            styles: [
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#8e8e8e"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#7f7f7f"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.country",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#bebebe"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.province",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#cbcbcb"
+                        },
+                        {
+                            "weight": "0.69"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.locality",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#e4e4e4"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "saturation": -100
+                        },
+                        {
+                            "lightness": 45
+                        },
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        },
+                        {
+                            "color": "#dadada"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#eeeeee"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#cbcbcb"
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#d9d9d9"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Get the HTML DOM element that will contain your map
+        // We are using a div with id="map" seen below in the <body>
+        var mapElement = document.getElementById('map');
+
+        // Create the Google Map using our element and options defined above
+        var map;
+
+        var categories = {
+          dining: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#1a6ad6',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#1a6ad6',
+            strokeWeight: 1
+          },
+          grocery: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#e56829',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#e56829',
+            strokeWeight: 1
+          },
+          fitness: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#edc729',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#edc729',
+            strokeWeight: 1
+          },
+          salons: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#00a5b9',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#00a5b9',
+            strokeWeight: 1
+          },
+          coffee: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#af3c9b',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#af3c9b',
+            strokeWeight: 1
+          },
+          education: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#647dd6',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#647dd6',
+            strokeWeight: 1
+          },
+          retail: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#c84a81',
+            fillOpacity: 0.8,
+            scale: 7,
+            strokeColor: '#c84a81',
+            strokeWeight: 1
+          },
+          centrum: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: '#173e73',
+            fillOpacity: 0.8,
+            scale: 12,
+            strokeColor: '#173e73',
+            strokeWeight: 1
+          }
+        };
+
         function initMap() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 17,
-
-                mapTypeControl: false,
-
-                scrollwheel: false,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(41.9432695, -87.6713262), // Lakeview
-
-                // How you would like to style the map.
-                // This is where you would paste any style found on Snazzy Maps.
-                styles: [
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#8e8e8e"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "color": "#7f7f7f"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative.country",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "color": "#bebebe"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative.province",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#cbcbcb"
-                            },
-                            {
-                                "weight": "0.69"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative.locality",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "color": "#e4e4e4"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "saturation": -100
-                            },
-                            {
-                                "lightness": 45
-                            },
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            },
-                            {
-                                "color": "#dadada"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "labels.icon",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#eeeeee"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "transit",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "all",
-                        "stylers": [
-                            {
-                                "color": "#cbcbcb"
-                            },
-                            {
-                                "visibility": "on"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#d9d9d9"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text",
-                        "stylers": [
-                            {
-                                "visibility": "simplified"
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            // Get the HTML DOM element that will contain your map
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('map');
-
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-            var dining = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#1a6ad6',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#1a6ad6',
-              strokeWeight: 1
-            };
-
-            var grocery = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#e56829',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#e56829',
-              strokeWeight: 1
-            };
-
-            var fitness = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#edc729',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#edc729',
-              strokeWeight: 1
-            };
-
-            var salons = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#00a5b9',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#00a5b9',
-              strokeWeight: 1
-            };
-
-            var coffee = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#af3c9b',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#af3c9b',
-              strokeWeight: 1
-            };
-
-            var education = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#647dd6',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#647dd6',
-              strokeWeight: 1
-            };
-
-            var retail = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#c84a81',
-              fillOpacity: 0.8,
-              scale: 7,
-              strokeColor: '#c84a81',
-              strokeWeight: 1
-            };
-
-            var centrum = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#173e73',
-              fillOpacity: 0.8,
-              scale: 12,
-              strokeColor: '#173e73',
-              strokeWeight: 1
-            };
+            map = new google.maps.Map(mapElement, mapOptions);
 
             var marker = new google.maps.Marker({
               map: map,
-              icon: centrum,
+              icon: categories.centrum,
               title: 'Centrum Lakeview',
               label: 'C',
               position: {lat: 41.9432695, lng: -87.6713262}
             });
 
-            setMarkers(map, dining, lakeviewDiningLocations);
-            setMarkers(map, grocery, lakeviewGroceryLocations);
-            setMarkers(map, fitness, lakeviewFitnessLocations);
-            setMarkers(map, salons, lakeviewSalonsLocations);
-            setMarkers(map, coffee, lakeviewCoffeeLocations);
-            setMarkers(map, education, lakeviewEducationLocations);
-            setMarkers(map, retail, lakeviewRetailLocations);
+            setMarkers(map, categories.dining, lakeviewDiningLocations);
+            setMarkers(map, categories.grocery, lakeviewGroceryLocations);
+            setMarkers(map, categories.fitness, lakeviewFitnessLocations);
+            setMarkers(map, categories.salons, lakeviewSalonsLocations);
+            setMarkers(map, categories.coffee, lakeviewCoffeeLocations);
+            setMarkers(map, categories.education, lakeviewEducationLocations);
+            setMarkers(map, categories.retail, lakeviewRetailLocations);
         }
 
         function setMarkers(map, icon, propertyLocation) {
           // Adds markers to the map.
-          var locationInfo = '';
-          var infoWindow;
+          var property;
+          var locationInfo = [];
+
           for (var i = 0; i < propertyLocation.length; i++) {
-            var property = propertyLocation[i];
+            property = propertyLocation[i];
+
+            locationInfo[i] = '<div class="location-info">' +
+            '<h2 class="location-title">' + property.location_name + '</h2>' +
+            '<a class="location-url" href="' + property.location_link + '">More Info</a>' +
+            '</div>';
 
             var marker = new google.maps.Marker({
               position: {lat: parseFloat(property.location_latitude), lng: parseFloat(property.location_longitude)},
               map: map,
               icon: icon
             });
-
-            locationInfo = '<div class="location-info">' +
-                                '<h2 class="location-title">' + property.location_name + '</h2>' +
-                                '<a class="location-url">' + property.location_link + '</a>' +
-                                '</div>';
-            console.log(locationInfo);
-            infoWindow = new google.maps.InfoWindow({
-              content: locationInfo
-            });
+            setMarkerContent(marker, locationInfo[i]);
+            // console.log("Iteration " + i + ":");
+            // console.log(infoBubble[i]);
         }
 
-        marker.addListener('click', function() {
-          infoWindow.open(map, marker);
-        });
+        function setMarkerContent(marker, content) {
+          var infoBubble = new InfoBubble({
+            content: content,
+            backgroundColor: '#173e73'
+          });
+          marker.addListener('click', function() {
+            infoBubble.open(map, marker);
+          });
+        }
       }
+
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
