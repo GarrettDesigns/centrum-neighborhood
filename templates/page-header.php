@@ -13,6 +13,7 @@
 <section class="page-header">
   <article class="site-logo--container">
     <img class="site-logo" src="<?= get_template_directory_uri(); ?>/dist/images/centrum-lakeview-logo.png" alt="Centrum Lakview Logo">
+    <p class="tagline"><?php the_field('tagline'); ?></p>
   </article>
 
   <div class="color-overlay"></div>

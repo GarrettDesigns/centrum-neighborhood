@@ -8,9 +8,9 @@
     <section class="amenities-hero">
       <?php get_template_part('templates/content', 'amenities-trap'); ?>
     </section>
-    <section id="amenities" class="amenities-main">
+    <!-- <section id="amenities" class="amenities-main">
       <?php get_template_part('templates/content', 'amenities'); ?>
-    </section>
+    </section> -->
   </article>
 
   <article id="neighborhood" class="neighborhood-hero">

@@ -61,6 +61,7 @@
           items:1,
           margin: 30,
           smartSpeed:450,
+          lazyLoad: true,
           nav: true,
           dots: false,
           responsiveRefreshRate: 0,
@@ -70,12 +71,12 @@
 
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
-          $(this).parents('li').find('.gallery-modal').fadeIn('slow');
+          $(this).parents('li').find('.gallery-modal').addClass('open').fadeIn('slow');
         });
 
         $('.gallery-close-button').on('click', function() {
           $('.gallery-modal').fadeOut('slow');
-        });
+        })
 
         // $('.map-modal-button').on('click', function(e) {
         //   e.preventDefault();
@@ -158,7 +159,8 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#1a6ad6',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           grocery: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -166,7 +168,8 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#e56829',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           fitness: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -174,7 +177,8 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#edc729',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           salons: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -182,7 +186,8 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#00a5b9',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           coffee: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -190,7 +195,8 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#af3c9b',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           education: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -198,7 +204,8 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#647dd6',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           retail: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -206,15 +213,17 @@
             fillOpacity: 0.8,
             scale: 7,
             strokeColor: '#c84a81',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 1
           },
           centrum: {
-            path: google.maps.SymbolPath.CIRCLE,
+            path: 'M16,0.33A15.67,15.67,0,0,0,.33,16c0,8.65,13.33,26,16.33,30,4.33-5.67,15-21.35,15-30A15.67,15.67,0,0,0,16,.33Zm0.71,20.33a4.23,4.23,0,0,0,2.68-1,0.4,0.4,0,0,1,.52,0l1.56,1.66a0.4,0.4,0,0,1,0,.54,6.86,6.86,0,0,1-4.86,1.94,7.2,7.2,0,1,1,0-14.4,6.72,6.72,0,0,1,4.84,1.86,0.37,0.37,0,0,1,0,.56L19.89,13.5a0.35,0.35,0,0,1-.5,0,4.09,4.09,0,0,0-2.7-1,4,4,0,0,0-3.92,4.12A4,4,0,0,0,16.71,20.67Z',
             fillColor: '#173e73',
-            fillOpacity: 0.8,
-            scale: 12,
+            fillOpacity: 1,
+            scale: 1.5,
             strokeColor: '#173e73',
-            strokeWeight: 1
+            strokeWeight: 1,
+            zIndex: 3
           }
         };
 
@@ -511,16 +520,16 @@
             map: map,
             icon: categories.centrum,
             title: 'Centrum Lakeview',
-            label: 'C',
             position: {lat: 41.9432695, lng: -87.6713262}
           });
           for (var categoryName in categories) {
+            // Adds markers to the map.
             setMarkers(map, categories[categoryName], lakeviewLocations[categoryName]);
           }
         }
 
         function setMarkers(map, icon, propertyLocation) {
-          // Adds markers to the map.
+
           var locationInfo = {};
 
           for (var locationMarkers in propertyLocation) {
@@ -534,12 +543,12 @@
               icon: icon
             });
 
-            locationInfo.categoryLocation = '<div class="location-info">' +
+            locationInfo.locationDetails = '<div class="location-info">' +
             '<h2 class="location-title">' + locationMarker.location_name + '</h2>' +
             '<a class="location-url" href="' + locationMarker.location_link + '">More Info</a>' +
             '</div>';
 
-            setMarkerContent(marker, locationInfo.categoryLocation);
+            setMarkerContent(marker, locationInfo.locationDetails);
           }
 
           function setMarkerContent(marker, content) {

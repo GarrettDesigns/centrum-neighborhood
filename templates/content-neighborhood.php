@@ -1,122 +1,25 @@
 <ul class="neighborhood-main--lifstyle-list">
-  <li class="neighborhood-main--lifestyle-list-item">
-    <article class="list-item-main">
-      <span class="list-item--text">party room</span>
-      <span class="neighborhood-main--color-overlay"></span>
-      <a class="gallery-button primary buttons" href="#">View Gallery</a>
-    </article>
-    <article class="gallery-modal">
-      <button class="gallery-close-button">
-        <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
-      </button>
-      <ul class="gallery-slider owl-carousel owl-theme">
-        <li><img src="http://placehold.it/800x400?text=party+room+one"></li>
-        <li><img src="http://placehold.it/800x400?text=party+room+two"></li>
-        <li><img src="http://placehold.it/800x400?text=party+room+three"></li>
-        <li><img src="http://placehold.it/800x400?text=party+room+four"></li>
-        <li><img src="http://placehold.it/800x400?text=party+room+five"></li>
-      </ul>
-      <a class="load-next-gallery" href="#">Next Gallery</a>
-    </article>
-  </li>
-  <li class="neighborhood-main--lifestyle-list-item">
-    <article class="list-item-main">
-      <span class="list-item--text">aquanaut brewery</span>
-      <span class="neighborhood-main--color-overlay"></span>
-      <a class="gallery-button primary buttons" href="#">View Gallery</a>
-    </article>
-    <article class="gallery-modal">
-      <button class="gallery-close-button">
-        <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
-      </button>
-      <ul class="gallery-slider owl-carousel owl-theme">
-        <li><img src="http://placehold.it/800x400?text=aquanaut+one"></li>
-        <li><img src="http://placehold.it/800x400?text=aquanaut+two"></li>
-        <li><img src="http://placehold.it/800x400?text=aquanaut+three"></li>
-        <li><img src="http://placehold.it/800x400?text=aquanaut+four"></li>
-        <li><img src="http://placehold.it/800x400?text=aquanaut+five"></li>
-      </ul>
-      <a class="load-next-gallery" href="#">Next Gallery</a>
-    </article>
-  </li>
-  <li class="neighborhood-main--lifestyle-list-item">
-    <article class="list-item-main">
-      <span class="list-item--text">bow truss coffee roasters</span>
-      <span class="neighborhood-main--color-overlay"></span>
-      <a class="gallery-button primary buttons" href="#">View Gallery</a>
-    </article>
-    <article class="gallery-modal">
-      <button class="gallery-close-button">
-        <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
-      </button>
-      <ul class="gallery-slider owl-carousel owl-theme">
-        <li><img src="http://placehold.it/800x400?text=bow+truss+one"></li>
-        <li><img src="http://placehold.it/800x400?text=bow+truss+two"></li>
-        <li><img src="http://placehold.it/800x400?text=bow+truss+three"></li>
-        <li><img src="http://placehold.it/800x400?text=bow+truss+four"></li>
-        <li><img src="http://placehold.it/800x400?text=bow+truss+five"></li>
-      </ul>
-      <a class="load-next-gallery" href="#">Next Gallery</a>
-    </article>
-  </li>
-  <li class="neighborhood-main--lifestyle-list-item">
-    <article class="list-item-main">
-      <span class="list-item--text">energy efficient</span>
-      <span class="neighborhood-main--color-overlay"></span>
-      <a class="gallery-button primary buttons" href="#">View Gallery</a>
-    </article>
-    <article class="gallery-modal">
-      <button class="gallery-close-button">
-        <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
-      </button>
-      <ul class="gallery-slider owl-carousel owl-theme">
-        <li><img src="http://placehold.it/800x400?text=energy+one"></li>
-        <li><img src="http://placehold.it/800x400?text=energy+two"></li>
-        <li><img src="http://placehold.it/800x400?text=energy+three"></li>
-        <li><img src="http://placehold.it/800x400?text=energy+four"></li>
-        <li><img src="http://placehold.it/800x400?text=energy+five"></li>
-      </ul>
-      <a class="load-next-gallery" href="#">Next Gallery</a>
-    </article>
-  </li>
-  <li class="neighborhood-main--lifestyle-list-item">
-    <article class="list-item-main">
-      <span class="list-item--text">transportation oriented</span>
-      <span class="neighborhood-main--color-overlay"></span>
-      <a class="gallery-button primary buttons" href="#">View Gallery</a>
-    </article>
-    <article class="gallery-modal">
-      <button class="gallery-close-button">
-        <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
-      </button>
-      <ul class="gallery-slider owl-carousel owl-theme">
-        <li><img src="http://placehold.it/800x400?text=transportation+one"></li>
-        <li><img src="http://placehold.it/800x400?text=transportation+two"></li>
-        <li><img src="http://placehold.it/800x400?text=transportation+three"></li>
-        <li><img src="http://placehold.it/800x400?text=transportation+four"></li>
-        <li><img src="http://placehold.it/800x400?text=transportation+five"></li>
-      </ul>
-      <a class="load-next-gallery" href="#">Next Gallery</a>
-    </article>
-  </li>
-  <li class="neighborhood-main--lifestyle-list-item">
-    <article class="list-item-main">
-      <span class="list-item--text">acoustically treated windows</span>
-      <span class="neighborhood-main--color-overlay"></span>
-      <a class="gallery-button primary buttons" href="#">View Gallery</a>
-    </article>
-    <article class="gallery-modal">
-      <button class="gallery-close-button">
-        <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
-      </button>
-      <ul class="gallery-slider owl-carousel owl-theme">
-        <li><img src="http://placehold.it/800x400?text=windows+one"></li>
-        <li><img src="http://placehold.it/800x400?text=windows+two"></li>
-        <li><img src="http://placehold.it/800x400?text=windows+three"></li>
-        <li><img src="http://placehold.it/800x400?text=windows+four"></li>
-        <li><img src="http://placehold.it/800x400?text=windows+five"></li>
-      </ul>
-      <a class="load-next-gallery" href="#">Next Gallery</a>
-    </article>
-  </li>
+  <?php if( have_rows('feature_galleries') ) : while( have_rows('feature_galleries') ) : the_row(); ?>
+    <li class="neighborhood-main--lifestyle-list-item">
+      <article class="list-item-main">
+        <span class="list-item--text"><?php the_sub_field('gallery_name'); ?></span>
+        <span class="neighborhood-main--color-overlay"></span>
+        <a class="gallery-button primary buttons" href="#">View Gallery</a>
+        <img class="gallery--display-image" width='480' height='480' src="<?php echo get_sub_field('gallery_tile_image'); ?>" alt="<?php echo get_sub_field('gallery_name'); ?>">
+      </article>
+      <article class="gallery-modal">
+        <button class="gallery-close-button">
+          <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
+        </button>
+        <h1 class="gallery-name"><?php the_sub_field('gallery_name'); ?></h1>
+        <ul class="gallery-slider owl-carousel owl-theme">
+          <?php if( have_rows('gallery_images') ) : while( have_rows('gallery_images') ) : the_row(); ?>
+            <li><img class="owl-lazy" data-src="<?php the_sub_field('gallery_image'); ?>"></li>
+          <?php endwhile; endif; ?>
+        </ul>
+        <p class="gallery-description"><?php the_sub_field('gallery_description'); ?></p>
+        <a class="load-next-gallery primary buttons" href="#">Next Gallery</a>
+      </article>
+    </li>
+  <?php endwhile; endif; ?>
 </ul>
