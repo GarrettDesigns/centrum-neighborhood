@@ -732,6 +732,10 @@ body.show-nav {
       }
     }
   }
+  &-slide {
+    max-height: 782px;
+    overflow: hidden;
+  }
   &-slider {
     z-index: 999;
     max-width: 90%;
