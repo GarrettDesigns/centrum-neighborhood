@@ -12,13 +12,15 @@
           <img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
         </button>
         <h1 class="gallery-name"><?php the_sub_field('gallery_name'); ?></h1>
-        <ul class="gallery-slider owl-carousel owl-theme">
+        <div class="gallery-slider owl-carousel owl-theme">
           <?php if( have_rows('gallery_images') ) : while( have_rows('gallery_images') ) : the_row(); ?>
-            <li><img class="owl-lazy" data-src="<?php the_sub_field('gallery_image'); ?>"></li>
+            <div class="gallery-slide"><img class="owl-lazy" data-src="<?php the_sub_field('gallery_image'); ?>">
+              <!-- <h2 class="gallery--image-name"><?php the_sub_field('gallery_image_name'); ?></h2> -->
+            </div>
           <?php endwhile; endif; ?>
-        </ul>
-        <p class="gallery-description"><?php the_sub_field('gallery_description'); ?></p>
-        <a class="load-next-gallery primary buttons" href="#">Next Gallery</a>
+        </div>
+        <!-- <p class="gallery-description"><?php the_sub_field('gallery_description'); ?></p> -->
+        <a class="load-next-gallery" href="#">Next Gallery</a>
       </article>
     </li>
   <?php endwhile; endif; ?>

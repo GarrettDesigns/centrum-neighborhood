@@ -1,19 +1,18 @@
 @import "common/_variables";
 
-// Foundation variables goes here, before including foundation framework
-// $body-bg: pink;
-
-
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
-@import "../../bower_components/meyer-reset/stylesheets/_meyer-reset.scss";
-@import "../../bower_components/vertical-rhythms-without-compass/_vertical-rhythms.scss";
-@import "../../bower_components/sassy-maps/sass/_sassy-maps.scss";
-@import "../../bower_components/breakpoint-sass/stylesheets/_breakpoint.scss";
-@import "../../bower_components/font-awesome/scss/font-awesome.scss";
-@import "../../bower_components/susy/sass/_susy.scss";
-@import "../../bower_components/normalize-scss/_normalize.scss";
+@import '../../bower_components/meyer-reset/stylesheets/_meyer-reset.scss';
+@import '../../bower_components/vertical-rhythms-without-compass/_vertical-rhythms.scss';
+@import '../../bower_components/sassy-maps/sass/_sassy-maps.scss';
+@import '../../bower_components/breakpoint-sass/stylesheets/_breakpoint.scss';
+@import '../../bower_components/font-awesome/scss/font-awesome.scss';
+@import '../../bower_components/susy/sass/_susy.scss';
+@import '../../bower_components/normalize-scss/_normalize.scss';
+@import '../../bower_components/modular-scale/stylesheets/_modular-scale.scss';
 // endbower
+
+@import 'contact_form/main.scss';
 
 // Custom Sass file imports
 @import "utilities/placeholders";
@@ -31,6 +30,7 @@
 @import "layouts/_pages";
 @import "layouts/_posts";
 @import "components/_grid";
+
 
 
 /*==========  Fixes overlapping admin bar  ==========*/

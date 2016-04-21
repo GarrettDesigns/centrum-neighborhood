@@ -1,4 +1,19 @@
 
+<style media="screen">
+  .amenities-hero {
+    background: url('<?= get_field('callout_one_background'); ?>') center center no-repeat;
+    background-size: cover;
+  }
+  .interior-view-one {
+    background: url('<?= get_field('callout_two_background'); ?>') center center no-repeat;
+    background-size: cover;
+  }
+  .interior-view-two {
+    background: url('<?= get_field('callout_three_background'); ?>') center center no-repeat;
+    background-size: cover;
+  }
+</style>
+
 <?php while (have_posts()) : the_post(); ?>
   <article id="ourmission" class="mission-body">
     <?php get_template_part('templates/page', 'body'); ?>
@@ -35,6 +50,6 @@
 
   <article id="availability" class="current-availability">
     <?php get_template_part('templates/content', 'current-availability'); ?>
+    <?php get_template_part('templates/content', 'contact'); ?>
   </article>
-
 <?php endwhile; ?>

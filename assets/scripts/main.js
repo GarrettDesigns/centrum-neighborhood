@@ -19,6 +19,7 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
         var body = $('body');
 
         var navMenuIcon = $('.menu-icon');
@@ -43,7 +44,7 @@
             navItems.removeClass('show-nav');
             pageHeader.removeClass('show-nav');
             body.removeClass('show-nav');
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
               var target = $(this.hash);
               target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
               if (target.length) {
@@ -55,7 +56,7 @@
             }
           });
         });
-
+        //
         $('.gallery-slider').owlCarousel({
           animateOut: 'fadeOut',
           items:1,
@@ -65,24 +66,20 @@
           nav: true,
           dots: false,
           responsiveRefreshRate: 0,
+          responsiveBaseElement: '.gallery-slider',
           loop: true,
           navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
         });
 
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
+          $('.gallery-modal').removeClass('open');
           $(this).parents('li').find('.gallery-modal').addClass('open').fadeIn('slow');
         });
 
         $('.gallery-close-button').on('click', function() {
           $('.gallery-modal').fadeOut('slow');
-        })
-
-        // $('.map-modal-button').on('click', function(e) {
-        //   e.preventDefault();
-        //   $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
-        //   initMap();
-        // });
+        });
 
         $('.close-map').on('click', function() {
           $('.neighborhood-map-modal').fadeOut('slow');
@@ -96,7 +93,7 @@
 
           $('.amenities-main--heading').find('.inner-heading').fadeOut('slow');
 
-          thisItem.addClass('detail-view')
+          thisItem.addClass('detail-view');
           siblingListItems.removeClass('fade-in');
           siblingListItems.addClass('fade-out');
           thisItem.parent().find('.amenity-description').addClass('animate-in');
@@ -123,8 +120,8 @@
           var parentListItems = thisItem.parents('li');
 
           e.preventDefault();
-          thisItem.parent().hide();
-          parentListItems.next().find('.gallery-modal').show();
+          thisItem.parent().fadeOut();
+          parentListItems.next().find('.gallery-modal').fadeIn();
         });
       },
       finalize: function() {
@@ -140,13 +137,14 @@
           e.preventDefault();
           $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
           initMap();
+          console.log(lakeviewLocations);
         });
 
         var lakeviewLocations = {
           dining: map_locations.lakeview_dining_markers,
           grocery: map_locations.lakeview_grocery_markers,
           fitness: map_locations.lakeview_fitness_markers,
-          salons: map_locations.lakeview_salons_markers,
+          salon: map_locations.lakeview_salons_markers,
           coffee: map_locations.lakeview_coffee_markers,
           education: map_locations.lakeview_education_markers,
           retail: map_locations.lakeview_retail_markers
@@ -180,7 +178,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          salons: {
+          salon: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#00a5b9',
             fillOpacity: 0.8,
@@ -238,7 +236,7 @@
             scrollwheel: false,
 
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(41.9432695, -87.6713262), // Lakeview
+            center: new google.maps.LatLng(41.9436346, -87.6717325), // Lakeview
 
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
@@ -460,6 +458,39 @@
                     ]
                 },
                 {
+                    "featureType": "transit.station.rail",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                   "featureType": "transit.line",
+                   "elementType": "all",
+                   "stylers": [
+                       {
+                           "visibility": "on"
+                       }
+                    ]
+                },
+                {
+                    "featureType": "transit.line",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "weight": "3.00"
+                        },
+                        {
+                            "saturation": "48"
+                        },
+                        {
+                            "color": "#888888"
+                        }
+                    ]
+                },
+                {
                     "featureType": "water",
                     "elementType": "all",
                     "stylers": [
@@ -512,23 +543,27 @@
         function initMap() {
           map = new google.maps.Map(mapElement, mapOptions);
 
-          map.addListener('click', function() {
-            infoBubble.close();
-          });
-
           var marker = new google.maps.Marker({
             map: map,
             icon: categories.centrum,
             title: 'Centrum Lakeview',
-            position: {lat: 41.9432695, lng: -87.6713262}
+            position: {lat: 41.9436346, lng: -87.6717325}
           });
           for (var categoryName in categories) {
             // Adds markers to the map.
-            setMarkers(map, categories[categoryName], lakeviewLocations[categoryName]);
+            setMarkers(map, categories[categoryName], lakeviewLocations[categoryName], categoryName);
           }
+
+          map.addListener('click', function() {
+            infoBubble.close();
+          });
         }
 
-        function setMarkers(map, icon, propertyLocation) {
+
+
+        var markers = [];
+
+        function setMarkers(map, icon, propertyLocation, category) {
 
           var locationInfo = {};
 
@@ -540,7 +575,8 @@
                 lng: parseFloat(locationMarker.location_longitude)
               },
               map: map,
-              icon: icon
+              icon: icon,
+              category: category
             });
 
             locationInfo.locationDetails = '<div class="location-info">' +
@@ -549,6 +585,7 @@
             '</div>';
 
             setMarkerContent(marker, locationInfo.locationDetails);
+            markers.push(marker);
           }
 
           function setMarkerContent(marker, content) {
@@ -568,6 +605,90 @@
             });
           }
         }
+
+        // $('.map-legend--list-item').removeClass('selected');
+
+        // if markers are hidden and another category is clicked
+          // remove the selected class from currently selected category
+          // and add it to this one
+          // if non matching markers are already hidden show them
+
+        // When map-legend category is clicked
+        $('.map-legend--list-item').on('click', function() {
+          console.log($(this));
+          if($(this).hasClass('selected')) {
+            console.log('if');
+            $(this).removeClass('selected');
+            for(var i=0; i < markers.length; i++) {
+                markers[i].setVisible(true);
+            }
+          }
+          else {
+            console.log('else');
+            $('.map-legend--list-item').removeClass('selected');
+            $(this).addClass('selected');
+
+            for(var i=0; i < markers.length; i++) {
+              if(markers[i].category !== $(this).data('category') && markers[i].getVisible() === true) {
+                markers[i].setVisible(false);
+              } else if (markers[i].getVisible() === false  && markers[i].category === $(this).data('category')) {
+                markers[i].setVisible(true);
+              }
+            }
+          }
+        });
+        $('.show-contact').on('click', function() {
+          $('.request-info-modal').slideToggle('slow');
+        });
+
+      	var infoModal = $('.request-info-modal');
+      	var calMth = $('.calendar-month');
+      	var bedroomOpt = $('.bedroom-option');
+
+      	var currentDate = new Date().toDateString();
+      	var dateVals = currentDate.split(' ');
+      	var month = dateVals[1];
+
+      	var calYear = $('.calendar-year').find('input');
+      	var currentYear = parseInt(dateVals[3]);
+
+      	calYear.val(currentYear.toString());
+      	bedroomOpt.first().attr('checked', 'checked').addClass('selectedOpt');
+
+      	calMth.find('label').each(function() {
+      		var parentListItem = $(this).parent('li');
+
+      		if($(this).html() === month.toLowerCase()) {
+      			parentListItem.addClass('selectedMth');
+      			parentListItem.find('input[type=radio]').attr('checked', 'checked');
+      		}
+      	});
+
+      	calMth.on('click', function() {
+      		calMth.removeClass('selectedMth');
+      		$(this).addClass('selectedMth');
+      	});
+
+      	bedroomOpt.on('click', function() {
+      		bedroomOpt.removeClass('selectedOpt');
+      		$(this).addClass('selectedOpt');
+      	});
+
+      	$('.previous-year').on('click', function() {
+      		currentYear -= 1;
+      		calYear.val(currentYear.toString());
+      	});
+
+      	$('.next-year').on('click', function() {
+      		currentYear += 1;
+      		calYear.val(currentYear);
+      	});
+
+      	$('.subcription-form').on('submit', function() {
+      		$('input[type=text]').val("");
+      		calYear.val(currentYear.toString());
+          $('.request-info-modal').slideToggle('slow');
+      	});
 
       },
       finalize: function() {

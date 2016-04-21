@@ -1,7 +1,7 @@
 <ul class="footer-info">
   <li class="footer-info--list">
     <ul id="contact">
-      <li class="footer-info--heading">contact us</li>
+      <!-- <li class="footer-info--heading">contact us</li> -->
       <li class="footer-info--address">312-632-0734</li>
       <li class="footer-info--address">3400 North Lincoln Way Avenue</li>
       <li class="footer-info--address">Chicago, Illinois 60657</li>

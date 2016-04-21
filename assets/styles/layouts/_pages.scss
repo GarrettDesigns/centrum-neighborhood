@@ -116,8 +116,6 @@ body.show-nav {
   opacity: .99;
   &-hero {
     width: 100%;
-    background: url('../../assets/images/amenity-deck.png') center center no-repeat;
-    background-size: cover;
     min-height: 920px;
     position: relative;
   } // End .amenities-hero
@@ -232,6 +230,10 @@ body.show-nav {
   text-align: center;
   right: 0;
   background: url('../../assets/images/interior-trapezoid.svg') no-repeat -20px 0;
+  @include breakpoint(max-width $mobile) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 } // End .amenities--trap-article
 
 .amenity-description {
@@ -340,6 +342,12 @@ body.show-nav {
       float: left;
       width: 100%;
       &-item {
+          float: left;
+          width: 33.3333333%;
+          @include breakpoint(max-width $lg-tablet) {
+            float: none;
+            width: 100%;
+          }
         .list-item-main {
           padding: 45% 0;
           color: $white;
@@ -384,9 +392,16 @@ body.show-nav {
     margin-bottom: 70px;
   }
   &--list-item {
-    padding-bottom: 35px;
+    padding: 12.5px;
     font-size: 0.8rem;
     letter-spacing: 2px;
+    cursor: pointer;
+    &:hover {
+      background: transparentize(white, 0.8);
+    }
+    &.selected {
+      background: transparentize(white, 0.8);
+    }
   }
   &--icon {
     border-radius: 50px;
@@ -400,12 +415,12 @@ body.show-nav {
     $icon-map: (
       icon-colors: (
         dining: #1a6ad6,
-        grocery-pharmacy: #e56829,
+        grocery: #e56829,
         fitness: #edc729,
-        salon-spa: #00a5b9,
-        coffee-shops: #af3c9b,
+        salon: #00a5b9,
+        coffee: #af3c9b,
         education: #647dd6,
-        retail-stores: #c84a81
+        retail: #c84a81
       )
     );
 
@@ -442,14 +457,15 @@ body.show-nav {
 } // End .gallery-button
 
 .load-next-gallery {
-  position: absolute;
-  top: 890px;
-  left: 43.5%;
   text-transform: uppercase;
   letter-spacing: 2px;
   display: block;
+  position: absolute;
+  top: 35px;
+  right: 50px;
   color: white;
   z-index: 9999;
+  max-width: 300px;
 } // End .load-next-gallery
 
 .neighborhood-main--lifestyle-list-item:hover {
@@ -483,7 +499,6 @@ body.show-nav {
   background: gc(brand-colors, secondary-blue);
   color: $white;
   position: relative;
-  /*min-height: 800px;*/
   padding: 40px;
   &-list {
     &--heading {
@@ -492,7 +507,7 @@ body.show-nav {
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: $base-font-size * 1.5;
-      margin-bottom: 100px;
+      margin-top: 90px;
     } // End .features-list--heading
     &--columns {
       width: 73%;
@@ -503,6 +518,13 @@ body.show-nav {
       padding-bottom: 40px;
       @extend %display-flexbox;
       justify-content: space-around;
+      @include breakpoint(max-width $lg-tablet) {
+        display: block;
+        width: 90%;
+      }
+      @include breakpoint(max-width $mobile) {
+        width: 100%;
+      }
     } // End .features-list--columns
     &--column {
       @extend %display-flexbox;
@@ -515,6 +537,7 @@ body.show-nav {
     &--item {
       line-height: 1.5;
       padding-bottom: 10px;
+      font-size: $base-font-size * 1.25;
       i {
         margin-left: -20px;
         margin-top: 3px;
@@ -525,24 +548,18 @@ body.show-nav {
 } // End .features
 
 .interior-view {
-  &-one{
-    background: url('../../assets/images/kitchen-and-living-space.png');
-    background-size: cover;
-    min-height: 800px;
-    position: relative;
-  } // End .interior-view-one
   float: left;
-  &-two {
-    background: url('../../assets/images/bathroom-lg.png');
-    background-size: cover;
-    min-height: 800px;
-  } // End .interior-view-two
+  &-one, &-two{
+    min-height: 1000px;
+    position: relative;
+  } // End .interior-view-one, .interior-view-two
 } // End .interior-view
 
 .current-availability {
   background: gc(brand-colors, secondary-blue);
   min-height: 1200px;
   position: relative;
+  padding-bottom: 130px;
   &:after {
     content: '';
     background: gc(brand-colors, main-blue);
@@ -558,6 +575,7 @@ body.show-nav {
       display: table;
       margin: 0 auto;
       width: 70%;
+      z-index: 999;
       text-align: center;
       color: $white;
       &--head {
@@ -579,6 +597,12 @@ body.show-nav {
         padding: 20px 40px;
         font-size: $base-font-size/1.25;
         border-bottom: 1px solid transparentize(gc(brand-colors, main-blue), 0.6);
+        a {
+          color: white;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       } // End .availability-table--cell
     } // End .availability-table
   }
@@ -643,12 +667,16 @@ body.show-nav {
   top: 470px;
   width: 85%;
   text-align: center;
+  @include breakpoint(max-width $mobile) {
+    padding-left: 3px!important;
+    padding-right: 3px!important;
+  }
   &.left {
     color: white;
     top: -130px;
     width: 400px;
     z-index: 999;
-    padding: 370px 43px 620px;
+    padding: 370px 43px 670px;
     text-align: center;
     left: 0;
     background: url('../../assets/images/trap-left.svg') no-repeat -20px 0;
@@ -663,12 +691,16 @@ body.show-nav {
       color: white;
       top: 0;
       width: 400px;
-      z-index: 999;
+      z-index: 20;
       position: absolute;
-      padding: 595px 52px 640px;
+      padding: 595px 52px 460px;
       text-align: center;
       right: 0;
       background: url('../../assets/images/trap-right.svg') no-repeat 0 0;
+      @include breakpoint(max-width $mobile) {
+        padding-left: 0;
+        padding-right: 0;
+      }
     } // End .interior-view-two--trap-article .right
   } // End .interior-view-two--trap-article
 } // End .interior-view-two
@@ -676,34 +708,53 @@ body.show-nav {
 .gallery {
   &-modal {
     display: none;
-    background: transparentize(gc(brand-colors, main-blue), 0.5);
-    z-index: 1;
-    &:after {
-      content: '';
-      background: gc(brand-colors, main-blue);
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 20;
-    }
+    background: gc(brand-colors, main-blue);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
     &.open {
+      background: gc(brand-colors, main-blue);
       position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
+      width: 100%;
+      height: 100%;
       z-index: 10;
+      @include breakpoint(min-width $desktop) {
+        min-height: 1000px;
+      }
     }
   }
   &-slider {
-    position: absolute;
     z-index: 999;
     max-width: 90%;
-    max-height: 61%;
     top: 100px;
     left: 5%;
+    img {
+      width: 100%;
+    }
+  }
+  &-image--container {
+    display: block;
+    z-index: 999;
+    max-height: 550px;
+    overflow: hidden;
+  }
+  &--image-name {
+    color: white;
+    font-family: $sans-serif-font;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 50px;
   }
   &-close-button {
     position: absolute;
@@ -720,27 +771,21 @@ body.show-nav {
   &-name {
     z-index: 99;
     color: white;
-    position: absolute;
     max-width: 800px;
     text-align: center;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 20px;
-    text-transform: uppercase;
-    font-size: 1.5rem;
+    margin: 60px auto 0;
+    font-family: $serif-font;
+    font-size: 1.75rem;
     letter-spacing: 2px;
   }
   &-description {
     z-index: 99;
     color: #fff;
-    position: absolute;
-    left: 20%;
-    top: 725px;
     font-size: 1.5rem;
     max-width: 60%;
     text-align: center;
     line-height: 1.5;
+    margin: 150px auto 0;
   }
   &--display-image {
     position: absolute;
@@ -797,16 +842,16 @@ body.show-nav {
   }
 }
 
-.owl-item {
-  max-height: 550px;
-}
-
 .owl-prev {
   left: -50px;
 }
 
 .owl-next {
   right: -50px;
+}
+
+.owl-carousel.owl-loaded {
+  margin-top: -60px;
 }
 
 .icon rect,
@@ -832,4 +877,28 @@ body.show-nav {
       text-decoration: underline;
     }
   }
+}
+
+.request-info-modal {
+  display: none;
+}
+
+.subscription-form {
+  color: white;
+  /*display: none;*/
+}
+
+.subscribe-button {
+  background: white;
+  color: gc(brand-colors, secondary-blue);
+  border: 1px solid white;
+  &:hover {
+    color: white;
+  }
+}
+
+.show-contact {
+  max-width: 20%;
+  margin: 50px auto 0;
+  border: 1px solid white!important;
 }

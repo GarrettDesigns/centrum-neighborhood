@@ -39,9 +39,6 @@
     "iconic.min.js": {
       "files": ["scripts/iconic.min.js"]
     },
-    "maps.js": {
-      "files": ["scripts/maps.js"]
-    },
     "fonts": {
       "files": ["fonts/**/*"]
     }
@@ -51,6 +48,6 @@
     "dist": "dist/"
   },
   "config": {
-    "devUrl": "http://centrum-full.local"
+    "devUrl": "http://centrum-neighborhood.local"
   }
 }
