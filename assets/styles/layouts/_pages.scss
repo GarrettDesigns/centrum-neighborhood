@@ -97,18 +97,17 @@ body.show-nav {
   z-index: 7;
   margin-top: -50px;
   padding-bottom: 100px;
-  &--heading {
-    text-transform: uppercase;
-    color: inherit;
-    font-size: $base-font-size * 1.75;
-    font-weight: 500;
-    letter-spacing: 2px;
-    margin-bottom: 60px;
-  } // End .mission-body--heading
+  @include breakpoint(max-width $lg-tablet) {
+    max-width: 75%;
+  }
   &--content {
     font-size: $base-font-size * 2.5;
     line-height: $base-line-height / .55;
     font-weight: 400;
+    @include breakpoint(max-width $sm-tablet) {
+      font-size: $base-font-size * 1.5;
+      margin-top: -100px;
+    }
   } // End .mission-body--content
 } // End .mission-body
 
@@ -116,12 +115,21 @@ body.show-nav {
   opacity: .99;
   &-hero {
     width: 100%;
-    min-height: 920px;
+    max-height: 1000px;
+    min-height: 800px;
     position: relative;
+    @include breakpoint($sm-mobile $lg-tablet) {
+      display: inline-block;
+      width: 100%;
+    }
   } // End .amenities-hero
   &-main {
     background: gc(brand-colors, secondary-blue);
     position: relative;
+    @include breakpoint($sm-mobile $sm-tablet) {
+      display: inline-block;
+      width: 100%;
+    }
     &:after {
       content: '';
       @include triangle(down, 40px, gc(brand-colors, secondary-blue));
@@ -213,6 +221,9 @@ body.show-nav {
     text-transform: uppercase;
     margin-top: 250px;
     margin-bottom: 20px;
+    @include breakpoint($sm-mobile $lg-tablet) {
+      margin-top: 0;
+    }
     } // End .amenities--trap-heading
   &-body {
     line-height: 1.5;
@@ -230,9 +241,12 @@ body.show-nav {
   text-align: center;
   right: 0;
   background: url('../../assets/images/interior-trapezoid.svg') no-repeat -20px 0;
-  @include breakpoint(max-width $mobile) {
-    padding-left: 10px;
-    padding-right: 10px;
+  @include breakpoint($sm-mobile $lg-tablet) {
+    padding: 20px;
+    background: transparentize(gc(brand-colors, main-blue), 0.3);
+    position: static;
+    width: 80%;
+    margin: 50% auto 0;
   }
 } // End .amenities--trap-article
 
@@ -282,14 +296,18 @@ body.show-nav {
 
 .neighborhood {
   &-hero {
-    min-height: 1000px;
+    max-height: 850px;
+    min-height: 850px;
     padding-top: 110px;
     text-align: center;
-    z-index: 7;
+    z-index: -1;
     color: gc(brand-colors, secondary-blue);
     background: url('../../assets/images/neighborhood.png') center center no-repeat;
     background-size: cover;
     position: relative;
+    @include breakpoint(max-width $md-desktop) {
+      background-position: center 110px;
+    }
     &--heading {
       text-transform: uppercase;
       color: inherit;
@@ -383,9 +401,12 @@ body.show-nav {
   text-align: left;
   text-transform: uppercase;
   padding: 70px;
-  height: 60%;
-  bottom: 20%;
+  height: 54%;
+  top: 20px;
   left: 10%;
+  @include breakpoint(max-width $lg-tablet) {
+    display: none;
+  }
   &--title {
     letter-spacing: 2px;
     line-height: 1.5;
@@ -393,6 +414,7 @@ body.show-nav {
   }
   &--list-item {
     padding: 12.5px;
+    padding-left: 0;
     font-size: 0.8rem;
     letter-spacing: 2px;
     cursor: pointer;
@@ -432,6 +454,10 @@ body.show-nav {
   }
 }
 
+.neighborhood-map-modal.mobile .map-legend {
+  display: none;
+}
+
 .neighborhood-main--color-overlay {
   background: transparentize(gc(brand-colors, main-blue), 0.1);
   position: absolute;
@@ -466,6 +492,7 @@ body.show-nav {
   color: white;
   z-index: 9999;
   max-width: 300px;
+  background: none;
 } // End .load-next-gallery
 
 .neighborhood-main--lifestyle-list-item:hover {
@@ -493,6 +520,13 @@ body.show-nav {
     } // .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons
   } // .neighborhood-main--lifestyle-list-item:hover .gallery-button
 } // .neighborhood-main--lifestyle-list-item:hover
+
+a.gallery-button.mobile.primary.buttons {
+  opacity: 1!important;
+  z-index: 9999;
+  position: relative;
+  min-width: 220px;
+}
 
 .features {
   clear: both;
@@ -524,14 +558,26 @@ body.show-nav {
       }
       @include breakpoint(max-width $mobile) {
         width: 100%;
+        padding-bottom: 90px;
       }
     } // End .features-list--columns
     &--column {
       @extend %display-flexbox;
       flex-flow: row wrap;
       margin-right: 40px;
+      &-heading {
+        margin-left: -20px;
+        font-size: $base-font-size * 1.5;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        font-family: $sans-serif-font;
+        text-transform: uppercase;
+      }
       &:last-child {
         margin-right: 0;
+        @include breakpoint(max-width $lg-tablet) {
+          margin-top: 50px;
+        }
       }
     } // End .features-list--columns
     &--item {
@@ -550,8 +596,13 @@ body.show-nav {
 .interior-view {
   float: left;
   &-one, &-two{
-    min-height: 1000px;
+    max-height: 1000px;
+    min-height: 800px;
     position: relative;
+    @include breakpoint($sm-mobile $lg-tablet) {
+      display: inline-block;
+      width: 100%;
+    }
   } // End .interior-view-one, .interior-view-two
 } // End .interior-view
 
@@ -562,7 +613,7 @@ body.show-nav {
   padding-bottom: 130px;
   &:after {
     content: '';
-    background: gc(brand-colors, main-blue);
+    background: white;
     transform: skewY(3deg);
     transform-origin: 100%;
     position: absolute;
@@ -578,33 +629,67 @@ body.show-nav {
       z-index: 999;
       text-align: center;
       color: $white;
-      &--head {
-        display: table-row;
-        &-cell {
-          display: table-cell;
-          font-family: $sans-serif-font;
-          text-transform: uppercase;
-          font-size: $base-font-size/1.75;
-          letter-spacing: 1.5px;
-          padding-bottom: 30px;
-        } // End .availability-table--head-cell
-      } // End .availability-table--head
-      &--row {
-        display: table-row;
-      } // End .availability-table--row
-      &--cell {
-        display: table-cell;
-        padding: 20px 40px;
-        font-size: $base-font-size/1.25;
-        border-bottom: 1px solid transparentize(gc(brand-colors, main-blue), 0.6);
-        a {
-          color: white;
-          &:hover {
-            text-decoration: underline;
-          }
+      a {
+        color: white!important;
+        &:hover {
+          text-decoration: underline;
         }
-      } // End .availability-table--cell
+      }
+      &.small-only {
+        .st-head-row-main {
+          display: none;
+        }
+        .st-head-row {
+          padding: 50px 0 10px;
+        }
+      }
+      &.large-only {
+        .table-head {
+          padding-top: 35px;
+          padding-bottom: 15px;
+        }
+        td {
+          padding-top: 20px;
+        }
+        tr {
+          height: 50px;
+          border-bottom: 1px solid transparentize(white, 0.8);
+        }
+        .st-key, .st-val {
+          text-align: left;
+          padding-top: 20px;
+        }
+      }
     } // End .availability-table
+
+    .stacked-table {
+      display: table;
+      margin: 0 auto;
+      width: 70%;
+      z-index: 999;
+      text-align: center;
+      color: $white;
+      a {
+        color: white!important;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .st-head-row {
+        .st-key, .st-val {
+          padding-top: 35px;
+          padding-bottom: 15px;
+        }
+      }
+      tr {
+        height: 50px;
+        border-bottom: 1px solid transparentize(white, 0.8);
+      }
+      .st-key, .st-val {
+        text-align: left;
+        padding-top: 20px;
+      }
+    }
   }
 } // End .current-availability
 
@@ -615,7 +700,7 @@ body.show-nav {
   @at-root {
     .current-availability--heading {
       margin: 0 auto 50px;
-      padding-top: 250px;
+      padding-top: 130px;
       width: 70%;
       text-align: center;
       color: $white;
@@ -667,10 +752,6 @@ body.show-nav {
   top: 470px;
   width: 85%;
   text-align: center;
-  @include breakpoint(max-width $mobile) {
-    padding-left: 3px!important;
-    padding-right: 3px!important;
-  }
   &.left {
     color: white;
     top: -130px;
@@ -680,6 +761,13 @@ body.show-nav {
     text-align: center;
     left: 0;
     background: url('../../assets/images/trap-left.svg') no-repeat -20px 0;
+    @include breakpoint($sm-mobile $lg-tablet) {
+      padding: 20px;
+      background: transparentize(gc(brand-colors, main-blue), 0.3);
+      position: static;
+      width: 80%;
+      margin: 50% auto 0;
+    }
   } // End .features--trap-article .left
 } // End .features--trap-article
 
@@ -689,7 +777,7 @@ body.show-nav {
     &.right {
       top: 0;
       color: white;
-      top: 0;
+      top: -60px;
       width: 400px;
       z-index: 20;
       position: absolute;
@@ -697,9 +785,12 @@ body.show-nav {
       text-align: center;
       right: 0;
       background: url('../../assets/images/trap-right.svg') no-repeat 0 0;
-      @include breakpoint(max-width $mobile) {
-        padding-left: 0;
-        padding-right: 0;
+      @include breakpoint($sm-mobile $lg-tablet) {
+        padding: 20px;
+        background: transparentize(gc(brand-colors, main-blue), 0.3);
+        position: static;
+        width: 80%;
+        margin: 50% auto 0;
       }
     } // End .interior-view-two--trap-article .right
   } // End .interior-view-two--trap-article
@@ -733,7 +824,7 @@ body.show-nav {
     }
   }
   &-slide {
-    max-height: 782px;
+    max-height: 725px;
     overflow: hidden;
   }
   &-slider {
@@ -766,11 +857,17 @@ body.show-nav {
     left: 20px;
     background: none;
     border: none;
-    max-height: 40px;
-    max-width: 40px;
+    outline: none;
+    height: 40px;
+    width: 40px;
     color: white;
     z-index: 999;
     cursor: pointer;
+    &.mobile {
+      @include breakpoint(max-width $sm-laptop) {
+        padding: 0;
+      }
+    }
   }
   &-name {
     z-index: 99;

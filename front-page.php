@@ -12,6 +12,11 @@
     background: url('<?= get_field('callout_three_background'); ?>') center center no-repeat;
     background-size: cover;
   }
+  @media screen and (max-width: 450px) {
+    .interior-view-two {
+      background-position: -780px center;
+    }
+  }
 </style>
 
 <?php while (have_posts()) : the_post(); ?>

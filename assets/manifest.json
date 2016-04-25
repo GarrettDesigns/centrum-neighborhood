@@ -27,8 +27,16 @@
         "../bower_components/owl.carousel/dist/assets/owl.theme.default.min.css"
       ]
     },
+    "stacktable.css": {
+      "files": [
+        "../bower_components/stacktable.js/stacktable.css"
+      ]
+    },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "stacktable.js": {
+      "bower": ["stacktable.js"]
     },
     "owl-carousel.js": {
       "bower": ["owl.carousel"]

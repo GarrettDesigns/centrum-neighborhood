@@ -3,7 +3,7 @@
   <?php the_field('neighborhood_content'); ?>
 </p>
 <a href="#" class="map-modal-button primary buttons">check it out</a>
-<article class="neighborhood-map-modal">
+<article class="neighborhood-map-modal <?php if(wp_is_mobile()) { echo "mobile"; } ?>">
   <button class="close-map">
     <img class="iconic" src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
   </button>

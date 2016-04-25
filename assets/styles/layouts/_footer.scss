@@ -1,12 +1,12 @@
 .content-info {
-  background: gc(brand-colors, main-blue);
+  background: white;
   float: left;
   padding-bottom: 100px;
   width: 100%;
 }
 
 .footer-info {
-  width: 620px;
+  width: 500px;
   margin: 0 auto;
   position: relative;
   @include breakpoint(max-width $sm-tablet) {
@@ -14,7 +14,7 @@
   }
   &--list {
     float: left;
-    color: $white;
+    color: gc(brand-colors, secondary-blue);
     margin-right: 70px;
     &:last-child {
       margin-right: 0;
@@ -39,6 +39,7 @@
     font-size: $base-font-size/1.25;
     font-weight: 700;
     letter-spacing: 1.5px;
+    text-align: center;
   }
   &--social-media {
     line-height: 2;
@@ -48,5 +49,22 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+  }
+}
+
+.footer-info--address {
+  @include breakpoint(max-width $custom-mobile) {
+    margin-bottom: 20px;
+  }
+  &-item {
+    @include breakpoint(max-width $custom-mobile) {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+.footer-pipe {
+  @include breakpoint(max-width $custom-mobile) {
+    display: none;
   }
 }

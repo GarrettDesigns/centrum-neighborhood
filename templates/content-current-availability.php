@@ -5,133 +5,134 @@
   <li class="bedroom-options--item">1</li>
   <li class="bedroom-options--item">2</li>
 </ul> -->
-<ul class="availability-table">
-  <li class="availability-table--head">
-    <li class="availability-table--head-cell">Unit #</li>
-    <li class="availability-table--head-cell"># Available</li>
-    <li class="availability-table--head-cell">Bedrooms</li>
-    <li class="availability-table--head-cell">Bathrooms</li>
-    <li class="availability-table--head-cell">Size</li>
-    <li class="availability-table--head-cell">Rent</li>
-    <li class="availability-table--head-cell">Floorplan</li>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">202</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">709 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">203</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">S</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">542 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">204</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">1013 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">507</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">635 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X01</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">1031 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X02</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">677 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X03</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">S</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">542 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X04</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">1013 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X05</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">835 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X06</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">656 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X07</span>
-    <span class="availability-table--cell">3</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">658 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X08</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">1</span>
-    <span class="availability-table--cell">678 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-  <li class="availability-table--row">
-    <span class="availability-table--cell">X09</span>
-    <span class="availability-table--cell">4</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">2</span>
-    <span class="availability-table--cell">1031 sq ft</span>
-    <span class="availability-table--cell">&dollar;xxxx / month</span>
-    <span class="availability-table--cell"><a href="<?= get_template_directory_uri(); ?>/dist/images/centrum_lakeview_floorplans.pdf" target="_blank">View</a></span>
-  </li>
-</ul>
+
+<table class="availability-table">
+  <thead class="table-head">
+    <th>Bedrooms</th>
+    <th>Bathrooms</th>
+    <th>Size</th>
+    <th>Rent</th>
+    <th>Unit #</th>
+    <th>Available</th>
+    <th>Floorplan</th>
+  </thead>
+  <tr>
+    <td>S</td>
+    <td>1</td>
+    <td>542 sq ft</td>
+    <td>&dollar;1734 / month</td>
+    <td>203</td>
+    <td>1</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/203.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>S</td>
+    <td>1</td>
+    <td>542 sq ft</td>
+    <td>&dollar;1744&mdash;1774 / month</td>
+    <td>X03</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x03.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>709 sq ft</td>
+    <td>&dollar;2099 / month</td>
+    <td>202</td>
+    <td>1</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/202.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>635 sq ft</td>
+    <td>&dollar;2080 / month</td>
+    <td>507</td>
+    <td>1</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/507.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>677 sq ft</td>
+    <td>&dollar;2109&mdash;2139 / month</td>
+    <td>X02</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x02.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>835 sq ft</td>
+    <td>&dollar;2599&mdash;2629 / month</td>
+    <td>X05</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x05.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>656 sq ft</td>
+    <td>&dollar;2034&mdash;2074 / month</td>
+    <td>X06</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x06.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>658 sq ft</td>
+    <td>&dollar;2040&mdash;2080 / month</td>
+    <td>X07</td>
+    <td>3</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x07.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>678 sq ft</td>
+    <td>&dollar;2102&mdash;2142 / month</td>
+    <td>X08</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x08.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>2</td>
+    <td>1013 sq ft</td>
+    <td>&dollar;2938 / month</td>
+    <td>204</td>
+    <td>1</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/204.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>2</td>
+    <td>1031 sq ft</td>
+    <td>&dollar;2990&mdash;3020 / month</td>
+    <td>X01</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x01.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>2</td>
+    <td>1013 sq ft</td>
+    <td>&dollar;2938&mdash;2978 / month</td>
+    <td>X04</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x04.pdf" target="_blank">View</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>2</td>
+    <td>1031 sq ft</td>
+    <td>&dollar;2990&mdash;3020 / month</td>
+    <td>X09</td>
+    <td>4</td>
+    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x09.pdf" target="_blank">View</a></td>
+  </tr>
+</table>
 
 <div class="show-contact primary buttons">Contact Us</div>

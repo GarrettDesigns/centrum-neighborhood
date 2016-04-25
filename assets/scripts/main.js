@@ -71,6 +71,8 @@
           navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
         });
 
+        $('.availability-table').stacktable({myClass: 'stacked-table', headIndex: 4 });
+
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
           $('.gallery-modal').removeClass('open');
@@ -101,7 +103,6 @@
 
 
         $('.amenity-close-button').on('click', function() {
-
           var thisItem = $(this);
           var parentListItems = thisItem.parents('li');
           var siblingListItems = parentListItems.siblings();
@@ -115,7 +116,6 @@
         });
 
         $('.load-next-gallery').on('click', function(e) {
-
           var thisItem = $(this);
           var parentListItems = thisItem.parents('li');
 
@@ -123,6 +123,8 @@
           thisItem.parent().fadeOut();
           parentListItems.next().find('.gallery-modal').fadeIn();
         });
+
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -218,7 +220,7 @@
             path: 'M16,0.33A15.67,15.67,0,0,0,.33,16c0,8.65,13.33,26,16.33,30,4.33-5.67,15-21.35,15-30A15.67,15.67,0,0,0,16,.33Zm0.71,20.33a4.23,4.23,0,0,0,2.68-1,0.4,0.4,0,0,1,.52,0l1.56,1.66a0.4,0.4,0,0,1,0,.54,6.86,6.86,0,0,1-4.86,1.94,7.2,7.2,0,1,1,0-14.4,6.72,6.72,0,0,1,4.84,1.86,0.37,0.37,0,0,1,0,.56L19.89,13.5a0.35,0.35,0,0,1-.5,0,4.09,4.09,0,0,0-2.7-1,4,4,0,0,0-3.92,4.12A4,4,0,0,0,16.71,20.67Z',
             fillColor: '#173e73',
             fillOpacity: 1,
-            scale: 1.5,
+            scale: 1.15,
             strokeColor: '#173e73',
             strokeWeight: 1,
             zIndex: 3
@@ -229,7 +231,7 @@
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
             // How zoomed in you want the map to start at (always required)
-            zoom: 17,
+            zoom: 16,
 
             mapTypeControl: false,
 
@@ -547,11 +549,16 @@
             map: map,
             icon: categories.centrum,
             title: 'Centrum Lakeview',
+            zIndex: 999,
             position: {lat: 41.9436346, lng: -87.6717325}
           });
           for (var categoryName in categories) {
             // Adds markers to the map.
             setMarkers(map, categories[categoryName], lakeviewLocations[categoryName], categoryName);
+          }
+
+          if($('.neighborhood-map-modal.mobile')) {
+            map.setOptions({draggable: false});
           }
 
           map.addListener('click', function() {
