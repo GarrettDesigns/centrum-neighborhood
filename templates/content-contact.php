@@ -14,9 +14,9 @@
 				<fieldset class="calendar">
 					<label class="form-section-heading" for="calendar">Move in date</label>
 					<ul class="calendar-ctrls">
-						<li class="previous-year"><img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/images/chevron.svg" data-direction="left" alt="left facing chevron"></li>
+						<li class="previous-year"><img class="iconic" data-src="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/chevron.svg" data-direction="left" alt="left facing chevron"></li>
 						<li class="calendar-year"><input type="text" name="MERGE4" id="MERGE4"></li>
-						<li class="next-year"><img class="iconic" data-src="<?= get_template_directory_uri(); ?>/dist/images/chevron.svg" alt="right facing chevron"></li>
+						<li class="next-year"><img class="iconic" data-src="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/chevron.svg" alt="right facing chevron"></li>
 					</ul>
 					<ul class="calendar-months-list">
 						<li class="calendar-month"><label for="MERGE3-0">jan</label><input type="radio" name="MERGE3" class="calendar-month-name" value="Jan" id="MERGE3-0"></li>

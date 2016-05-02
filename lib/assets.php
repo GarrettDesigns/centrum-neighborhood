@@ -96,3 +96,33 @@ function assets() {
   wp_localize_script( 'sage_js', 'map_locations', $map_location_data );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+function my_custom_login() {
+echo '<link rel="stylesheet" type="text/css" href="' . asset_path('styles/custom-login-styles.css') . '" />';
+}
+add_action('login_head',  __NAMESPACE__ . '\\my_custom_login');
+
+function my_login_logo_url() {
+return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', __NAMESPACE__ . '\\my_login_logo_url' );
+
+function my_login_logo_url_title() {
+return 'www.centrumlakeview.com';
+}
+add_filter( 'login_headertitle', __NAMESPACE__ . '\\my_login_logo_url_title' );
+
+function login_error_override()
+{
+    return 'Incorrect login details.';
+}
+add_filter('login_errors', __NAMESPACE__ . '\\login_error_override');
+
+function login_checked_remember_me() {
+add_filter( 'login_footer', __NAMESPACE__ . '\\rememberme_checked' );
+}
+add_action( 'init', __NAMESPACE__ . '\\login_checked_remember_me' );
+
+function rememberme_checked() {
+echo "<script>document.getElementById('rememberme').checked = true;</script>";
+}

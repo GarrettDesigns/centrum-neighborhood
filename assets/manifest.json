@@ -32,6 +32,11 @@
         "../bower_components/stacktable.js/stacktable.css"
       ]
     },
+    "custom-login-styles.css": {
+      "files": [
+        "styles/login/custom-login-styles.css"
+      ]
+    },
     "jquery.js": {
       "bower": ["jquery"]
     },

@@ -26,6 +26,7 @@
         var navCloseIcon = $('.main-menu-close');
         var navItems = $('.nav-items-group');
         var pageHeader = $('.page-header');
+				var galleryModal = $('.gallery-modal');
 
         navMenuIcon.on('click', function(event) {
       		navItems.addClass('show-nav');
@@ -56,26 +57,24 @@
             }
           });
         });
-        //
-        $('.gallery-slider').owlCarousel({
-          animateOut: 'fadeOut',
-          items:1,
-          margin: 30,
-          smartSpeed:450,
-          lazyLoad: true,
-          nav: true,
-          dots: false,
-          responsiveRefreshRate: 0,
-          responsiveBaseElement: '.gallery-slider',
-          loop: true,
-          navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
-        });
 
         $('.availability-table').stacktable({myClass: 'stacked-table', headIndex: 4 });
 
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
-          $('.gallery-modal').removeClass('open');
+          $('.gallery-slider').owlCarousel({
+            animateOut: 'fadeOut',
+            items:1,
+            margin: 30,
+            smartSpeed:450,
+            nav: true,
+            dots: false,
+            responsiveRefreshRate: 0,
+            responsiveBaseElement: '.gallery-slider',
+            loop: true,
+            navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
+          });
+          galleryModal.removeClass('open');
           $(this).parents('li').find('.gallery-modal').addClass('open').fadeIn('slow');
         });
 
@@ -120,11 +119,9 @@
           var parentListItems = thisItem.parents('li');
 
           e.preventDefault();
-          thisItem.parent().fadeOut();
-          parentListItems.next().find('.gallery-modal').fadeIn();
+          galleryModal.removeClass('open');
+          parentListItems.next().find('.gallery-modal').addClass('open').fadeIn('slow');
         });
-
-
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

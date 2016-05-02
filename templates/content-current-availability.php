@@ -23,7 +23,7 @@
     <td>&dollar;1734 / month</td>
     <td>203</td>
     <td>1</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/203.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/203.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>S</td>
@@ -32,7 +32,7 @@
     <td>&dollar;1744&mdash;1774 / month</td>
     <td>X03</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x03.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri()); ?>/dist/images/x03.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -41,7 +41,7 @@
     <td>&dollar;2099 / month</td>
     <td>202</td>
     <td>1</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/202.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/202.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -50,7 +50,7 @@
     <td>&dollar;2080 / month</td>
     <td>507</td>
     <td>1</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/507.pdf" target="_blank">View</a></td>
+    <td> <a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/507.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -59,7 +59,7 @@
     <td>&dollar;2109&mdash;2139 / month</td>
     <td>X02</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x02.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x02.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -68,7 +68,7 @@
     <td>&dollar;2599&mdash;2629 / month</td>
     <td>X05</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x05.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x05.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -77,7 +77,7 @@
     <td>&dollar;2034&mdash;2074 / month</td>
     <td>X06</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x06.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x06.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -86,7 +86,7 @@
     <td>&dollar;2040&mdash;2080 / month</td>
     <td>X07</td>
     <td>3</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x07.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x07.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>1</td>
@@ -95,7 +95,7 @@
     <td>&dollar;2102&mdash;2142 / month</td>
     <td>X08</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x08.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x08.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>2</td>
@@ -104,7 +104,7 @@
     <td>&dollar;2938 / month</td>
     <td>204</td>
     <td>1</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/204.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/204.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>2</td>
@@ -113,7 +113,7 @@
     <td>&dollar;2990&mdash;3020 / month</td>
     <td>X01</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x01.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x01.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>2</td>
@@ -122,7 +122,7 @@
     <td>&dollar;2938&mdash;2978 / month</td>
     <td>X04</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x04.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x04.pdf" target="_blank">View</a></td>
   </tr>
   <tr>
     <td>2</td>
@@ -131,7 +131,7 @@
     <td>&dollar;2990&mdash;3020 / month</td>
     <td>X09</td>
     <td>4</td>
-    <td><a href="<?= get_template_directory_uri(); ?>/dist/images/x09.pdf" target="_blank">View</a></td>
+    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x09.pdf" target="_blank">View</a></td>
   </tr>
 </table>
 

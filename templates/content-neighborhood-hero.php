@@ -1,11 +1,11 @@
-<h2 class="neighborhood-hero--heading"><?php the_field('neighborhood_title'); ?></h2>
+<h2 class="neighborhood-hero--heading"><?php the_field( 'neighborhood_title' ); ?></h2>
 <p class="neighborhood-hero--content">
-  <?php the_field('neighborhood_content'); ?>
+  <?php the_field( 'neighborhood_content' ); ?>
 </p>
 <a href="#" class="map-modal-button primary buttons">check it out</a>
-<article class="neighborhood-map-modal <?php if(wp_is_mobile()) { echo "mobile"; } ?>">
+<article class="neighborhood-map-modal <?php if ( wp_is_mobile() ) { echo 'mobile'; } ?>">
   <button class="close-map">
-    <img class="iconic" src="<?= get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
+    <img class="iconic" src="<?php echo get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
   </button>
   <div class="map-legend">
     <h2 class="map-legend--title">welcome to<br> lakeview</h2>
