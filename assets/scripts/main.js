@@ -119,8 +119,8 @@
           var parentListItems = thisItem.parents('li');
 
           e.preventDefault();
-          galleryModal.removeClass('open');
-          parentListItems.next().find('.gallery-modal').addClass('open').fadeIn('slow');
+          galleryModal.fadeOut().removeClass('open');
+          parentListItems.next().find('.gallery-modal').addClass('open').fadeIn();
         });
       },
       finalize: function() {
