@@ -26,9 +26,9 @@
 					<?php if ( have_rows( 'gallery_images' ) ) : while ( have_rows( 'gallery_images' ) ) : the_row(); ?>
 						<div class="gallery-slide">
 							<?php if ( ! wp_is_mobile() ) : ?>
-								<img src="<?php echo esc_url( get_sub_field( 'gallery_image' )['sizes']['large'] ); ?>">
+								<img src="<?php echo get_sub_field( 'gallery_image' )['sizes']['large']; ?>">
 							<?php else : ?>
-								<img src="<?php echo esc_url( get_sub_field( 'gallery_image' )['sizes']['thumbnail'] ); ?>">
+								<img src="<?php echo get_sub_field( 'gallery_image' )['sizes']['thumbnail']; ?>">
 							<?php endif; ?>
 							<!-- <h2 class="gallery--image-name"><?php the_sub_field( 'gallery_image_name' ); ?></h2> -->
 						</div>
