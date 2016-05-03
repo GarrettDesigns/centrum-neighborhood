@@ -757,7 +757,7 @@ a.gallery-button.mobile.primary.buttons {
   text-align: center;
   &.left {
     color: white;
-    top: -130px;
+    top: -80px;
     width: 400px;
     z-index: 999;
     padding: 370px 43px 670px;
@@ -1032,7 +1032,7 @@ a.gallery-button.mobile.primary.buttons {
 			align-items: center;
 			@include breakpoint(max-width $sm-tablet) {
 				width: auto;
-				margin-bottom: 100px;
+				margin: 0 auto 100px;
 			}
 		}
 		&:last-child {
