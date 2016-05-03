@@ -1,4 +1,4 @@
-<h2 class="current-availability--heading">Testing Current Availability</h2>
+<h2 class="current-availability--heading">Current Availability</h2>
 <!-- <ul class="bedroom-options">
   <li class="bedroom-options--label">Number of Bedrooms</li>
   <li class="bedroom-options--item">All</li>
