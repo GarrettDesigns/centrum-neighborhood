@@ -15,6 +15,9 @@
   &--list {
     color: gc(brand-colors, secondary-blue);
 		text-align: center;
+		&:nth-child(2) {
+			margin-top: 30px;
+		}
     &:last-child {
       margin-right: 0;
     }
