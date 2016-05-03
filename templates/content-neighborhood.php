@@ -25,7 +25,7 @@
 				<div class="gallery-slider owl-carousel owl-theme">
 					<?php if ( have_rows( 'gallery_images' ) ) : while ( have_rows( 'gallery_images' ) ) : the_row(); ?>
 						<div class="gallery-slide">
-							<?php if ( ! wp_is_mobile() ) : ?>
+							<?php if ( ! wp_is_mobile() ) : ?> 
 								<img src="<?php echo esc_url( get_sub_field( 'gallery_image' )['sizes']['large'] ); ?>">
 							<?php else : ?>
 								<img src="<?php echo esc_url( get_sub_field( 'gallery_image' )['sizes']['large'] ); ?>">
