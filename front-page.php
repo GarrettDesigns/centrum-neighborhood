@@ -45,6 +45,10 @@
     <?php get_template_part('templates/content', 'features-main'); ?>
   </article>
 
+	<article class="vendor-logos">
+		<?php get_template_part('templates/content', 'vendor-logos'); ?>
+	</article>
+
   <article class="interior-view-one">
     <?php get_template_part('templates/content', 'interior-trap'); ?>
   </article>
@@ -57,4 +61,5 @@
     <?php get_template_part('templates/content', 'current-availability'); ?>
     <?php get_template_part('templates/content', 'contact'); ?>
   </article>
+
 <?php endwhile; ?>
