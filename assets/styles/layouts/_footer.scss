@@ -6,16 +6,18 @@
 }
 
 .footer-info {
-  width: 500px;
+  width: 56%;
   margin: 0 auto;
   position: relative;
   @include breakpoint(max-width $sm-tablet) {
     width: 80%;
   }
   &--list {
-    float: left;
     color: gc(brand-colors, secondary-blue);
-    margin-right: 70px;
+		text-align: center;
+		&:nth-child(2) {
+			margin-top: 30px;
+		}
     &:last-child {
       margin-right: 0;
     }
@@ -43,12 +45,17 @@
   }
   &--social-media {
     line-height: 2;
+		display: inline-block;
+		padding-right: 10px;
     color: gc(brand-colors, secondary-blue);
     font-family: $sans-serif-font;
     font-size: $base-font-size/1.25;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+		a {
+			color: gc(brand-colors, secondary-blue);
+		}
   }
 }
 
