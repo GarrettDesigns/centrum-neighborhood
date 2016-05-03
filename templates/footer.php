@@ -7,9 +7,9 @@
   </li>
   <li class="footer-info--list">
     <ul>
-      <li class="footer-info--social-media"><a href="https://www.facebook.com/Live-Centrum-1612416582412368">facebook</a></li>
-      <li class="footer-info--social-media"><a href="www.twitter.com/live_centrum">twitter</a></li>
-      <li class="footer-info--social-media"><a href="www.instagram.com/livecentrum">instagram</a></li>
+      <li class="footer-info--social-media"><a href="https://www.facebook.com/Live-Centrum-1612416582412368" target="_blank">facebook</a></li>
+      <li class="footer-info--social-media"><a href="http://www.twitter.com/live_centrum" target="_blank">twitter</a></li>
+      <li class="footer-info--social-media"><a href="http://www.instagram.com/livecentrum" target="_blank">instagram</a></li>
 			<li class="footer-info--item copyright">&copy; LiveCentrum 2016</li>
     </ul>
   </li>
