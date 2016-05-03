@@ -6,13 +6,13 @@
       <li class="footer-info--item">&copy; LiveCentrum 2016</li>
     </ul>
   </li>
-  <!-- <li class="footer-info--list">
+  <li class="footer-info--list">
     <ul>
-      <li class="footer-info--social-media">facebook</li>
-      <li class="footer-info--social-media">twitter</li>
-      <li class="footer-info--social-media">instagram</li>
+      <li class="footer-info--social-media"><a href="https://www.facebook.com/Live-Centrum-1612416582412368">facebook</a></li>
+      <li class="footer-info--social-media"><a href="www.twitter.com/live_centrum">twitter</a></li>
+      <li class="footer-info--social-media"><a href="www.instagram.com/livecentrum">instagram</a></li>
     </ul>
-  </li> -->
+  </li>
   <!-- <li class="footer-info--list">
     <ul>
       <li class="footer-info--item">privacy policy</li>
