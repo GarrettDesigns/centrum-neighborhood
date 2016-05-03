@@ -15,20 +15,20 @@
 				<span class="list-item--text"><?php the_sub_field( 'gallery_name' ); ?></span>
 				<span class="neighborhood-main--color-overlay"></span>
 				<a href="#gallery" class="gallery-button <?php if ( wp_is_mobile() ) { echo 'mobile'; } ?> primary buttons" href="#">View Gallery</a>
-				<img class="gallery--display-image" width='480' height='480' src="<?php echo get_sub_field( 'gallery_tile_image' ); ?>" alt="<?php echo get_sub_field( 'gallery_name' ); ?>">
+				<img class="gallery--display-image" width='480' height='480' src="<?php echo esc_url( get_sub_field( 'gallery_tile_image' ) ); ?>" alt="<?php echo esc_attr( get_sub_field( 'gallery_name' ) ); ?>">
 			</article>
 			<article class="gallery-modal">
 				<button class="gallery-close-button <?php if ( wp_is_mobile() ) { echo 'mobile'; } ?>">
-					<img class="iconic" data-src="<?php echo get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
+					<img class="iconic" data-src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/fonts/x.svg" alt="an x">
 				</button>
 				<h1 class="gallery-name"><?php the_sub_field( 'gallery_name' ); ?></h1>
 				<div class="gallery-slider owl-carousel owl-theme">
 					<?php if ( have_rows( 'gallery_images' ) ) : while ( have_rows( 'gallery_images' ) ) : the_row(); ?>
 						<div class="gallery-slide">
 							<?php if ( ! wp_is_mobile() ) : ?>
-								<img src="<?php echo get_sub_field( 'gallery_image' )['sizes']['large']; ?>">
+								<img src="<?php echo esc_url( get_sub_field( 'gallery_image' )['sizes']['large'] ); ?>">
 							<?php else : ?>
-								<img src="<?php echo get_sub_field( 'gallery_image' )['sizes']['large']; ?>">
+								<img src="<?php echo esc_url( get_sub_field( 'gallery_image' )['sizes']['large'] ); ?>">
 							<?php endif; ?>
 							<!-- <h2 class="gallery--image-name"><?php the_sub_field( 'gallery_image_name' ); ?></h2> -->
 						</div>

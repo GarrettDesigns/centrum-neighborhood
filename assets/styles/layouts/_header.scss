@@ -121,13 +121,13 @@
   		visibility: visible;
   		transition-delay: .5s;
       .menu-item {
-        transform: translateY(-70px);
+        transform: translateY(-40px);
         transition: transform .7s ease-in-out;
-        /*@include breakpoint(min-width $lg-tablet) {
+        @include breakpoint(min-width $lg-tablet) {
           &:nth-child(1) {
             margin-top: -70px;
           }
-        }*/
+        }
         $delay: .35s;
         @for $i from 1 through 6 {
           &:nth-child(#{$i}) {

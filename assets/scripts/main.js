@@ -136,7 +136,6 @@
           e.preventDefault();
           $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
           initMap();
-          console.log(lakeviewLocations);
         });
 
         var lakeviewLocations = {
