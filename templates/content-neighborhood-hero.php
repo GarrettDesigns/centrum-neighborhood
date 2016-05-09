@@ -10,13 +10,13 @@
   <div class="map-legend">
     <h2 class="map-legend--title">welcome to<br> lakeview</h2>
     <ul class="map-legend--list">
-      <li class="map-legend--list-item" data-category="dining"><span class="map-legend--icon dining"></span> restaurant &amp; bars</li>
-      <li class="map-legend--list-item" data-category="grocery"><span class="map-legend--icon grocery"></span> grocery &amp; pharmacy</li>
-      <li class="map-legend--list-item" data-category="fitness"><span class="map-legend--icon fitness"></span> fitness</li>
-      <li class="map-legend--list-item" data-category="salon"><span class="map-legend--icon salon"></span> salon &amp; spa</li>
-      <li class="map-legend--list-item" data-category="coffee"><span class="map-legend--icon coffee"></span> coffee shops</li>
-      <li class="map-legend--list-item" data-category="education"><span class="map-legend--icon education"></span> education</li>
-      <li class="map-legend--list-item" data-category="retail"><span class="map-legend--icon retail"></span> retail stores</li>
+      <li class="map-legend--list-item" data-category="restaurant"><span class="map-legend--icon restaurant"></span> restaurant &amp; bars</li>
+      <li class="map-legend--list-item" data-category="grocery_or_supermarket"><span class="map-legend--icon grocery_or_supermarket"></span> grocery &amp; pharmacy</li>
+      <li class="map-legend--list-item" data-category="gym"><span class="map-legend--icon gym"></span> fitness</li>
+      <li class="map-legend--list-item" data-category="spa"><span class="map-legend--icon spa"></span> salon &amp; spa</li>
+      <li class="map-legend--list-item" data-category="cafe"><span class="map-legend--icon cafe"></span> coffee shops</li>
+      <li class="map-legend--list-item" data-category="school"><span class="map-legend--icon school"></span> education</li>
+      <li class="map-legend--list-item" data-category="store"><span class="map-legend--icon store"></span> retail stores</li>
     </ul>
   </div>
   <div id="map"></div>

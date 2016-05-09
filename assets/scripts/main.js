@@ -148,8 +148,8 @@
           retail: map_locations.lakeview_retail_markers
         };
 
-        var categories = {
-          dining: {
+        var categoryIcons = {
+          restaurant: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#1a6ad6',
             fillOpacity: 0.8,
@@ -158,7 +158,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          grocery: {
+          grocery_or_supermarket: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#e56829',
             fillOpacity: 0.8,
@@ -167,7 +167,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          fitness: {
+          gym: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#edc729',
             fillOpacity: 0.8,
@@ -176,7 +176,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          salon: {
+          spa: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#00a5b9',
             fillOpacity: 0.8,
@@ -185,7 +185,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          coffee: {
+          cafe: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#af3c9b',
             fillOpacity: 0.8,
@@ -194,7 +194,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          education: {
+          school: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#647dd6',
             fillOpacity: 0.8,
@@ -203,7 +203,7 @@
             strokeWeight: 1,
             zIndex: 1
           },
-          retail: {
+          store: {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: '#c84a81',
             fillOpacity: 0.8,
@@ -222,7 +222,7 @@
 					strokeColor: '#173e73',
 					strokeWeight: 1,
 					zIndex: 3
-				}
+				};
 
         // Basic options for a simple Google Map
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -539,6 +539,9 @@
         var map;
 				var service;
         var infoBubble;
+				var requests = {};
+				var markers = [];
+				var categories = ['cafe', 'gym', 'school', 'grocery_or_supermarket', 'spa', 'restaurant', 'store'];
 
         function initMap() {
           map = new google.maps.Map(mapElement, mapOptions);
@@ -568,7 +571,7 @@
 
 				  // The idle event is a debounced event, so we can query & listen without
 				  // throwing too many requests at the server.
-				  map.addListener('idle', addMarkers);
+					map.addListener('idle', performSearch);
 
           if($('.neighborhood-map-modal.mobile')) {
             map.setOptions({draggable: false});
@@ -579,19 +582,17 @@
 	          });
 	        }
 
-					function addMarkers() {
-						for(var categoryName in categories) {
-							performSearch(categories[categoryName], categoryName);
-						}
+				function performSearch() {
+					for(var i = 0; i < categories.length; i++) {
+						var request = {
+							bounds: map.getBounds(),
+							type: categories[i]
+						};
+						requests["request" + i] = request;
 					}
-
-				function performSearch(icon, keyword) {
-
-				  var request = {
-				    bounds: map.getBounds(),
-						keyword: keyword
-				  };
-				  service.radarSearch(request, callback);
+					for(var request in requests) {
+						service.nearbySearch(requests[request], callback);
+					}
 				}
 
 				function callback(results, status) {
@@ -599,86 +600,50 @@
 				    console.error(status);
 				    return;
 				  }
-				  for (var i = 0, result, icon; icon = icon, result = results[i]; i++) {
-				    addMarker(result, icon);
+				  for (var i = 0, result; result = results[i]; i++) {
+				    addMarker(result);
 				  }
 				}
 
 				function addMarker(place) {
-					// Adds markers to the map.
-					for(var categoryName in categories) {
-					  var marker = new google.maps.Marker({
-					    map: map,
-					    position: place.geometry.location,
-					    icon: categories[categoryName],
-							category: categoryName
-					  });
-						console.log(categoryName);
-					}
-
-				  google.maps.event.addListener(marker, 'click', function() {
-				    service.getDetails(place, function(result, status) {
-				      if (status !== google.maps.places.PlacesServiceStatus.OK) {
-				        console.error(status);
-				        return;
-				      }
-				      infoBubble.setContent(result.name);
-				      infoBubble.open(map, marker);
-				    });
+				  var marker = new google.maps.Marker({
+				    map: map,
+				    position: place.geometry.location,
+				    icon: categoryIcons[$(place.types).filter(categories)[0]],
+						category: $(place.types).filter(categories)[0]
 				  });
+					markers.push(marker);
+
+					google.maps.event.addListener(marker, 'click', function() {
+						service.getDetails(place, function(result, status) {
+							if (status !== google.maps.places.PlacesServiceStatus.OK) {
+								console.error(status);
+								return;
+							}
+							infoBubble.setContent(result.name);
+							infoBubble.open(map, marker);
+						});
+					});
 				}
 
-        var markers = [];
-
-        function setMarkers(map, icon, propertyLocation, category) {
-
-          var locationInfo = {};
-
-          for (var locationMarkers in propertyLocation) {
-            var locationMarker = propertyLocation[locationMarkers];
-            var marker = new google.maps.Marker({
-              position: {
-                lat: parseFloat(locationMarker.location_latitude),
-                lng: parseFloat(locationMarker.location_longitude)
-              },
-              map: map,
-              icon: icon,
-              category: category
-            });
-
-            locationInfo.locationDetails = '<div class="location-info">' +
-            '<h2 class="location-title">' + locationMarker.location_name + '</h2>' +
-            '<a class="location-url" href="' + locationMarker.location_link + '">More Info</a>' +
-            '</div>';
-
-            setMarkerContent(marker, locationInfo.locationDetails);
-            markers.push(marker);
-          }
-
-          function setMarkerContent(marker, content) {
-            infoBubble = new InfoBubble({
-              backgroundColor: '#173e73',
-              borderColor: '#173e73',
-              borderRadius: 0,
-              borderWidth: 0,
-              shadowStyle: 0,
-              arrowPosition: 25,
-              arrowStyle: 2,
-              hideCloseButton: true
-            });
-            marker.addListener('click', function() {
-              infoBubble.setContent(content);
-              infoBubble.open(map, marker);
-            });
-          }
-        }
+				function setMarkerContent(marker, content) {
+					infoBubble = new InfoBubble({
+						backgroundColor: '#173e73',
+						borderColor: '#173e73',
+						borderRadius: 0,
+						borderWidth: 0,
+						shadowStyle: 0,
+						arrowPosition: 25,
+						arrowStyle: 2,
+						hideCloseButton: true
+					});
+					marker.addListener('click', function() {
+						infoBubble.setContent(content);
+						infoBubble.open(map, marker);
+					});
+				}
 
         // $('.map-legend--list-item').removeClass('selected');
-
-        // if markers are hidden and another category is clicked
-          // remove the selected class from currently selected category
-          // and add it to this one
-          // if non matching markers are already hidden show them
 
         // When map-legend category is clicked
         $('.map-legend--list-item').on('click', function() {
