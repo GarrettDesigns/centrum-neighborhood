@@ -5,7 +5,7 @@
   <script src="https://use.typekit.net/fmy6gfg.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpurkoh-AspEJhyRZNEazfYZwSYlqTS4o"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpurkoh-AspEJhyRZNEazfYZwSYlqTS4o&libraries=places"></script>
   <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico">
   <?php wp_head(); ?>
 </head>

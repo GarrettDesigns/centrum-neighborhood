@@ -211,17 +211,18 @@
             strokeColor: '#c84a81',
             strokeWeight: 1,
             zIndex: 1
-          },
-          centrum: {
-            path: 'M16,0.33A15.67,15.67,0,0,0,.33,16c0,8.65,13.33,26,16.33,30,4.33-5.67,15-21.35,15-30A15.67,15.67,0,0,0,16,.33Zm0.71,20.33a4.23,4.23,0,0,0,2.68-1,0.4,0.4,0,0,1,.52,0l1.56,1.66a0.4,0.4,0,0,1,0,.54,6.86,6.86,0,0,1-4.86,1.94,7.2,7.2,0,1,1,0-14.4,6.72,6.72,0,0,1,4.84,1.86,0.37,0.37,0,0,1,0,.56L19.89,13.5a0.35,0.35,0,0,1-.5,0,4.09,4.09,0,0,0-2.7-1,4,4,0,0,0-3.92,4.12A4,4,0,0,0,16.71,20.67Z',
-            fillColor: '#173e73',
-            fillOpacity: 1,
-            scale: 1.15,
-            strokeColor: '#173e73',
-            strokeWeight: 1,
-            zIndex: 3
           }
         };
+
+				var centrum = {
+					path: 'M16,0.33A15.67,15.67,0,0,0,.33,16c0,8.65,13.33,26,16.33,30,4.33-5.67,15-21.35,15-30A15.67,15.67,0,0,0,16,.33Zm0.71,20.33a4.23,4.23,0,0,0,2.68-1,0.4,0.4,0,0,1,.52,0l1.56,1.66a0.4,0.4,0,0,1,0,.54,6.86,6.86,0,0,1-4.86,1.94,7.2,7.2,0,1,1,0-14.4,6.72,6.72,0,0,1,4.84,1.86,0.37,0.37,0,0,1,0,.56L19.89,13.5a0.35,0.35,0,0,1-.5,0,4.09,4.09,0,0,0-2.7-1,4,4,0,0,0-3.92,4.12A4,4,0,0,0,16.71,20.67Z',
+					fillColor: '#173e73',
+					fillOpacity: 1,
+					scale: 1.15,
+					strokeColor: '#173e73',
+					strokeWeight: 1,
+					zIndex: 3
+				}
 
         // Basic options for a simple Google Map
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -536,6 +537,7 @@
 
         // Create the Google Map using our element and options defined above
         var map;
+				var service;
         var infoBubble;
 
         function initMap() {
@@ -543,26 +545,88 @@
 
           var marker = new google.maps.Marker({
             map: map,
-            icon: categories.centrum,
+            icon: centrum,
             title: 'Centrum Lakeview',
             zIndex: 999,
             position: {lat: 41.9436346, lng: -87.6717325}
           });
-          for (var categoryName in categories) {
-            // Adds markers to the map.
-            setMarkers(map, categories[categoryName], lakeviewLocations[categoryName], categoryName);
-          }
+
+					// infoWindow = new google.maps.InfoWindow();
+					infoBubble = new InfoBubble({
+						backgroundColor: '#173e73',
+						borderColor: '#173e73',
+						borderRadius: 0,
+						borderWidth: 0,
+						shadowStyle: 0,
+						minWidth: 200,
+						padding: 20,
+						arrowPosition: 25,
+						arrowStyle: 2,
+						hideCloseButton: true
+					});
+				  service = new google.maps.places.PlacesService(map);
+
+				  // The idle event is a debounced event, so we can query & listen without
+				  // throwing too many requests at the server.
+				  map.addListener('idle', addMarkers);
 
           if($('.neighborhood-map-modal.mobile')) {
             map.setOptions({draggable: false});
           }
 
           map.addListener('click', function() {
-            infoBubble.close();
-          });
-        }
+	            infoBubble.close();
+	          });
+	        }
 
+					function addMarkers() {
+						for(var categoryName in categories) {
+							performSearch(categories[categoryName], categoryName);
+						}
+					}
 
+				function performSearch(icon, keyword) {
+
+				  var request = {
+				    bounds: map.getBounds(),
+						keyword: keyword
+				  };
+				  service.radarSearch(request, callback);
+				}
+
+				function callback(results, status) {
+				  if (status !== google.maps.places.PlacesServiceStatus.OK) {
+				    console.error(status);
+				    return;
+				  }
+				  for (var i = 0, result, icon; icon = icon, result = results[i]; i++) {
+				    addMarker(result, icon);
+				  }
+				}
+
+				function addMarker(place) {
+					// Adds markers to the map.
+					for(var categoryName in categories) {
+					  var marker = new google.maps.Marker({
+					    map: map,
+					    position: place.geometry.location,
+					    icon: categories[categoryName],
+							category: categoryName
+					  });
+						console.log(categoryName);
+					}
+
+				  google.maps.event.addListener(marker, 'click', function() {
+				    service.getDetails(place, function(result, status) {
+				      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+				        console.error(status);
+				        return;
+				      }
+				      infoBubble.setContent(result.name);
+				      infoBubble.open(map, marker);
+				    });
+				  });
+				}
 
         var markers = [];
 
