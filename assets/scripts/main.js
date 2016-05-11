@@ -138,16 +138,6 @@
           initMap();
         });
 
-        var lakeviewLocations = {
-          dining: map_locations.lakeview_dining_markers,
-          grocery: map_locations.lakeview_grocery_markers,
-          fitness: map_locations.lakeview_fitness_markers,
-          salon: map_locations.lakeview_salons_markers,
-          coffee: map_locations.lakeview_coffee_markers,
-          education: map_locations.lakeview_education_markers,
-          retail: map_locations.lakeview_retail_markers
-        };
-
         var categoryIcons = {
           restaurant: {
             path: google.maps.SymbolPath.CIRCLE,
@@ -554,7 +544,6 @@
             position: {lat: 41.9436346, lng: -87.6717325}
           });
 
-					// infoWindow = new google.maps.InfoWindow();
 					infoBubble = new InfoBubble({
 						backgroundColor: '#173e73',
 						borderColor: '#173e73',
@@ -625,25 +614,6 @@
 						});
 					});
 				}
-
-				function setMarkerContent(marker, content) {
-					infoBubble = new InfoBubble({
-						backgroundColor: '#173e73',
-						borderColor: '#173e73',
-						borderRadius: 0,
-						borderWidth: 0,
-						shadowStyle: 0,
-						arrowPosition: 25,
-						arrowStyle: 2,
-						hideCloseButton: true
-					});
-					marker.addListener('click', function() {
-						infoBubble.setContent(content);
-						infoBubble.open(map, marker);
-					});
-				}
-
-        // $('.map-legend--list-item').removeClass('selected');
 
         // When map-legend category is clicked
         $('.map-legend--list-item').on('click', function() {

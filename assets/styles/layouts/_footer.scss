@@ -6,15 +6,26 @@
 }
 
 .footer-info {
-  width: 56%;
+  max-width: 510px;
   margin: 0 auto;
   position: relative;
-  @include breakpoint(max-width $sm-tablet) {
-    width: 80%;
-  }
+	&--heading {
+		font-family: $sans-serif-font;
+		font-size: 1.25rem;
+		font-weight: 700;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
   &--list {
     color: gc(brand-colors, secondary-blue);
-		text-align: center;
+		margin-right: 5%;
+		display: inline-block;
+		@include breakpoint(max-width $sm-tablet) {
+			display: block;
+		}
+		&:first-child {
+			margin-right: 15%;
+		}
 		&:nth-child(2) {
 			margin-top: 30px;
 		}
@@ -28,10 +39,6 @@
   }
   &--address {
     line-height: 1.5;
-    text-align: center;
-    @include breakpoint(max-width $sm-tablet) {
-      text-align: left;
-    }
   }
   &--item {;
     line-height: 2;
@@ -41,11 +48,12 @@
     font-size: $base-font-size/1.25;
     font-weight: 700;
     letter-spacing: 1.5px;
-    text-align: center;
+		a {
+			color: gc(brand-colors, secondary-blue);
+		}
   }
   &--social-media {
     line-height: 2;
-		display: inline-block;
 		padding-right: 10px;
     color: gc(brand-colors, secondary-blue);
     font-family: $sans-serif-font;
@@ -64,14 +72,10 @@
     margin-bottom: 20px;
   }
   &-item {
-    @include breakpoint(max-width $custom-mobile) {
-      display: block;
-      text-align: center;
-    }
-  }
-}
-.footer-pipe {
-  @include breakpoint(max-width $custom-mobile) {
-    display: none;
+    display: block;
+		text-align: center;
+		@include breakpoint(max-width $sm-tablet) {
+			text-align: left;
+		}
   }
 }
