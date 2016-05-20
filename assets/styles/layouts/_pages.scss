@@ -27,7 +27,7 @@ body.show-nav {
 
 .page-header {
   position: relative;
-  background: url('../../assets/images/centrum-property.jpg') center center no-repeat;
+  background: url('../images/wickerpark-render.jpg') center center no-repeat;
   background-size: cover;
   min-height: 925px;
   z-index: 0;
@@ -112,7 +112,9 @@ body.show-nav {
 } // End .mission-body
 
 .amenities {
-  opacity: .99;
+  &.map-active {
+		opacity: .99;
+	}
   &-hero {
     width: 100%;
     max-height: 1000px;
@@ -221,30 +223,34 @@ body.show-nav {
     text-transform: uppercase;
     margin-top: 250px;
     margin-bottom: 20px;
-    @include breakpoint($sm-mobile $lg-tablet) {
+    @include breakpoint($sm-mobile $sm-laptop) {
       margin-top: 0;
     }
-    } // End .amenities--trap-heading
+  } // End .amenities--trap-heading
   &-body {
     line-height: 1.5;
     max-width: 445px;
+		@include breakpoint($sm-mobile $sm-laptop) {
+      margin: 0 auto;
+    }
   } // End .amenities--trap-body
 } // End .amenities--trap
 
 .amenities--trap-article {
   position: absolute;
   color: white;
-  top: 0;
+  top: -80px;
   width: 385px;
   z-index: 2;
   padding: 329px 50px 520px;
   text-align: center;
   right: 0;
   background: url('../../assets/images/interior-trapezoid.svg') no-repeat -20px 0;
-  @include breakpoint($sm-mobile $lg-tablet) {
+  @include breakpoint($sm-mobile $sm-laptop) {
     padding: 20px;
     background: transparentize(gc(brand-colors, main-blue), 0.3);
     position: static;
+		text-align: center;
     width: 80%;
     margin: 50% auto 0;
   }
@@ -302,12 +308,9 @@ body.show-nav {
     text-align: center;
     z-index: 0;
     color: gc(brand-colors, secondary-blue);
-    background: url('../../assets/images/neighborhood.png') center center no-repeat;
+    background: url('../images/wickerpark-render.jpg') center center no-repeat;
     background-size: cover;
     position: relative;
-    @include breakpoint(max-width $md-desktop) {
-      background-position: center 110px;
-    }
     &--heading {
       text-transform: uppercase;
       color: inherit;
@@ -568,6 +571,9 @@ a.gallery-button.mobile.primary.buttons {
       @extend %display-flexbox;
       flex-flow: row wrap;
       margin-right: 40px;
+			@include breakpoint(min-width $lg-tablet) {
+				width: 50%;
+			}
       &-heading {
         margin-left: -20px;
         font-size: $base-font-size * 1.5;
@@ -764,7 +770,7 @@ a.gallery-button.mobile.primary.buttons {
     text-align: center;
     left: 0;
     background: url('../../assets/images/trap-left.svg') no-repeat -20px 0;
-    @include breakpoint($sm-mobile $lg-tablet) {
+    @include breakpoint($sm-mobile $sm-laptop) {
       padding: 20px;
       background: transparentize(gc(brand-colors, main-blue), 0.3);
       position: static;
@@ -788,7 +794,7 @@ a.gallery-button.mobile.primary.buttons {
       text-align: center;
       right: 0;
       background: url('../../assets/images/trap-right.svg') no-repeat 0 0;
-      @include breakpoint($sm-mobile $lg-tablet) {
+      @include breakpoint($sm-mobile $sm-laptop) {
         padding: 20px;
         background: transparentize(gc(brand-colors, main-blue), 0.3);
         position: static;

@@ -84,6 +84,7 @@
 
         $('.close-map').on('click', function() {
           $('.neighborhood-map-modal').fadeOut('slow');
+					$('.amenities').removeClass('map-active');
         });
 
         $('.amenities-main--list-item').on('click', 'img', function() {
@@ -136,6 +137,7 @@
           e.preventDefault();
           $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
           initMap();
+					$('.amenities').addClass('map-active');
         });
 
         var categoryIcons = {
@@ -225,7 +227,7 @@
             scrollwheel: false,
 
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(41.9436346, -87.6717325), // Lakeview
+            center: new google.maps.LatLng(41.903592, -87.669462),
 
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
@@ -541,7 +543,7 @@
             icon: centrum,
             title: 'Centrum Lakeview',
             zIndex: 999,
-            position: {lat: 41.9436346, lng: -87.6717325}
+            position: {lat: 41.903592, lng: -87.669462}
           });
 
 					infoBubble = new InfoBubble({

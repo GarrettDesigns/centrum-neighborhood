@@ -12,7 +12,7 @@
 
 <section class="page-header">
 	<article class="site-logo--container">
-		<img class="site-logo" src="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/centrum-lakeview-logo.png" alt="Centrum Lakview Logo">
+		<img class="site-logo" src="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/centrum-wicker.svg" alt="Centrum Lakview Logo">
 		<p class="tagline"><?php the_field( 'tagline' ); ?></p>
 	</article>
 

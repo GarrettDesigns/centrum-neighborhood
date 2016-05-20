@@ -17,7 +17,8 @@
     "owl.carousel": "original-owl-carousel#^2.0.0-beta.3",
     "modular-scale": "^2.1.3",
     "slick-carousel": "slick.js#^1.5.9",
-    "stacktable.js": "stackable.js#^1.0.1"
+    "stacktable.js": "stackable.js#^1.0.1",
+    "js-info-bubble": "*"
   },
   "overrides": {
     "modernizr": {

@@ -38,6 +38,9 @@
     "stacktable.js": {
       "bower": ["stacktable.js"]
     },
+		"infobubble.js": {
+      "bower": ["js-info-bubble"]
+    },
     "owl-carousel.js": {
       "bower": ["owl.carousel"]
     },
