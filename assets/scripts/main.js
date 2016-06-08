@@ -227,7 +227,7 @@
             scrollwheel: false,
 
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(41.903592, -87.669462),
+            center: new google.maps.LatLng(41.9137936,-87.6817372),
 
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
@@ -543,7 +543,7 @@
             icon: centrum,
             title: 'Centrum Lakeview',
             zIndex: 999,
-            position: {lat: 41.903592, lng: -87.669462}
+            position: {lat: 41.9137936, lng: -87.6817372}
           });
 
 					infoBubble = new InfoBubble({

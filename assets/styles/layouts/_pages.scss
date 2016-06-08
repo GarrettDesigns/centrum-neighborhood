@@ -27,11 +27,12 @@ body.show-nav {
 
 .page-header {
   position: relative;
-  background: url('../../assets/images/wickerpark-render.jpg') center center no-repeat;
+  background: url('../../assets/images/bucktown-render.jpg') center center no-repeat;
   background-size: cover;
   min-height: 925px;
   z-index: 0;
   opacity: 1;
+	padding-bottom: 250px;
   visibility: visible;
   transition: opacity 0.6s, visibility 1s;
   transition-timing-function: ease-in-out;
@@ -304,7 +305,7 @@ body.show-nav {
     text-align: center;
     z-index: 0;
     color: gc(brand-colors, secondary-blue);
-    background: url('../../assets/images/wickerpark-render.jpg') center center no-repeat;
+    background: url('../../assets/images/bucktown-render.jpg') center center no-repeat;
     background-size: cover;
     position: relative;
     &--heading {

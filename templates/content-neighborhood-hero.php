@@ -8,7 +8,7 @@
     <img class="iconic" src="<?php echo get_template_directory_uri(); ?>/dist/fonts/x.svg" alt="an x">
   </button>
   <div class="map-legend">
-    <h2 class="map-legend--title">welcome to<br> lakeview</h2>
+    <h2 class="map-legend--title">welcome to<br> bucktown</h2>
     <ul class="map-legend--list">
       <li class="map-legend--list-item" data-category="restaurant"><span class="map-legend--icon restaurant"></span> restaurant &amp; bars</li>
       <li class="map-legend--list-item" data-category="grocery_or_supermarket"><span class="map-legend--icon grocery_or_supermarket"></span> grocery &amp; pharmacy</li>
