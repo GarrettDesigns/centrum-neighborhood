@@ -15,7 +15,7 @@ body.show-nav {
 } // End .main-header
 
 .tagline {
-  color: white;
+  color: gc(brand-colors, secondary);
   text-align: center;
   margin-top: 100px;
   font-weight: bold;
@@ -26,96 +26,82 @@ body.show-nav {
 }
 
 .page-header {
-  position: relative;
-  background: url('../../assets/images/bucktown-render.jpg') center center no-repeat;
-  background-size: cover;
+  position: relative; 
   min-height: 925px;
   z-index: 0;
   opacity: 1;
-	padding-bottom: 250px;
   visibility: visible;
   transition: opacity 0.6s, visibility 1s;
   transition-timing-function: ease-in-out;
-  &.show-nav {
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../../assets/images/centrum-property.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      -webkit-filter: grayscale(1);
+      filter: grayscale(1);
+      background-size: cover;
+      }
+    &.show-nav {
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
-  } // End .page-header.show-nav
-  &:after {
-    content: '';
-    background: $white;
-    transform: skewY(-3deg);
-    transform-origin: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 200px;
-    width: 100%;
-    z-index: 2;
-  } // End .page-header:after
-  .color-overlay {
-    position: absolute;
-    background:transparentize(gc(brand-colors, main-blue), 0.1);
-    z-index: 1;
-    opacity: 0;
-    animation: fade-in 2s ease-out 700ms both;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: block;
-    height: 100%;
-    width: 100%;
-    &:after {
-      content: '';
-      background: $white;
-      transform: skewY(-3deg);
-      transform-origin: 100%;
-      position: absolute;
-      bottom: 0;
-      height: 200px;
-      width: 100%;
-      z-index: 2;
-    } // End .page-header:after
-  } // End .page-header:before
-  &--content {
-    z-index: 9999;
-    width: 85%;
-    padding-top:  60px;
-    position: relative;
-    margin: 0 auto;
-    z-index: 5;
+} // End .page-header.show-nav
+.color-overlay {
+  position: absolute;
+  background:transparentize(gc(brand-colors, main), 0.25);
+  z-index: 1;
+  opacity: 0;
+  animation: fade-in 2s ease-out 700ms both;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  height: 100%;
+  width: 100%;
+} // End .page-header:before
+&--content {
+  z-index: 9999;
+  width: 85%;
+  padding-top:  60px;
+  position: relative;
+  margin: 0 auto;
+  z-index: 5;
   } // End .page-header-content
 } // End .page-header
 
 .mission-body {
-  color: gc(brand-colors, secondary-blue);
-  position: relative;
-  max-width: 55%;
-  margin: 0 auto;
+  color: $white;
+  background: gc(brand-colors, main);
   text-align: center;
   z-index: 7;
-  margin-top: -50px;
-  padding-bottom: 100px;
+  padding: 80px 0;
+  &--content {
+  font-size: $base-font-size * 1.15;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  max-width: 55%;
+  margin: 0 auto;
+  line-height: $base-line-height / .85;
+  font-weight: 400;
   @include breakpoint(max-width $lg-tablet) {
     max-width: 75%;
   }
-  &--content {
-    font-size: $base-font-size * 2.5;
-    line-height: $base-line-height / .55;
-    font-weight: 400;
-    @include breakpoint(max-width $sm-tablet) {
-      font-size: $base-font-size * 1.5;
-      margin-top: -100px;
-    }
-  } // End .mission-body--content
+  @include breakpoint(max-width $sm-tablet) {
+    font-size: $base-font-size * 1.5;
+    margin-top: -100px;
+  }
+} // End .mission-body--content
 } // End .mission-body
 
 .amenities {
-  &.map-active {
-		opacity: .99;
-	}
+  opacity: .99;
   &-hero {
     width: 100%;
     max-height: 1000px;
@@ -124,79 +110,79 @@ body.show-nav {
     @include breakpoint($sm-mobile $lg-tablet) {
       display: inline-block;
       width: 100%;
-    }
-  } // End .amenities-hero
-  &-main {
-    background: gc(brand-colors, secondary-blue);
-    position: relative;
-    @include breakpoint($sm-mobile $sm-tablet) {
-      display: inline-block;
-      width: 100%;
-    }
-    &:after {
-      content: '';
-      @include triangle(down, 40px, gc(brand-colors, secondary-blue));
-      position: absolute;
-      bottom: -80px;
-      margin-left: 47.5%;
-    }
-    &--content {
-      max-width: 69%;
-      height: 189px;
-      margin: auto;
-      z-index: 7;
-      padding: 10% 0;
-    } // End .amenities-main--content
-    &--heading {
-      color: $white;
-      font-family: $sans-serif-font;
-      text-align: center;
-      min-height: 30px;
-      letter-spacing: 2px;
-      font-size: $base-font-size*1.5;
-      padding-bottom: 60px;
-      text-transform: uppercase;
-    } // End .amenities-main--heading
-    &--list {
+  }
+} // End .amenities-hero
+&-main {
+  background: gc(brand-colors, primary);
+  position: relative;
+  @include breakpoint($sm-mobile $sm-tablet) {
+    display: inline-block;
+    width: 100%;
+  }
+  &:after {
+    content: '';
+    @include triangle(down, 40px, gc(brand-colors, secondary));
+    position: absolute;
+    bottom: -80px;
+    margin-left: 47.5%;
+  }
+  &--content {
+    max-width: 69%;
+    height: 189px;
+    margin: auto;
+    z-index: 7;
+    padding: 10% 0;
+  } // End .amenities-main--content
+  &--heading {
+    color: $white;
+    font-family: $sans-serif-font;
+    text-align: center;
+    min-height: 30px;
+    letter-spacing: 2px;
+    font-size: $base-font-size*1.5;
+    padding-bottom: 60px;
+    text-transform: uppercase;
+  } // End .amenities-main--heading
+  &--list {
+    @extend %display-flexbox;
+    justify-content: space-around;
+    &-item {
       @extend %display-flexbox;
-      justify-content: space-around;
-      &-item {
+      z-index: 7;
+      flex-flow: row wrap;
+      img {
         @extend %display-flexbox;
-        z-index: 7;
-        flex-flow: row wrap;
-        img {
-          @extend %display-flexbox;
-          width: 100px;
-          cursor: pointer;
-          max-height: 100px;
-          flex: 1 100%;
-          align-items: center;
-          margin-right: 0;
+        width: 100px;
+        cursor: pointer;
+        max-height: 100px;
+        flex: 1 100%;
+        align-items: center;
+        margin-right: 0;
+        transition: margin 1s ease-out 0.5s;
+        &.detail-view {
           transition: margin 1s ease-out 0.5s;
-          &.detail-view {
+          margin-right: 490px;
+        }
+      }
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          img.detail-view {
             transition: margin 1s ease-out 0.5s;
-            margin-right: 490px;
+            margin-right: 490px - ($i*10px);
           }
         }
-        @for $i from 1 through 3 {
-          &:nth-child(#{$i}) {
-            img.detail-view {
-              transition: margin 1s ease-out 0.5s;
-              margin-right: 490px - ($i*10px);
-            }
+      }
+      @for $i from 5 through 8 {
+        &:nth-child(#{$i}) {
+          img.detail-view {
+            transition: margin 1s ease-out 0.5s;
+            margin-right: 490px + ($i*15px);
           }
         }
-        @for $i from 5 through 8 {
-          &:nth-child(#{$i}) {
-            img.detail-view {
-              transition: margin 1s ease-out 0.5s;
-              margin-right: 490px + ($i*15px);
-            }
-          }
-        }
-      } // End .amenities-main--list-item
-    } // End .amenities-main--list
-  } // End .amenities-main
+      }
+    } // End .amenities-main--list-item
+  } // End .amenities-main--list
+} // End .amenities-main
 } // End .amenities
 
 .fade-in {
@@ -220,37 +206,38 @@ body.show-nav {
 .amenities--trap {
   &-heading {
     font-size: $base-font-size*1.5;
+    color: gc(brand-colors, secondary);
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-top: 250px;
     margin-bottom: 20px;
     @include breakpoint($sm-mobile $lg-tablet) {
       margin-top: 0;
-    }
-    } // End .amenities--trap-heading
+  }
+  } // End .amenities--trap-heading
   &-body {
     line-height: 1.5;
     max-width: 445px;
-  } // End .amenities--trap-body
+} // End .amenities--trap-body
 } // End .amenities--trap
 
 .amenities--trap-article {
   position: absolute;
   color: white;
-  top: -80px;
+  top: 0;
   width: 385px;
   z-index: 2;
   padding: 329px 50px 520px;
   text-align: center;
   right: 0;
-  background: url('../../assets/images/interior-trapezoid.svg') no-repeat -20px 0;
-  @include breakpoint($sm-mobile $sm-laptop) {
+  background: url('../../assets/images/interior-trapezoid.png') no-repeat -20px 0;
+  @include breakpoint($sm-mobile $lg-tablet) {
     padding: 20px;
-    background: transparentize(gc(brand-colors, main-blue), 0.3);
+    background: transparentize(gc(brand-colors, main), 0.3);
     position: static;
     width: 80%;
     margin: 50% auto 0;
-  }
+}
 } // End .amenities--trap-article
 
 .amenity-description {
@@ -272,15 +259,15 @@ body.show-nav {
     text-transform: uppercase;
     margin-top: 45%;
     letter-spacing: 2px;
-  }
-  &--text {
-    margin-top: 20px;
-  }
-  &.animate-in {
-    transition: right 1s ease-out 0.5s;
-    right: 0;
-    z-index: 5;
-  }
+}
+&--text {
+  margin-top: 20px;
+}
+&.animate-in {
+  transition: right 1s ease-out 0.5s;
+  right: 0;
+  z-index: 5;
+}
 }
 
 .amenity-close-button {
@@ -299,73 +286,88 @@ body.show-nav {
 
 .neighborhood {
   &-hero {
+   .background-image {
+       z-index: -1;
+       position: absolute;
+       top: 0;
+       left: 0;
+       background-image: url('../../assets/images/neighborhood.png');
+       background-repeat: no-repeat;
+       background-position: center center;
+       background-size: cover;
+       -webkit-filter: saturate(.25);
+       filter: saturate(.25);
+       width: 100%;
+       height: 100%;
+    }
     max-height: 850px;
     min-height: 850px;
     padding-top: 110px;
     text-align: center;
     z-index: 0;
-    color: gc(brand-colors, secondary-blue);
-    background: url('../../assets/images/bucktown-render.jpg') center center no-repeat;
-    background-size: cover;
+    color: gc(brand-colors, secondary);
     position: relative;
-    &--heading {
-      text-transform: uppercase;
-      color: inherit;
-      font-size: $base-font-size * 1.5;
-      font-weight: 500;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    } // End .neighborhood-hero--heading
-    &--content {
-      max-width: 35%;
-      margin: 0 auto;
-      font-size: $base-font-size * 1.25;
-      line-height: $base-line-height / .75;
-      font-weight: 400;
-    } // End .neighborhood-hero--content
-  } // End .neighborhood-hero
+    @include breakpoint(max-width $md-desktop) {
+      background-position: center 110px;
+  }
+  &--heading {
+    text-transform: uppercase;
+    color: inherit;
+    font-size: $base-font-size * 1.5;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  } // End .neighborhood-hero--heading
+  &--content {
+    max-width: 35%;
+    margin: 0 auto;
+    font-size: $base-font-size * 1.25;
+    line-height: $base-line-height / .75;
+    font-weight: 400;
+  } // End .neighborhood-hero--content
+} // End .neighborhood-hero
 
-  @at-root {
-    .neighborhood-map-modal {
-      display: none;
-      .map {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-      .close-map {
-        position: absolute;
-        color: white;
-        background: gc(brand-colors, secondary-blue);
-        padding: 10px 10px 10px 40px;
-        outline: none;
-        border: none;
-        max-height: 50px;
-        max-width: 100px;
-        top: 20px;
-        left: 0;
-        cursor: pointer;
-        z-index: 9999;
-      }
+@at-root {
+  .neighborhood-map-modal {
+    display: none;
+    .map {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .close-map {
+      position: absolute;
+      color: white;
+      background: gc(brand-colors, secondary);
+      padding: 10px 10px 10px 40px;
+      outline: none;
+      border: none;
+      max-height: 50px;
+      max-width: 100px;
+      top: 20px;
+      left: 0;
+      cursor: pointer;
+      z-index: 9999;
     }
   }
-  &-main {
+}
+&-main {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  &--lifestyle-list {
     position: relative;
-    overflow: hidden;
+    float: left;
     width: 100%;
-    &--lifestyle-list {
-      position: relative;
+    &-item {
       float: left;
-      width: 100%;
-      &-item {
-          float: left;
-          width: 33.3333333%;
-          @include breakpoint(max-width $lg-tablet) {
-            float: none;
-            width: 100%;
-          }
+      width: 33.3333333%;
+      @include breakpoint(max-width $lg-tablet) {
+        float: none;
+        width: 100%;
+        }
         .list-item-main {
           padding: 45% 0;
           color: $white;
@@ -384,18 +386,18 @@ body.show-nav {
               z-index: 8;
               position: relative;
               transition: all 0.5s;
-            } // End .list-item--text
-          } // End @at-root
-        } // End .neighborhood-main--lifestyle-list-item .list-item-main
-      } // End .neighborhood-main--lifestyle-list-item
-    } // End .neighborhood-main--lifestyle-list
-  } // End .neighborhood-main
+          } // End .list-item--text
+        } // End @at-root
+      } // End .neighborhood-main--lifestyle-list-item .list-item-main
+    } // End .neighborhood-main--lifestyle-list-item
+  } // End .neighborhood-main--lifestyle-list
+} // End .neighborhood-main
 } // End .neighborhood
 
 .map-legend {
   z-index: 999;
   position: absolute;
-  background: transparentize(gc(brand-colors, main-blue), 0.1);
+  background: transparentize(gc(brand-colors, main), 0.1);
   color: white;
   font-family: brandon-grotesque;
   text-align: left;
@@ -406,52 +408,52 @@ body.show-nav {
   left: 10%;
   @include breakpoint(max-width $lg-tablet) {
     display: none;
+}
+&--title {
+  letter-spacing: 2px;
+  line-height: 1.5;
+  margin-bottom: 70px;
+  padding-left: 12.5px;
+}
+&--list-item {
+  padding: 12.5px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  &:hover {
+    background: transparentize(white, 0.8);
   }
-  &--title {
-    letter-spacing: 2px;
-    line-height: 1.5;
-    margin-bottom: 70px;
-		padding-left: 12.5px;
+  &.selected {
+    background: transparentize(white, 0.8);
   }
-  &--list-item {
-    padding: 12.5px;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    &:hover {
-      background: transparentize(white, 0.8);
-    }
-    &.selected {
-      background: transparentize(white, 0.8);
-    }
-  }
-  &--icon {
-    border-radius: 50px;
-    height: 15px;
-    width: 15px;
-    margin-right: 10px;
-    margin-top: -2px;
-    display: block;
-    float: left;
+}
+&--icon {
+  border-radius: 50px;
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  margin-top: -2px;
+  display: block;
+  float: left;
 
-    $icon-map: (
-      icon-colors: (
-        restaurant: #1a6ad6,
-        grocery_or_supermarket: #e56829,
-        gym: #edc729,
-        spa: #00a5b9,
-        cafe: #af3c9b,
-        school: #647dd6,
-        store: #c84a81
-      )
-    );
+  $icon-map: (
+  icon-colors: (
+  restaurant: #1a6ad6,
+  grocery_or_supermarket: #e56829,
+  gym: #edc729,
+  spa: #00a5b9,
+  cafe: #af3c9b,
+  school: #647dd6,
+  store: #c84a81
+  )
+  );
 
-    @each $name, $color in map-get($icon-map, icon-colors) {
-      &.#{$name} {
-        background: $color;
-      }
+  @each $name, $color in map-get($icon-map, icon-colors) {
+    &.#{$name} {
+      background: $color;
     }
   }
+}
 }
 
 .neighborhood-map-modal.mobile .map-legend {
@@ -459,7 +461,7 @@ body.show-nav {
 }
 
 .neighborhood-main--color-overlay {
-  background: transparentize(gc(brand-colors, main-blue), 0.1);
+  background: transparentize(gc(brand-colors, main), 0.1);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -479,7 +481,7 @@ body.show-nav {
   &.primary.buttons {
     max-width: 30%;
     margin: 0 auto;
-  } // End .gallery-button.primary.buttons
+} // End .gallery-button.primary.buttons
 } // End .gallery-button
 
 .load-next-gallery {
@@ -495,7 +497,7 @@ body.show-nav {
   background: none;
   @include breakpoint(max-width $sm-tablet) {
     right: 25px;
-  }
+}
 } // End .load-next-gallery
 
 .neighborhood-main--lifestyle-list-item:hover {
@@ -503,25 +505,25 @@ body.show-nav {
     opacity: 0;
     transition: all 0.5s;
     z-index: 0;
-  } // End .neighborhood-main--lifestyle-list-item:hover .neighborhood-main--color-overlay
-  .list-item--text {
-    opacity: 0;
-    transition: all 0.5s;
-  } // End .neighborhood-main--lifestyle-list-item:hover .list-item--text
-  .gallery-button {
-    opacity: 1;
-    transform: translateY(0px);
-    transition: all 0.5s ease-out 0.05s;
-    z-index: 999;
-    &.primary.buttons {
-      max-width: 30%;
-      margin: 0 auto;
-      &:hover {
-        background: transparentize(gc(brand-colors, secondary-blue), 0.5);
-        border: 1px solid gc(brand-colors, secondary-blue);
-      } // End .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons:hover
-    } // .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons
-  } // .neighborhood-main--lifestyle-list-item:hover .gallery-button
+} // End .neighborhood-main--lifestyle-list-item:hover .neighborhood-main--color-overlay
+.list-item--text {
+  opacity: 0;
+  transition: all 0.5s;
+} // End .neighborhood-main--lifestyle-list-item:hover .list-item--text
+.gallery-button {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.5s ease-out 0.05s;
+  z-index: 999;
+  &.primary.buttons {
+    max-width: 30%;
+    margin: 0 auto;
+    &:hover {
+      background: transparentize(gc(brand-colors, secondary), 0.5);
+      border: 1px solid gc(brand-colors, secondary);
+    } // End .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons:hover
+  } // .neighborhood-main--lifestyle-list-item:hover .gallery-button.primary.buttons
+} // .neighborhood-main--lifestyle-list-item:hover .gallery-button
 } // .neighborhood-main--lifestyle-list-item:hover
 
 a.gallery-button.mobile.primary.buttons {
@@ -533,16 +535,11 @@ a.gallery-button.mobile.primary.buttons {
 
 .features {
   clear: both;
-  background: gc(brand-colors, secondary-blue);
+  background: gc(brand-colors, main);
   color: $white;
   position: relative;
   padding: 40px;
   &-list {
-		width: 60%;
-		margin: 0 auto;
-		@include breakpoint(max-width $md-desktop) {
-			width: 80%;
-		}
     &--heading {
       text-align: center;
       margin: 0 auto;
@@ -550,57 +547,55 @@ a.gallery-button.mobile.primary.buttons {
       letter-spacing: 2px;
       font-size: $base-font-size * 1.5;
       margin-top: 90px;
-    } // End .features-list--heading
-    &--columns {
-      min-height: 500px;
-      padding-left: 20px;
-      margin: 0 auto;
-      padding-top: 100px;
-      padding-bottom: 40px;
-      @extend %display-flexbox;
-      justify-content: space-around;
+  } // End .features-list--heading
+  &--columns {
+    width: 73%;
+    min-height: 500px;
+    padding-left: 20px;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    @extend %display-flexbox;
+    justify-content: space-around;
+    @include breakpoint(max-width $lg-tablet) {
+      display: block;
+      width: 90%;
+    }
+    @include breakpoint(max-width $mobile) {
+      width: 100%;
+      padding-bottom: 90px;
+    }
+  } // End .features-list--columns
+  &--column {
+    @extend %display-flexbox;
+    flex-flow: row wrap;
+    margin-right: 40px;
+    &-heading {
+      margin-left: -20px;
+      font-size: $base-font-size * 1.5;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      font-family: $sans-serif-font;
+      text-transform: uppercase;
+    }
+    &:last-child {
+      margin-right: 0;
       @include breakpoint(max-width $lg-tablet) {
-        display: block;
-        width: 90%;
+        margin-top: 50px;
       }
-      @include breakpoint(max-width $mobile) {
-        width: 100%;
-        padding-bottom: 90px;
-      }
-    } // End .features-list--columns
-    &--column {
-      @extend %display-flexbox;
-      flex-flow: row wrap;
-      margin-right: 40px;
-			@include breakpoint(min-width $lg-tablet) {
-				width: 50%;
-			}
-      &-heading {
-        margin-left: -20px;
-        font-size: $base-font-size * 1.5;
-        letter-spacing: 2px;
-        margin-bottom: 30px;
-        font-family: $sans-serif-font;
-        text-transform: uppercase;
-      }
-      &:last-child {
-        margin-right: 0;
-        @include breakpoint(max-width $lg-tablet) {
-          margin-top: 50px;
-        }
-      }
-    } // End .features-list--columns
-    &--item {
-      line-height: 1.5;
-      padding-bottom: 10px;
-      font-size: $base-font-size * 1.25;
-      i {
-        margin-left: -20px;
-        margin-top: 3px;
-        float: left;
-      }
-    } // End .features-list--item
-  } // End .features-list
+    }
+  } // End .features-list--columns
+  &--item {
+    line-height: 1.5;
+    padding-bottom: 10px;
+    font-size: $base-font-size * 1.25;
+    i {
+      margin-left: -20px;
+      margin-top: 3px;
+      float: left;
+    }
+  } // End .features-list--item
+} // End .features-list
 } // End .features
 
 .interior-view {
@@ -612,84 +607,44 @@ a.gallery-button.mobile.primary.buttons {
     @include breakpoint($sm-mobile $lg-tablet) {
       display: inline-block;
       width: 100%;
-    }
-  } // End .interior-view-one, .interior-view-two
+  }
+} // End .interior-view-one, .interior-view-two
 } // End .interior-view
 
 .current-availability {
-  background: gc(brand-colors, secondary-blue);
+  background: gc(brand-colors, main);
   min-height: 1200px;
   position: relative;
   padding-bottom: 130px;
-	&:after {
-    content: '';
-    background: white;
-    transform: skewY(3deg);
-    transform-origin: 100%;
-    position: absolute;
-    height: 200px;
-    width: 100%;
-    bottom: -150px;
-  }
-  @at-root {
-    .availability-table {
-      display: table;
-      margin: 0 auto;
-      width: 70%;
-      z-index: 999;
-      text-align: center;
-      color: $white;
-      a {
-        color: white!important;
-        &:hover {
-          text-decoration: underline;
-        }
+@at-root {
+  .availability-table {
+    display: table;
+    margin: 0 auto;
+    width: 70%;
+    z-index: 999;
+    text-align: center;
+    color: $white;
+    a {
+      color: white!important;
+      &:hover {
+        text-decoration: underline;
       }
-      &.small-only {
-        .st-head-row-main {
-          display: none;
-        }
-        .st-head-row {
-          padding: 50px 0 10px;
-        }
-      }
-      &.large-only {
-        .table-head {
-          padding-top: 35px;
-          padding-bottom: 15px;
-        }
-        td {
-          padding-top: 20px;
-        }
-        tr {
-          height: 50px;
-          border-bottom: 1px solid transparentize(white, 0.8);
-        }
-        .st-key, .st-val {
-          text-align: left;
-          padding-top: 20px;
-        }
-      }
-    } // End .availability-table
-
-    .stacked-table {
-      display: table;
-      margin: 0 auto;
-      width: 70%;
-      z-index: 999;
-      text-align: center;
-      color: $white;
-      a {
-        color: white!important;
-        &:hover {
-          text-decoration: underline;
-        }
+    }
+    &.small-only {
+      .st-head-row-main {
+        display: none;
       }
       .st-head-row {
-        .st-key, .st-val {
-          padding-top: 35px;
-          padding-bottom: 15px;
-        }
+        padding: 50px 0 10px;
+      }
+    }
+    &.large-only {
+      .table-head {
+        padding-top: 35px;
+        padding-bottom: 15px;
+      }
+      td {
+        padding-top: 20px;
       }
       tr {
         height: 50px;
@@ -700,60 +655,112 @@ a.gallery-button.mobile.primary.buttons {
         padding-top: 20px;
       }
     }
+  } // End .availability-table
+
+  .stacked-table {
+    display: table;
+    margin: 0 auto;
+    width: 70%;
+    z-index: 999;
+    text-align: center;
+    color: $white;
+    a {
+      color: white!important;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .st-head-row {
+      .st-key, .st-val {
+        padding-top: 35px;
+        padding-bottom: 15px;
+      }
+    }
+    tr {
+      height: 50px;
+      border-bottom: 1px solid transparentize(white, 0.8);
+    }
+    .st-key, .st-val {
+      text-align: left;
+      padding-top: 20px;
+    }
   }
+}
 } // End .current-availability
+
+.options-container {
+  margin: 0 auto;
+  width: 65%;
+  z-index: 999;
+  @include breakpoint(max-width 900px) {
+      width: 83%;
+  }
+}
 
 .bedroom-options {
   color: $white;
-  margin: 0 auto 30px;
-  width: 35%;
+  padding-top: 240px;
+  text-align: center;
+  margin: 0 auto;
+
   @at-root {
     .current-availability--heading {
+      color: $white;
+      font-size: $base-font-size * 1.5;
+      letter-spacing: 1.5px;
       margin: 0 auto 50px;
       padding-top: 130px;
-      width: 70%;
       text-align: center;
-      color: $white;
-      font-size: $base-font-size*1.5;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-    } // End .current-availability--heading
-  }
-  &--label, &--item {
+      width: 70%;
+  } // End .current-availability--heading
+}
+
+&--label,
+    &--item {
     display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 40px;
-  } // End .bedroom-options--label, .bedroom-options--item
-  &--label {
-    font-size: $base-font-size*1.5;
-  }// End .bedroom-options--label
-  &--item {
+  margin-right: 20px;
+  margin-bottom: 40px;
+} // End .bedroom-options--label, .bedroom-options--item
+&--label {
+  font-size: $base-font-size*1.5;
+  @include breakpoint(max-width 900px) {
+      display: block;
+  }
+}// End .bedroom-options--label
+&--item {
+  border: 2px solid $white;
+  border-radius: 50%;
+  padding: 20px 25px;
+  cursor: pointer;
+  font-family: $sans-serif-font;
+  &.selected {
+       background: white;
+       color: gc(brand-colors, main);
+  }
+  &:hover {
+    background: $white;
     border: 2px solid $white;
-    border-radius: 50%;
-    padding: 20px 25px;
-    cursor: pointer;
-    font-family: $sans-serif-font;;
-    &:hover {
-      background: $white;
-      border: 2px solid $white;
-      color: gc(brand-colors, main-blue)
-    }
-    &:nth-child(2) {
-      padding: 20px;
-    }
-  } // End .bedroom-options--item
+    color: gc(brand-colors, main)
+  }
+  &:nth-child(2) {
+    padding: 20px;
+  }
+} // End .bedroom-options--item
 } // End .bedroom-options
 
-.features--trap, .interior-view-two--trap {
+.features--trap,
+.interior-view-two--trap {
   &-heading {
     font-size: $base-font-size*1.5;
+    color: gc(brand-colors, secondary);
     text-transform: uppercase;
     margin-bottom: 20px;
     letter-spacing: 2px;
-  } // End .features--trap-heading, .amenities--trap-heading
-  &-body {
-    line-height: 1.5;;
-  } // End .features--trap-body, .amenities--trap-body
+} // End .features--trap-heading, .amenities--trap-heading
+&-body {
+  line-height: 1.5;;
+} // End .features--trap-body, .amenities--trap-body
 } // End .features--trap, .amenities--trap
 
 .features--trap-article {
@@ -770,15 +777,15 @@ a.gallery-button.mobile.primary.buttons {
     padding: 370px 43px 670px;
     text-align: center;
     left: 0;
-    background: url('../../assets/images/trap-left.svg') no-repeat -20px 0;
+    background: url('../../assets/images/trap-left.png') no-repeat -20px 0;
     @include breakpoint($sm-mobile $lg-tablet) {
       padding: 20px;
-      background: transparentize(gc(brand-colors, main-blue), 0.3);
+      background: transparentize(gc(brand-colors, main), 0.3);
       position: static;
       width: 80%;
       margin: 50% auto 0;
-    }
-  } // End .features--trap-article .left
+  }
+} // End .features--trap-article .left
 } // End .features--trap-article
 
 .interior-view-two {
@@ -794,121 +801,121 @@ a.gallery-button.mobile.primary.buttons {
       padding: 595px 52px 460px;
       text-align: center;
       right: 0;
-      background: url('../../assets/images/trap-right.svg') no-repeat 0 0;
+      background: url('../../assets/images/trap-right.png') no-repeat 0 0;
       @include breakpoint($sm-mobile $lg-tablet) {
         padding: 20px;
-        background: transparentize(gc(brand-colors, main-blue), 0.3);
+        background: transparentize(gc(brand-colors, main), 0.3);
         position: static;
         width: 80%;
         margin: 50% auto 0;
-      }
-    } // End .interior-view-two--trap-article .right
-  } // End .interior-view-two--trap-article
+    }
+  } // End .interior-view-two--trap-article .right
+} // End .interior-view-two--trap-article
 } // End .interior-view-two
 
 .gallery {
   &-modal {
     display: none;
-    background: gc(brand-colors, main-blue);
+    background: gc(brand-colors, main);
     z-index: 10;
     &.open {
-      background: gc(brand-colors, main-blue);
+      background: gc(brand-colors, main);
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 10;
-    }
   }
-  &-slide {
+}
+&-slide {
+  width: 100%;
+}
+&-slider {
+  z-index: 999;
+  max-width: 90%;
+  top: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  top: -50px;
+  @include breakpoint(max-width $sm-tablet) {
+    top: -10px;
+  }
+  bottom: 0;
+  img {
     width: 100%;
   }
-  &-slider {
-    z-index: 999;
-    max-width: 90%;
-    top: 100px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 100%;
-    top: -50px;
-    @include breakpoint(max-width $sm-tablet) {
-      top: -10px;
-    }
-    bottom: 0;
-    img {
-      width: 100%;
-    }
-  }
-  &-image--container {
-    display: block;
-    z-index: 999;
-    max-height: 550px;
-    overflow: hidden;
-  }
-  &--image-name {
-    color: white;
-    font-family: $sans-serif-font;
-    text-align: center;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 50px;
-  }
-  &-close-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    outline: none;
-    height: 40px;
-    width: 40px;
-    color: white;
-    z-index: 999;
-    cursor: pointer;
-    &.mobile {
-      @include breakpoint(max-width $sm-laptop) {
-        padding: 0;
-      }
+}
+&-image--container {
+  display: block;
+  z-index: 999;
+  max-height: 550px;
+  overflow: hidden;
+}
+&--image-name {
+  color: white;
+  font-family: $sans-serif-font;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 50px;
+}
+&-close-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  color: white;
+  z-index: 999;
+  cursor: pointer;
+  &.mobile {
+    @include breakpoint(max-width $sm-laptop) {
+      padding: 0;
     }
   }
-  &-name {
-    z-index: 99;
-    color: white;
-    max-width: 800px;
-    text-align: center;
-    margin: 30px auto 0;
-    font-family: $serif-font;
-    font-size: 1.75rem;
-    letter-spacing: 2px;
-    @include breakpoint(max-width $sm-tablet) {
-      margin: 70px auto 0;
-    }
+}
+&-name {
+  z-index: 99;
+  color: white;
+  max-width: 800px;
+  text-align: center;
+  margin: 30px auto 0;
+  font-family: $sans-serif-font;
+  font-size: 1.75rem;
+  letter-spacing: 2px;
+  @include breakpoint(max-width $sm-tablet) {
+    margin: 70px auto 0;
   }
-  &-description {
-    z-index: 99;
-    color: #fff;
-    font-size: 1.5rem;
-    max-width: 60%;
-    text-align: center;
-    line-height: 1.5;
-    margin: 150px auto 0;
-  }
-  &--display-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+}
+&-description {
+  z-index: 99;
+  color: #fff;
+  font-size: 1.5rem;
+  max-width: 60%;
+  text-align: center;
+  line-height: 1.5;
+  margin: 150px auto 0;
+}
+&--display-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 }
 
 .modal-color-overlay {
-  background: transparentize(gc(brand-colors, main-blue), 0.5);
+  background: transparentize(gc(brand-colors, main), 0.5);
   width: 100%;
   height: 100%;
 }
@@ -922,10 +929,10 @@ a.gallery-button.mobile.primary.buttons {
   max-width: 100px;
   margin: 45px auto 0;
   &:hover {
-    background: transparentize(gc(brand-colors, secondary-blue), 0.6);
-    border: 1px solid gc(brand-colors, secondary-blue);
-    color: gc(brand-colors, main-blue);
-  }
+    background: transparentize(gc(brand-colors, secondary), 0.6);
+    border: 1px solid gc(brand-colors, secondary);
+    color: gc(brand-colors, main);
+}
 }
 
 #map {
@@ -941,15 +948,15 @@ a.gallery-button.mobile.primary.buttons {
   top: 50%;
   .owl-prev, .owl-next {
     position: absolute;
-    background: gc(brand-colors, secondary-blue);
+    background: gc(brand-colors, secondary);
     padding: 10px;
     border-radius: 0;
     &:hover {
-      color: gc(brand-colors, main-blue);
+      color: gc(brand-colors, main);
       background: white;
       border-radius: 0;
-    }
   }
+}
 }
 
 .owl-prev {
@@ -966,9 +973,9 @@ a.gallery-button.mobile.primary.buttons {
 
 .icon rect,
 .icon line {
-	stroke: #dbdbdb;
-	fill: none;
-	stroke-width: 2px;
+  stroke: #dbdbdb;
+  fill: none;
+  stroke-width: 2px;
 }
 
 // Google Maps Info Window styles
@@ -980,13 +987,13 @@ a.gallery-button.mobile.primary.buttons {
   text-transform: uppercase;
   .location-title {
     padding: 10px 0;
+}
+a {
+  color: white;
+  &:hover {
+    text-decoration: underline;
   }
-  a {
-    color: white;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+}
 }
 
 .request-info-modal {
@@ -1000,11 +1007,11 @@ a.gallery-button.mobile.primary.buttons {
 
 .subscribe-button {
   background: white;
-  color: gc(brand-colors, secondary-blue);
+  color: gc(brand-colors, secondary);
   border: 1px solid white;
   &:hover {
     color: white;
-  }
+}
 }
 
 .show-contact {
@@ -1014,42 +1021,42 @@ a.gallery-button.mobile.primary.buttons {
 }
 
 .vendor-logos-list {
-	@extend %display-flexbox;
-	justify-content: space-around;
-	height: 50px;
-	margin: 0 auto;
-	padding: 100px 20px;
-	z-index: 9999;
-	vertical-align: center;
-	@include breakpoint(max-width $sm-tablet) {
-		display: block;
-		height: auto;
-	}
-	&--item {
-		@extend %display-flexbox;
-		display: block;
-		z-index: 7;
-		flex-flow: row wrap;
-		padding-right: 20px;
-		img {
-			@extend %display-flexbox;
-			width: 100px;
-			cursor: pointer;
-			flex: 1 100%;
-			align-items: center;
-			@include breakpoint(max-width $sm-tablet) {
-				width: auto;
-				margin: 0 auto 100px;
-			}
-		}
-		&:last-child {
-			padding-right: 0;
-		}
-	}
+  @extend %display-flexbox;
+  justify-content: space-around;
+  height: 50px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  z-index: 9999;
+  vertical-align: center;
+  @include breakpoint(max-width $sm-tablet) {
+    display: block;
+    height: auto;
+}
+&--item {
+  @extend %display-flexbox;
+  display: block;
+  z-index: 7;
+  flex-flow: row wrap;
+  padding-right: 20px;
+  img {
+    @extend %display-flexbox;
+    width: 100px;
+    cursor: pointer;
+    flex: 1 100%;
+    align-items: center;
+    @include breakpoint(max-width $sm-tablet) {
+      width: auto;
+      margin: 0 auto 100px;
+    }
+  }
+  &:last-child {
+    padding-right: 0;
+  }
+}
 }
 
 div[class*="_ibani"] {
-	color: white;
-	font-size: 1rem;
-	line-height: 1.5;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.5;
 }

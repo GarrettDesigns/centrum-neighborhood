@@ -32,7 +32,6 @@ $round-to-nearest-half-line: true;
 $rhythm-unit: "rem";
 
 // Sets different font families for us with
-$serif-font:"adobe-garamond-pro", "georgia", serif;
 $sans-serif-font:"brandon-grotesque", Helvetica, Arial, sans-serif;
 $code-font:'Anonymous Pro', 'Source Code Pro';
 
@@ -109,22 +108,33 @@ $type-scale: (
 
 // Colors
 $white: #ffffff;
-$black: #333333;
+$black: #000000;
 
 // Brand Colors
-$centrum-primary-blue: #173e73;
-$centrum-secondary-blue: #1a6ad6;
+$centrum-primary-gold: #ceaa3b;
+$centrum-primary-black: #0e0f0b;
 
 // Mapping Brand Colors
 $palettes: (
   brand-colors: (
-    main-blue: $centrum-primary-blue,
-    secondary-blue: $centrum-secondary-blue
+    main: $centrum-primary-black,
+    secondary: $centrum-primary-gold
     ),
   buttons: (
-    primary: $centrum-secondary-blue,
-    secondary: $centrum-primary-blue,
-    )
+    primary: $white,
+    secondary: $centrum-primary-gold,
+    ),
+  grayscale: (
+    lightest: lighten($black, 90%),
+    xx-light: lighten($black, 80%),
+    x-light: lighten($black, 70%),
+    light: lighten($black, 60%),
+    base: lighten($black, 50%),
+    dark: lighten($black, 40%),
+    x-dark: lighten($black, 30%),
+    xx-dark: lighten($black, 20%),
+    darkest: lighten($black, 10%)
+  )
 );
 
 // ========
@@ -167,3 +177,4 @@ $sm-tablet: 600px;
 $mobile: 480px;
 $custom-mobile: 450px;
 $sm-mobile: 320px;
+

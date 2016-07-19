@@ -48,7 +48,7 @@
 	@each $name, $color in map-get($palettes, $palette) {
 		.#{$name}.#{$palette} {
 			background: $color;
-			color: $white;
+			color: gc(brand-colors, secondary);
       border: 1px solid $color;
 			/*&:before {
 				content: '#{$name}';
@@ -93,10 +93,10 @@
     .#{$button} {
 	    &:hover {
 	    	border: 1px solid $white;
-        background: none;
+            background: none;
 	    }
 	    &:active {
-	    	background: $white;
+	    	background: gc(brand-colors, secondary);
 	    	color: $button-color;
 	    	transition: 0.1s;
 	    }

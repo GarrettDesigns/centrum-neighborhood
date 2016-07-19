@@ -1,23 +1,24 @@
 .content-info {
   background: white;
   float: left;
-  padding-bottom: 100px;
+  padding: 50px 0;
   width: 100%;
 }
 
 .footer-info {
-  max-width: 565px;
+  max-width: 510px;
   margin: 0 auto;
   position: relative;
 	&--heading {
 		font-family: $sans-serif-font;
+    color: gc(brand-colors, secondary);
 		font-size: 1.25rem;
 		font-weight: 700;
 		letter-spacing: 2px;
 		text-transform: uppercase;
 	}
   &--list {
-    color: gc(brand-colors, secondary-blue);
+    color: gc(brand-colors, main);
 		margin-right: 5%;
 		display: inline-block;
 		@include breakpoint(max-width $sm-tablet) {
@@ -43,26 +44,28 @@
   &--item {;
     line-height: 2;
     text-transform: uppercase;
-    color: gc(brand-colors, secondary-blue);
+    color: gc(brand-colors, main);
     font-family: $sans-serif-font;
     font-size: $base-font-size/1.25;
     font-weight: 700;
     letter-spacing: 1.5px;
 		a {
-			color: gc(brand-colors, secondary-blue);
+			color: gc(brand-colors, main);
+      text-decoration: underline;
 		}
   }
   &--social-media {
     line-height: 2;
 		padding-right: 10px;
-    color: gc(brand-colors, secondary-blue);
+    color: gc(brand-colors, main);
     font-family: $sans-serif-font;
     font-size: $base-font-size/1.25;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
 		a {
-			color: gc(brand-colors, secondary-blue);
+			color: gc(brand-colors, main);
+      text-decoration: underline;
 		}
   }
 }
