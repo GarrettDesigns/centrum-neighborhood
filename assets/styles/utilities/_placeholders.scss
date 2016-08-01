@@ -8,13 +8,17 @@
 } // End %alert-panel-defaults
 
 %button-defaults {
-  padding: 20px 40px;
+  padding: 15px 40px;
   border-radius: 50px;
-	min-width: 100px;
-	text-align: center;
-	font-size: 1rem;
-	font-family: $sans-serif-font;
-	outline: none;
+  min-width: 100px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+  @include rem((
+      font-size: 8px
+  ));
+  font-family: $sans-serif-font;
+  outline: none;
   cursor: pointer;
   transition: all .5s;
 } // End %button-defaults
@@ -28,9 +32,9 @@
 // Header Link Style Defaults
 %header-link-defaults {
   a {
-    color: $white;
+    color: gc(brand-colors, secondary);
     &:hover {
-      color: gc(brand-colors, main-blue);
+      color: gc(grayscale, light);
     }
   }
 } // End %header-link-defaults

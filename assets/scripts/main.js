@@ -26,19 +26,27 @@
         var navCloseIcon = $('.main-menu-close');
         var navItems = $('.nav-items-group');
         var pageHeader = $('.page-header');
-				var galleryModal = $('.gallery-modal');
+		var galleryModal = $('.gallery-modal');
+        var mainSiteContainer = $('.main-site-container');
+        var mainNavLink = $('.main-menu');
 
         navMenuIcon.on('click', function(event) {
-      		navItems.addClass('show-nav');
+          navItems.addClass('show-nav');
+          mainSiteContainer.addClass('show-nav');
           pageHeader.addClass('show-nav');
           body.addClass('show-nav');
       	});
 
       	navCloseIcon.on('click', function() {
-      		navItems.removeClass('show-nav');
+      	  navItems.removeClass('show-nav');
+          mainSiteContainer.removeClass('show-nav');
           pageHeader.removeClass('show-nav');
           body.removeClass('show-nav');
       	});
+
+        mainNavLink.find('li a').on('click', function () {
+          mainSiteContainer.removeClass('show-nav');
+        });
 
         $(function() {
           $('a[href*="#"]:not([href="#"])').click(function() {
@@ -137,7 +145,7 @@
           e.preventDefault();
           $('.neighborhood-hero').find('.neighborhood-map-modal').fadeIn('slow');
           initMap();
-					$('.amenities').addClass('map-active');
+          $('.amenities').addClass('map-active');
         });
 
         var categoryIcons = {
@@ -531,9 +539,9 @@
         var map;
 				var service;
         var infoBubble;
-				var requests = {};
-				var markers = [];
-				var categories = ['cafe', 'gym', 'school', 'grocery_or_supermarket', 'spa', 'restaurant', 'store'];
+        var requests = {};
+        var markers = [];
+        var categories = ['cafe', 'gym', 'school', 'grocery_or_supermarket', 'spa', 'restaurant', 'store'];
 
         function initMap() {
           map = new google.maps.Map(mapElement, mapOptions);
@@ -546,23 +554,23 @@
             position: {lat: 41.9137936, lng: -87.6817372}
           });
 
-					infoBubble = new InfoBubble({
-						backgroundColor: '#173e73',
-						borderColor: '#173e73',
-						borderRadius: 0,
-						borderWidth: 0,
-						shadowStyle: 0,
-						minWidth: 200,
-						padding: 20,
-						arrowPosition: 25,
-						arrowStyle: 2,
-						hideCloseButton: true
-					});
-				  service = new google.maps.places.PlacesService(map);
+        infoBubble = new InfoBubble({
+            backgroundColor: '#0e0f0b',
+            borderColor: '#0e0f0b',
+            borderRadius: 0,
+            borderWidth: 0,
+            shadowStyle: 0,
+            minWidth: 200,
+            padding: 20,
+            arrowPosition: 25,
+            arrowStyle: 2,
+            hideCloseButton: true
+        });
+      service = new google.maps.places.PlacesService(map);
 
-				  // The idle event is a debounced event, so we can query & listen without
-				  // throwing too many requests at the server.
-					map.addListener('idle', performSearch);
+      // The idle event is a debounced event, so we can query & listen without
+      // throwing too many requests at the server.
+        map.addListener('idle', performSearch);
 
           if($('.neighborhood-map-modal.mobile')) {
             map.setOptions({draggable: false});

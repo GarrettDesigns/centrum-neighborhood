@@ -10,14 +10,15 @@
 @import '../../bower_components/susy/sass/_susy.scss';
 @import '../../bower_components/normalize-scss/_normalize.scss';
 @import '../../bower_components/modular-scale/stylesheets/_modular-scale.scss';
+@import '../../bower_components/sass-rem/_rem.scss';
 // endbower
 
 @import 'contact_form/main.scss';
 
 // Custom Sass file imports
-@import "utilities/placeholders";
 @import "utilities/functions";
 @import "utilities/mixins";
+@import "utilities/placeholders";
 
 @import "common/_global";
 @import "components/_buttons";

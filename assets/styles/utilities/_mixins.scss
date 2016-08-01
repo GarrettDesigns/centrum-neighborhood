@@ -91,15 +91,31 @@
   @include button-base();
   @each $button, $button-color in $map {
     .#{$button} {
-	    &:hover {
-	    	border: 1px solid $white;
-            background: none;
-	    }
-	    &:active {
-	    	background: gc(brand-colors, secondary);
-	    	color: $button-color;
-	    	transition: 0.1s;
-	    }
+        @if $button == "primary" {
+            &:hover {
+                border: 1px solid gc(brand-colors, secondary);
+                background: gc(brand-colors, secondary);
+                color: $white!important;
+            }
+            &:active {
+                background: gc(brand-colors, secondary);
+                color: $button-color;
+                transition: 0.1s;
+            }
+        }
+        @if $button == "secondary" {
+            color: $white!important;
+             &:hover {
+                border: 1px solid gc(buttons, primary);
+                background: gc(buttons, primary);
+                color: gc(buttons, secondary)!important;
+            }
+            &:active {
+                background: gc(brand-colors, primary);
+                color: $button-color;
+                transition: 0.1s;
+            }
+        }
     }
   }
 }

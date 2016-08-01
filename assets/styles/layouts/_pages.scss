@@ -39,7 +39,7 @@ body.show-nav {
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('../../assets/images/centrum-property.jpg');
+      background-image: url('../../assets/images/bucktown-render.jpg');
       background-position: center center;
       background-repeat: no-repeat;
       -webkit-filter: grayscale(1);
@@ -90,6 +90,22 @@ body.show-nav {
   margin: 0 auto;
   line-height: $base-line-height / .85;
   font-weight: 400;
+  .arrival-message {
+      display: block;
+      position: relative;
+      margin: 0 auto 30px;
+      max-width: 235px;
+      padding: 20px 0;
+      &:after {
+          content: '';
+          position: absolute;
+          padding-top: 20px;
+          bottom: 0;
+          left: 30%;
+          border-bottom: 1px solid gc(brand-colors, secondary);
+          width: 40%;
+      }
+  }
   @include breakpoint(max-width $lg-tablet) {
     max-width: 75%;
   }
@@ -101,7 +117,9 @@ body.show-nav {
 } // End .mission-body
 
 .amenities {
-  opacity: .99;
+    &.map-active {
+        opacity: .99;
+    }
   &-hero {
     width: 100%;
     max-height: 1000px;
@@ -291,12 +309,12 @@ body.show-nav {
        position: absolute;
        top: 0;
        left: 0;
-       background-image: url('../../assets/images/neighborhood.png');
+       background-image: url('../../assets/images/bucktown-render.jpg');
        background-repeat: no-repeat;
        background-position: center center;
        background-size: cover;
-       -webkit-filter: saturate(.25);
-       filter: saturate(.25);
+       -webkit-filter: saturate(0);
+       filter: saturate(0);
        width: 100%;
        height: 100%;
     }
@@ -321,7 +339,10 @@ body.show-nav {
   &--content {
     max-width: 35%;
     margin: 0 auto;
-    font-size: $base-font-size * 1.25;
+    color: $white;
+    @include rem((
+        font-size: 10px
+    ));
     line-height: $base-line-height / .75;
     font-weight: 400;
   } // End .neighborhood-hero--content
@@ -364,6 +385,9 @@ body.show-nav {
     &-item {
       float: left;
       width: 33.3333333%;
+      img {
+      //    filter: saturate(.15);
+      }
       @include breakpoint(max-width $lg-tablet) {
         float: none;
         width: 100%;
@@ -393,6 +417,60 @@ body.show-nav {
   } // End .neighborhood-main--lifestyle-list
 } // End .neighborhood-main
 } // End .neighborhood
+
+.current-availability--tiles {
+    width: 75%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.unit-tile {
+    color: $white;
+    padding: 20px;
+    border: 2px solid gc(brand-colors, secondary);
+    width: 25%;
+    flex: 0 3 auto;
+    flex-wrap: wrap;
+    text-align: center;
+    &:last-child {
+        margin-right: 0;
+    }
+    &--heading {
+        text-transform: uppercase;
+        padding-bottom: 20px;
+        padding-top: 25px;
+        position: relative;
+        font-size: 1.5rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 40px;
+        &:after {
+            content: '';
+            border-bottom: 1px solid gc(brand-colors, secondary);
+            width: 25%;
+            position: absolute;
+            bottom: 0;
+            left: 36%;
+        }
+    }
+    &--content {
+         text-align: center;
+         font-size: 1rem;
+         letter-spacing: 1.5px;
+         line-height: 2;
+         margin-bottom: 80px;
+    }
+    &--button.primary.buttons {
+         padding: 15px 30px;
+         max-width: 70%;
+         margin: 0 auto 10px;
+         display: block;
+         i {
+             float: right;
+         }
+    }
+};
 
 .map-legend {
   z-index: 999;
@@ -437,15 +515,15 @@ body.show-nav {
   float: left;
 
   $icon-map: (
-  icon-colors: (
-  restaurant: #1a6ad6,
-  grocery_or_supermarket: #e56829,
-  gym: #edc729,
-  spa: #00a5b9,
-  cafe: #af3c9b,
-  school: #647dd6,
-  store: #c84a81
-  )
+      icon-colors: (
+      restaurant: #1a6ad6,
+      grocery_or_supermarket: #e56829,
+      gym: #edc729,
+      spa: #00a5b9,
+      cafe: #af3c9b,
+      school: #647dd6,
+      store: #c84a81
+      )
   );
 
   @each $name, $color in map-get($icon-map, icon-colors) {
@@ -481,6 +559,9 @@ body.show-nav {
   &.primary.buttons {
     max-width: 30%;
     margin: 0 auto;
+    &:hover {
+         color: $white;
+    }
 } // End .gallery-button.primary.buttons
 } // End .gallery-button
 
@@ -545,7 +626,7 @@ a.gallery-button.mobile.primary.buttons {
       margin: 0 auto;
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: $base-font-size * 1.5;
+      font-size: $base-font-size;
       margin-top: 90px;
   } // End .features-list--heading
   &--columns {
@@ -557,6 +638,9 @@ a.gallery-button.mobile.primary.buttons {
     padding-bottom: 40px;
     @extend %display-flexbox;
     justify-content: space-around;
+    @include breakpoint(max-width $sm-laptop) {
+         width: 90%;
+    }
     @include breakpoint(max-width $lg-tablet) {
       display: block;
       width: 90%;
@@ -569,9 +653,10 @@ a.gallery-button.mobile.primary.buttons {
   &--column {
     @extend %display-flexbox;
     flex-flow: row wrap;
-    margin-right: 40px;
+    margin-right: 70px;
     &-heading {
-      margin-left: -20px;
+      margin-left: -32px;
+      color: gc(brand-colors, secondary);
       font-size: $base-font-size * 1.5;
       letter-spacing: 2px;
       margin-bottom: 30px;
@@ -588,9 +673,10 @@ a.gallery-button.mobile.primary.buttons {
   &--item {
     line-height: 1.5;
     padding-bottom: 10px;
-    font-size: $base-font-size * 1.25;
+    font-size: $base-font-size;
+    letter-spacing: 1.5px;
     i {
-      margin-left: -20px;
+      margin-left: -30px;
       margin-top: 3px;
       float: left;
     }
@@ -613,7 +699,6 @@ a.gallery-button.mobile.primary.buttons {
 
 .current-availability {
   background: gc(brand-colors, main);
-  min-height: 1200px;
   position: relative;
   padding-bottom: 130px;
 @at-root {
@@ -705,7 +790,7 @@ a.gallery-button.mobile.primary.buttons {
 
   @at-root {
     .current-availability--heading {
-      color: $white;
+      color: gc(brand-colors, secondary);
       font-size: $base-font-size * 1.5;
       letter-spacing: 1.5px;
       margin: 0 auto 50px;
@@ -926,13 +1011,13 @@ a.gallery-button.mobile.primary.buttons {
   font-size: 0.8rem;
   margin-top: 60px;
   display: block;
-  max-width: 100px;
+  max-width: 120px;
   margin: 45px auto 0;
   &:hover {
-    background: transparentize(gc(brand-colors, secondary), 0.6);
+    background: gc(brand-colors, secondary);
     border: 1px solid gc(brand-colors, secondary);
-    color: gc(brand-colors, main);
-}
+    color: $white;
+    }
 }
 
 #map {
@@ -1055,8 +1140,130 @@ a {
 }
 }
 
+.contact-us {
+    position: relative;
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+         background: url('../../assets/images/bucktown-render.jpg') center center no-repeat;
+         -webkit-filter: saturate(0);
+         filter: saturate(0);
+         background-size: cover;
+    }
+}
+
+.contact-form {
+    &--container {
+        padding: 60px 60px 120px;
+        max-width: 430px;
+        text-align: center;
+        margin: 0 auto;
+        .update {
+            &-headline {
+                color: gc(brand-colors, secondary);
+                text-transform: uppercase;
+                font-weight: 700;
+                @include rem((
+                    font-size: 14px,
+                    letter-spacing: 1.5px
+                ))
+            }
+            &-flavor-text {
+                color: $white;
+                line-height: 1.5;
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+
+.custom-input {
+    &--container {
+        position: relative;
+        width: 100%;
+        height: 30px;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    &--input {
+        position: absolute;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        border-radius: 50px 0 0 50px;
+        top: 0;
+        left:0;
+        width: 65%; 
+        border: 1px solid $white;
+        border-right: none;
+        background: none;
+        height: 100%;
+        text-transform: uppercase;
+        padding: 9px 0 11px 22px;
+        &::-webkit-input-placeholder {
+            @include rem((font-size: 7px));
+            font-weight: 700;
+        }
+        &::-moz-placeholder {
+            @include rem((font-size: 7px));
+            font-weight: 700;
+        }
+        &:-moz-placeholder {
+            @include rem((font-size: 7px));
+            font-weight: 700;
+        }
+        &::ms-input-placeholder {
+            @include rem((font-size: 7px));
+            font-weight: 700;
+        }
+    }
+    &--submit-button {
+         position: absolute;
+         letter-spacing: 1.5px;
+         font-weight: 700;
+         text-transform: uppercase;
+         background: gc(brand-colors, secondary);
+         color: $white;
+         @include rem((font-size: 7px));
+         border-radius: 0 50px 50px 0;
+         border: 1px solid gc(brand-colors, secondary);
+         border-left: none;
+         top:0;
+         right: 0;
+         width: 30%;
+         height: 10px;
+         text-align: center;
+         padding: 20px 0;
+    }
+}
+
+.availability-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.unit {
+    &-filters-container {
+        background: gc(brand-colors, main);
+    }
+    &-option {
+        color: $white;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        @include rem((
+            font-size: 10px
+        ));
+    }
+}
+
 div[class*="_ibani"] {
-  color: white;
+  color: gc(brand-colors, secondary);
   font-size: 1rem;
   line-height: 1.5;
 }

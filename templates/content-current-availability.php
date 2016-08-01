@@ -1,138 +1,45 @@
 <h2 class="current-availability--heading">Current Availability</h2>
-<!-- <ul class="bedroom-options">
-  <li class="bedroom-options--label">Number of Bedrooms</li>
-  <li class="bedroom-options--item">All</li>
-  <li class="bedroom-options--item">1</li>
-  <li class="bedroom-options--item">2</li>
-</ul> -->
 
-<table class="availability-table">
-  <thead class="table-head">
-    <th>Bedrooms</th>
-    <th>Bathrooms</th>
-    <th>Size</th>
-    <th>Rent</th>
-    <th>Unit #</th>
-    <th>Available</th>
-    <th>Floorplan</th>
-  </thead>
-  <tr>
-    <td>S</td>
-    <td>1</td>
-    <td>542 sq ft</td>
-    <td>&dollar;1734 / month</td>
-    <td>203</td>
-    <td>1</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/203.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>S</td>
-    <td>1</td>
-    <td>542 sq ft</td>
-    <td>&dollar;1744&mdash;1774 / month</td>
-    <td>X03</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri()); ?>/dist/images/x03.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>709 sq ft</td>
-    <td>&dollar;2099 / month</td>
-    <td>202</td>
-    <td>1</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/202.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>635 sq ft</td>
-    <td>&dollar;2080 / month</td>
-    <td>507</td>
-    <td>1</td>
-    <td> <a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/507.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>677 sq ft</td>
-    <td>&dollar;2109&mdash;2139 / month</td>
-    <td>X02</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x02.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>835 sq ft</td>
-    <td>&dollar;2599&mdash;2629 / month</td>
-    <td>X05</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x05.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>656 sq ft</td>
-    <td>&dollar;2034&mdash;2074 / month</td>
-    <td>X06</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x06.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>658 sq ft</td>
-    <td>&dollar;2040&mdash;2080 / month</td>
-    <td>X07</td>
-    <td>3</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x07.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>678 sq ft</td>
-    <td>&dollar;2102&mdash;2142 / month</td>
-    <td>X08</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x08.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>2</td>
-    <td>1013 sq ft</td>
-    <td>&dollar;2938 / month</td>
-    <td>204</td>
-    <td>1</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/204.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>2</td>
-    <td>1031 sq ft</td>
-    <td>&dollar;2990&mdash;3020 / month</td>
-    <td>X01</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x01.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>2</td>
-    <td>1013 sq ft</td>
-    <td>&dollar;2938&mdash;2978 / month</td>
-    <td>X04</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x04.pdf" target="_blank">View</a></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>2</td>
-    <td>1031 sq ft</td>
-    <td>&dollar;2990&mdash;3020 / month</td>
-    <td>X09</td>
-    <td>4</td>
-    <td><a href="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/x09.pdf" target="_blank">View</a></td>
-  </tr>
-</table>
+<ul class="current-availability--tiles">
+    <li class="unit-tile">
+        <h1 class="unit-tile--heading">Convertible</h1>
+        <p class="unit-tile--content">One Bedroom<br>1 Bathroom<br> XX to XX
+Sq. Ft.<br>From &dollar;x,xxx/mo.</p>
+        <a href="#" class="unit-tile--button buttons primary">floor plans <i
+class="fa fa-chevron-right"></i></a>
+    </li>
+    <li class="unit-tile">
+        <h1 class="unit-tile--heading">2 Bedroom</h1>
+        <p class="unit-tile--content">Two Bedroom<br>2 Bathroom<br> XX to XX
+Sq. Ft.<br>From &dollar;x,xxx/mo.</p>
+        <a href="#" class="unit-tile--button buttons primary">floor plans <i
+class="fa fa-chevron-right"></i></a>
+    </li>
+    <li class="unit-tile">
+        <h1 class="unit-tile--heading">3 bedroom</h1>
+        <p class="unit-tile--content">Three Bedroom<br>2 Bathroom<br> XX to XX
+Sq. Ft.<br>From &dollar;x,xxx/mo.</p>
+        <a href="#" class="unit-tile--button buttons primary">floor plans <i
+class="fa fa-chevron-right"></i></a>
+    </li>
+</ul>
 
-<div class="show-contact primary buttons">Contact Us</div>
+<article class="availability-modal">
+    <section "unit-filters-container">
+        <ul class="unit-filter">
+            <li class="unit-option selected">studio</li>
+            <li class="unit-option">1 bedroom</li>
+            <li class="unit-option">2 bedroom</li>
+        </ul>
+
+        <ul class="model-filter">
+            <li class="model-option selected"></li>
+            <li class="model-option"></li>
+            <li class="model-option"></li>
+            <li class="model-option"></li>
+            <li class="model-option"></li>
+        </ul>
+    </section>
+    <section class="floorplan-view-container">
+    </section>
+</article>

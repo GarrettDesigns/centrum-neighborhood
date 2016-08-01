@@ -29,7 +29,7 @@
     left: 0;
     right: 0;
     width: 33%;
-    max-width: 431px;
+    max-width: 441px;
     min-width: 200px;
     height: 33%;
     margin: auto;
@@ -37,6 +37,10 @@
     opacity: 0;
     animation: fade-in-and-scale 700ms forwards 700ms;
   }
+}
+
+.menu-main-nav-container {
+     z-index: 999;
 }
 
 .main-menu {
@@ -56,8 +60,8 @@
     color: $white;
     max-width: 50px;
     max-height: 50px;
-    top: 50px;
-    left: 50px;
+    top: 85px;
+    left: 8%;
   }
 } // End .main-menu
 
@@ -69,15 +73,19 @@
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    @include type-scale(base);
     &:nth-child(1) {
-      border-bottom: 1px solid $white;
       margin-right: 20px;
+      @include rem((
+      font-size: 8px
+      ));
       @include breakpoint(max-width $sm-tablet) {
         border-bottom: none;
         text-align: center;
         margin-bottom: 40px;
         width: 100%;
+      }
+      a {
+        color: $white;
       }
     }
     @include breakpoint(max-width $sm-tablet) {
@@ -98,6 +106,13 @@
   }
 } // End .info-links
 
+.main-site-container {
+    opacity: 1;
+    &.show-nav {
+        opacity: 0;
+    }
+}
+
 .nav-items-group {
   max-height: 100vh;
   position: fixed;
@@ -109,9 +124,10 @@
   background: gc(brand-colors, secondary-blue);
   overflow: hidden;
   opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.6s, visibility 1s;
-	transition-timing-function: ease-in-out;
+  visibility: hidden;
+  transition: opacity 0.6s, visibility 1s;
+  transition-timing-function: ease-in-out;
+  jj
   .menu-item {
     transform: translateY(0px);
     transition: transform 1s ease-out;
@@ -119,6 +135,8 @@
   	&.show-nav {
   		opacity: 1;
   		visibility: visible;
+        height: 100vh;
+        z-index: 9999;
   		transition-delay: .5s;
       .menu-item {
         transform: translateY(-40px);
@@ -141,16 +159,25 @@
 
 .iconic {
   * {
-		fill: $white;
-		stroke: $white;
+		//fill: gc(brand-colors, main);
+		//stroke: gc(brand-colors, main);
 	} // End .iconic *
 	&-x {
 		width: 30px;
-		height: 30px;
+		fill: $white!important;
+		stroke: $white!important;
+	    height: 30px;
 		cursor: pointer;
 	} // End .iconic-x
 	&-chevron {
 		width: 15px;
+		fill: $white;	
+        stroke: $white;
 		height: 15px;
 	} // End .iconic-chevron
+}
+
+.main-menu-close .iconic *, .main-menu-close .iconic-x {
+     stroke: $black!important;
+     fill: $black!important;
 }

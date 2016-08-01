@@ -18,7 +18,8 @@
     "modular-scale": "^2.1.3",
     "slick-carousel": "slick.js#^1.5.9",
     "stacktable.js": "stackable.js#^1.0.1",
-    "js-info-bubble": "*"
+    "js-info-bubble": "*",
+    "sass-rem": "^1.2.3"
   },
   "overrides": {
     "modernizr": {

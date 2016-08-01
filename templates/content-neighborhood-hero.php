@@ -1,6 +1,7 @@
 <h2 class="neighborhood-hero--heading"><?php the_field( 'neighborhood_title' ); ?></h2>
 <p class="neighborhood-hero--content">
   <?php the_field( 'neighborhood_content' ); ?>
+  <div class="background-image"></div>
 </p>
 <a href="#" class="map-modal-button primary buttons">check it out</a>
 <article class="neighborhood-map-modal <?php if ( wp_is_mobile() ) { echo 'mobile'; } ?>">
