@@ -1245,10 +1245,12 @@ a {
     top: 0;
     left: 0;
     width: 100%;
+    @include container;
 }
 
 .unit {
     &-filters-container {
+        @include span(6);
         background: gc(brand-colors, main);
     }
     &-option {
@@ -1260,6 +1262,19 @@ a {
             font-size: 10px
         ));
     }
+}
+
+.model {
+    &-list {
+    }
+    &-option {
+        color: $white;
+    }
+}
+
+.floorplan-view-container {
+    @include span(6 last);
+    background: $white;
 }
 
 div[class*="_ibani"] {

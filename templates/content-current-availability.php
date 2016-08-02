@@ -1,5 +1,18 @@
 <h2 class="current-availability--heading">Current Availability</h2>
 
+<?php
+	// Accessing Data from class in soap.php
+	// to generate info for apartment Availability
+
+	$apt_info = new CentrumLivingSoapObject;
+
+	$units = $apt_info->get_availability_info( 'Unit', 'List' );
+	$unit_data = $units->ListResult->UnitObject;
+//    var_dump($unit_data);
+ ?>
+
+
+
 <ul class="current-availability--tiles">
     <li class="unit-tile">
         <h1 class="unit-tile--heading">Convertible</h1>
@@ -25,21 +38,29 @@ class="fa fa-chevron-right"></i></a>
 </ul>
 
 <article class="availability-modal">
-    <section "unit-filters-container">
+    <section class="unit-filters-container">
         <ul class="unit-filter">
             <li class="unit-option selected">studio</li>
             <li class="unit-option">1 bedroom</li>
             <li class="unit-option">2 bedroom</li>
         </ul>
 
-        <ul class="model-filter">
-            <li class="model-option selected"></li>
-            <li class="model-option"></li>
-            <li class="model-option"></li>
-            <li class="model-option"></li>
-            <li class="model-option"></li>
+        <?php
+            $previous_models = array();
+            $model_count = 1;
+        ?>
+
+        <ul class="model-list">
+            <?php foreach ($unit_data as $unit) : if ( !in_array( $unit->FloorPlan->FloorPlanID, $previous_models ) ) : ?>
+               <li class="<?php echo $unit->FloorPlan->FloorPlanGroupName; ?> model-option"><?php echo 'Model ' . $model_count; ?></li>
+            <?php $model_count++; endif; ?>
+               <?php $previous_models[] = $unit->FloorPlan->FloorPlanID; ?>
+            <?php endforeach; ?>
         </ul>
+
     </section>
     <section class="floorplan-view-container">
+        <img src="<?php echo get_template_directory_uri();
+?>/dist/images/floor_plan_example.png">
     </section>
 </article>

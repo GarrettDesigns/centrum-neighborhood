@@ -78,10 +78,19 @@ function assets() {
 
   wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
   wp_enqueue_script('owl-carousel', asset_path('scripts/owl-carousel.js'), ['jquery'], null, false);
-	wp_enqueue_script('info-bubble', asset_path('scripts/infobubble.js'), ['jquery'], null, false);
+  wp_enqueue_script('info-bubble', asset_path('scripts/infobubble.js'), ['jquery'], null, false);
   wp_enqueue_script('stacktable_js', asset_path('scripts/stacktable.js'), ['jquery'], null, false);
   wp_enqueue_script('iconic_js', asset_path('scripts/iconic.min.js'), ['jquery'], null, false);
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
+
+	$centrum_data = new \CentrumLivingSoapObject;
+
+	$units = $centrum_data->get_availability_info( 'Unit', 'List' );
+	$unit_data = $units->ListResult->UnitObject;
+
+    $api_unit_data = $unit_data;
+
+    wp_localize_script( 'sage_js', 'api_data', $api_unit_data );
 
   // Localize the script with new data
   $map_location_data = array(
