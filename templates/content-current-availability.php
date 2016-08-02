@@ -39,16 +39,28 @@ class="fa fa-chevron-right"></i></a>
 
 <article class="availability-modal">
     <section class="unit-filters-container">
-        <ul class="unit-filter">
-            <li class="unit-option selected">studio</li>
-            <li class="unit-option">1 bedroom</li>
-            <li class="unit-option">2 bedroom</li>
-        </ul>
-
         <?php
+            $unit_types = array();
             $previous_models = array();
             $model_count = 1;
         ?>
+
+        <ul class="unit-filter">
+            <?php foreach ( $unit_data as $unit_type ) : ?>
+                <?php if ( !in_array( $unit_type->FloorPlan->FloorPlanGroupName, $unit_types  ) ) : ?>
+                    <li class="unit-option <?php echo $unit_type->FloorPlan->FloorPlanGroupName; ?>">
+                        <?php
+                            if($unit_type->FloorPlan->FloorPlanGroupName == "Convertible" ) {
+                                echo "Studio";
+                            } else {
+                                echo $unit_type->UnitDetails->Bedrooms . ' bedroom';
+                            }
+                        ?>
+                    </li>
+                <?php endif; ?>
+                    <?php $unit_types[] = $unit_type->FloorPlan->FloorPlanGroupName; ?>
+            <?php endforeach; ?>
+        </ul>
 
         <ul class="model-list">
             <?php foreach ($unit_data as $unit) : if ( !in_array( $unit->FloorPlan->FloorPlanID, $previous_models ) ) : ?>
@@ -60,7 +72,6 @@ class="fa fa-chevron-right"></i></a>
 
     </section>
     <section class="floorplan-view-container">
-        <img src="<?php echo get_template_directory_uri();
-?>/dist/images/floor_plan_example.png">
+        <img src="<?php echo get_template_directory_uri(); ?>/dist/images/floor_plan_example.png">
     </section>
 </article>

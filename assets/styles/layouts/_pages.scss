@@ -1243,6 +1243,8 @@ a {
 .availability-modal {
     position: absolute;
     top: 0;
+    background: black;
+    height: 100%;
     left: 0;
     width: 100%;
     @include container;
@@ -1251,29 +1253,64 @@ a {
 .unit {
     &-filters-container {
         @include span(6);
+        width: 50%;
+        margin-right: 0;
         background: gc(brand-colors, main);
     }
+    &-filter {
+        margin: 0 auto;
+        width: 75%;
+        overflow: hidden;
+        border: 3px solid $white;
+    }
     &-option {
+        width: 33%;
         color: $white;
+        float: right;
+        padding: 20px 0;
+        text-align: center;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         font-weight: 500;
+        border-right: 3px solid $white;
         @include rem((
             font-size: 10px
         ));
+        &:first-child {
+            border: none;
+        }
+        &.selected {
+            background: gc(brand-colors, secondary);
+        }
     }
 }
 
 .model {
     &-list {
+        clear: both;
+        width: 75%;
+        overflow: hidden;
+        margin: 40px auto 0;
     }
     &-option {
         color: $white;
+        text-transform: uppercase;
+        border: 3px solid $white;
+        border-right: none;
+        padding: 20px 0;
+        letter-spacing: 1.5px;
+        width: 32.67%;
+        text-align: center;
+        float: left;
+        &:nth-child(3n+3) {
+            border-right: 3px solid $white;
+        }
     }
 }
 
 .floorplan-view-container {
     @include span(6 last);
+    width: 50%;
     background: $white;
 }
 

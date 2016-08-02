@@ -139,7 +139,19 @@
     // Home page
     'home': {
       init: function() {
-        // JavaScript to be fired on the home page
+       // JavaScript to be fired on the home page
+       var currentSelection = '';
+
+        $('.unit-option').on('click', function() {
+          $('.unit-option').removeClass('selected');
+          $(this).addClass('selected');
+
+          var classString = $(this).attr('class').split(' ');
+          currentSelection = classString[1];
+
+          $('.model-option').hide();
+          $('.' + currentSelection + '.model-option').show();
+        });
 
         $('.map-modal-button').on('click', function(e) {
           e.preventDefault();
