@@ -139,33 +139,31 @@
     // Home page
     'home': {
       init: function() {
-         //  console.log(api_data);
-          for(var i = 0; i <= 8; i++ ) {
-              console.log(api_data[i].FloorPlan.FloorPlanCode + ' ' + Math.floor( api_data[i].BaseRentAmount ) + ' ' +  api_data[i].Address.UnitNumber);
-              console.log(api_data[i].UnitDetails);
-          }
-       // JavaScript to be fired on the home page
+        console.log(api_data);
+
+        // JavaScript to be fired on the home page
         var currentSelection = '';
         var lastSelection;
 
-        $('.unit-option').on('click', function() {
-         $('.unit-option').removeClass('selected');
-         $(this).addClass('selected');
+         $('.unit-option').on('click', function() {
+             $('.unit-option').removeClass('selected');
+             $(this).addClass('selected');
 
-         $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
+             $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
 
-         var classString = $(this).attr('class').split(' ');
-         currentSelection = classString[1];
-         lastSelection = currentSelection;
+             var classString = $(this).attr('class').split(' ');
+             currentSelection = classString[1];
+             lastSelection = currentSelection;
+             console.log(currentSelection);
 
-         $('.model-option').hide();
-         $('.' + currentSelection + '.model-option').show();
+            $('.model-option').hide();
+            $('.' + currentSelection + '.model-option').show();
         });
 
-          $('.model-option').on('click', function() {
+        $('.model-option').on('click', function() {
             $('.model-option').removeClass('selected');
             $(this).addClass('selected');
-          });
+        });
 
         var optionClasses = $('.unit-option').attr('class').split();
 
@@ -186,10 +184,9 @@
           $('.amenities').addClass('map-active');
         });
 
-
-          $('.close-availability').on('click', function () {
-            $('.availability-modal').removeClass('open');
-          });
+        $('.close-availability').on('click', function () {
+          $('.availability-modal').removeClass('open');
+        });
 
         var categoryIcons = {
           restaurant: {

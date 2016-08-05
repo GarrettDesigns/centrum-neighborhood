@@ -7,90 +7,38 @@
 	$apt_info = new CentrumLivingSoapObject;
 	$units = $apt_info->get_availability_info( 'Unit', 'List' );
 	$unit_data = $units->ListResult->UnitObject;
- ?>
 
-<?php
     // Define arrays and variable to hold reformatted api data
 
     $unit_types = array();
-    $model_data = array();
-    $model_types = array();
-    $previous_models = array();
-
-    $model_count = 1;
-    $last_unit_type = '';
-    $last_rent_amt = '';
-    $counter = 0;
 ?>
 
 <?php
     foreach( $unit_data as $unit_type ) {
 
-        // Store number of bedrooms for each unit type in unit_types array
-
         $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['bedrooms'] =
             $unit_type->UnitDetails->Bedrooms;
-
-        // Store number of bathrooms in for each unit in unit_types array
 
         $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['bathrooms'] =
             $unit_type->UnitDetails->Bathrooms;
 
-        // Find all model names and store them in unit_types array
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['sqft'][] =
+            $unit_type->UnitDetails->GrossSqFtCount;
 
-        foreach( $unit_data  as $model_type ) {
-            array_push( $model_types, $model_type->FloorPlan->FloorPlanCode );
-        }
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['models'][] =
+            $unit_type->FloorPlan->FloorPlanCode;
 
-        $unique_model_types = array_unique( $model_types );
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_type']
+            = $unit_type->FloorPlan->FloorPlanGroupName;
 
-        foreach( $unique_model_types as $model ) {
-            if($unit_type->FloorPlan->FloorPlanCode == $model ) {
-                $unit_model_groups[$unit_type->FloorPlan->FloorPlanGroupName][$counter] =
-                    $model;
-                $counter++;
-            }
-        }
-        // Find unit types and store them in unit_types array
-
-        if( $unit_type->FloorPlan->FloorPlanGroupName != $last_unit_type ) {
-            $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_type']
-                = $unit_type->FloorPlan->FloorPlanGroupName;
-        }
-
-        // Find base rent amount for each unit type and store in
-        // unit_types array
-
-        if ( $unit_type->BaseRentAmount < $last_rent_amt ) {
-            $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['min_rent']
-                = $unit_type->BaseRentAmount;
-        }
-        $last_rent_amt = $unit_type->BaseRentAmount;
-
-        // split in 3 arrays, dynamically generate array names and put min and max
-        // sq ft values into unit_types array
-
-        if ( $unit_type->FloorPlan->FloorPlanGroupName == $last_unit_type ) {
-            ${$unit_type->FloorPlan->FloorPlanGroupName}[$counter] = $unit_type->UnitDetails->GrossSqFtCount;
-            $counter++;
-            $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['min_sqft'] = min(${$unit_type->FloorPlan->FloorPlanGroupName});
-            $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['max_sqft'] = max(${$unit_type->FloorPlan->FloorPlanGroupName});
-        }
-        $last_unit_type = $unit_type->FloorPlan->FloorPlanGroupName;
-
-
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['rent_amts'][]
+            = $unit_type->BaseRentAmount;
     }
 
     // Reverse unit_types array to order it starting
     // with Convertible units
 
     $ordered_unit_types = array_reverse($unit_types);
-
-    foreach($unit_model_groups as $key => $value ) {
-      $unique_unit_model_pairs[$key] = array_unique( $unit_model_groups[$key] );
-    }
-    $sorted_unique_unit_model_pairs =  array_reverse( $unique_unit_model_pairs );
-    var_dump($sorted_unique_unit_model_pairs);
 ?>
 
 <ul class="current-availability--tiles">
@@ -120,12 +68,12 @@
                     echo $unit['bathrooms'] . ' Bathroom';
                 } ?>
                 <br>
-                <?php if( $unit['min_sqft'] == $unit['max_sqft'] ) {
-                    echo $unit['min_sqft'];
+                <?php if( min( $unit['sqft'] ) == max( $unit['sqft'] ) ) {
+                    echo min( $unit['sqft'] );
                 } else {
-                    echo $unit['min_sqft'] . ' to ' . $unit['max_sqft'];
+                    echo min( $unit['sqft'] ) . ' to ' . max( $unit['sqft'] );
                 } ?> Sq. Ft.<br>From &dollar;<?php echo
-                round( $unit['min_rent'] ); ?>/mo.
+                round( min( $unit['rent_amts'] ) ); ?>/mo.
             </p>
             <a href="#" class="unit-tile--button buttons primary <?php echo
     $unit['unit_type']; ?>">floor plans <i class="fa fa-chevron-right"></i></a>
@@ -155,9 +103,10 @@
 
         <p class="filter-heading">Select a Model Number to view Floor Plans</p>
         <ul class="model-list">
-            <?php foreach ($sorted_unique_unit_model_pairs as $unit => $models ) : ?>
-                <?php foreach( $models as $model ) : ?>
-                   <li class="<?php echo $unit; ?> model-option"><?php echo 'Model ' . $model; ?></li>
+            <?php foreach ( $unit_types as $unit ) : ?>
+                <?php foreach( array_unique( $unit['models'] ) as $model ) : ?>
+                   <li class="<?php echo $unit['unit_type']; ?> model-option" value="<?php
+echo $model; ?>"><?php echo 'Model ' . $model; ?></li>
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </ul>
