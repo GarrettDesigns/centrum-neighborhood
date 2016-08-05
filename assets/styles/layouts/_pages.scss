@@ -1247,32 +1247,64 @@ a {
     height: 100%;
     left: 0;
     width: 100%;
-    @include container;
+    display: none;
+    z-index: 999;
+    &.open {
+        display: block;
+    }
+}
+
+.apply-now {
+    margin: 30px auto 0;
+    display: block;
+    width: 40%;
+    clear: both;
+}
+.slick-slide {
+height: 734px;
+}
+.slider-slide {
+max-width: 85%;
+margin: 0 auto;
+}
+.slider-slide img {
+margin: 50px auto 0;
+}
+
+.close-availability {
+    background: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 .unit {
     &-filters-container {
         @include span(6);
         width: 50%;
+        padding: 80px 0 40px;
         margin-right: 0;
         background: gc(brand-colors, main);
     }
     &-filter {
         margin: 0 auto;
-        width: 75%;
+        width: 85%;
         overflow: hidden;
         border: 3px solid $white;
     }
     &-option {
         width: 33%;
         color: $white;
-        float: right;
+        float: left;
         padding: 20px 0;
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         font-weight: 500;
-        border-right: 3px solid $white;
+        border-left: 3px solid $white;
+        cursor: pointer;
         @include rem((
             font-size: 10px
         ));
@@ -1282,28 +1314,63 @@ a {
         &.selected {
             background: gc(brand-colors, secondary);
         }
+        &:hover {
+            background: gc(brand-colors, secondary);
+        }
     }
+}
+
+.filter-heading {
+    color: $white;
+    width: 85%;
+    margin: 30px auto 20px;
 }
 
 .model {
     &-list {
         clear: both;
-        width: 75%;
+        width: 85%;
         overflow: hidden;
-        margin: 40px auto 0;
+        margin: 20px auto 0;
     }
     &-option {
         color: $white;
         text-transform: uppercase;
-        border: 3px solid $white;
-        border-right: none;
         padding: 20px 0;
         letter-spacing: 1.5px;
         width: 32.67%;
         text-align: center;
+        cursor: pointer;
         float: left;
-        &:nth-child(3n+3) {
+        &:hover {
+            background: gc(brand-colors, secondary);
+        }
+        &.selected {
+            background: gc(brand-colors, secondary);
+        }
+        &:nth-child(-n+3) {
+            border-top: 3px solid $white;
+            border-left: 3px solid $white;
+            border-bottom: 3px solid $white;
+        }
+        &:nth-child(3) {
             border-right: 3px solid $white;
+        }
+        &:nth-child(n+4):nth-child(-n+6) {
+            border-top: 3px solid $white;
+            border-left: 3px solid $white;
+            border-bottom: 3px solid $white;
+        }
+        &:nth-child(6) {
+            border-right: 3px solid $white;
+        }
+        &:nth-child(7) {
+            border-left: 3px solid $white;
+            border-bottom: 3px solid $white;
+            border-right: 3px solid $white;
+        }
+        &:last-child {
+            border: 3px solid $white;
         }
     }
 }
@@ -1314,8 +1381,31 @@ a {
     background: $white;
 }
 
+.model-data {
+    &--list-container {
+        width: 85%;
+        overflow: hidden;
+        margin: 20px auto 90px;
+    }
+    &--list {
+        @include span(5);
+        &:last-child {
+            @include last;
+        }
+        &-item {
+            padding: 8px 0;
+            border-bottom: 3px solid $white;
+        }
+    }
+}
+
+.model-data--heading {
+    color: $white;
+}
+
 div[class*="_ibani"] {
   color: gc(brand-colors, secondary);
   font-size: 1rem;
   line-height: 1.5;
 }
+

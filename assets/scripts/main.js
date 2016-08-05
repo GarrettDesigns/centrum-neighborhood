@@ -139,19 +139,45 @@
     // Home page
     'home': {
       init: function() {
+         //  console.log(api_data);
+          for(var i = 0; i <= 8; i++ ) {
+              console.log(api_data[i].FloorPlan.FloorPlanCode + ' ' + Math.floor( api_data[i].BaseRentAmount ) + ' ' +  api_data[i].Address.UnitNumber);
+              console.log(api_data[i].UnitDetails);
+          }
        // JavaScript to be fired on the home page
-       var currentSelection = '';
+        var currentSelection = '';
+        var lastSelection;
 
         $('.unit-option').on('click', function() {
-          $('.unit-option').removeClass('selected');
-          $(this).addClass('selected');
+         $('.unit-option').removeClass('selected');
+         $(this).addClass('selected');
 
-          var classString = $(this).attr('class').split(' ');
-          currentSelection = classString[1];
+         $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
 
-          $('.model-option').hide();
-          $('.' + currentSelection + '.model-option').show();
+         var classString = $(this).attr('class').split(' ');
+         currentSelection = classString[1];
+         lastSelection = currentSelection;
+
+         $('.model-option').hide();
+         $('.' + currentSelection + '.model-option').show();
         });
+
+          $('.model-option').on('click', function() {
+            $('.model-option').removeClass('selected');
+            $(this).addClass('selected');
+          });
+
+        var optionClasses = $('.unit-option').attr('class').split();
+
+        $('.unit-tile--button').on('click', function(e) {
+            e.preventDefault();
+            $('.availability-modal').addClass('open');
+            var unitType = $(this).attr('class').split(' ');
+            $('.slider-slide').resize();
+            $('.unit-option.' + unitType[3]).click();
+        });
+
+        $('.floor-plan-viewer').slick();
 
         $('.map-modal-button').on('click', function(e) {
           e.preventDefault();
@@ -159,6 +185,11 @@
           initMap();
           $('.amenities').addClass('map-active');
         });
+
+
+          $('.close-availability').on('click', function () {
+            $('.availability-modal').removeClass('open');
+          });
 
         var categoryIcons = {
           restaurant: {
