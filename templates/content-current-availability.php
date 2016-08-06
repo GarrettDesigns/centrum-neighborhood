@@ -105,28 +105,25 @@
         <ul class="model-list">
             <?php foreach ( $unit_types as $unit ) : ?>
                 <?php foreach( array_unique( $unit['models'] ) as $model ) : ?>
-                   <li class="<?php echo $unit['unit_type']; ?> model-option" value="<?php
-echo $model; ?>"><?php echo 'Model ' . $model; ?></li>
+                   <li class="<?php echo $unit['unit_type']; ?> model-option"
+                   name="<?php echo $model; ?>"><?php echo 'Model ' . $model;  ?></li>
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </ul>
 
         <ul class="model-data">
             <li class="model-data--list-container">
-                <ul class="model-data--list">
-                    <li class="model-data--list-item"><span class="model-data--heading">Unit: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Bedrooms: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Bathrooms: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Rent: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Sq Ft: </span></li>
-                </ul>
-
-                <ul class="model-data--list">
-                    <li class="model-data--list-item"><span class="model-data--heading">Unit: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Bedrooms: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Bathrooms: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Rent: </span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Sq Ft: </span></li>
+                <ul class="model-data--list list-one">
+                    <li class="model-data--list-item"><span
+class="model-data--heading">Unit: </span><span class="unit"></span></li>
+                    <li class="model-data--list-item"><span
+class="model-data--heading">Bedrooms: </span><span class="bedrooms"></span></li>
+                    <li class="model-data--list-item"><span
+class="model-data--heading">Bathrooms: </span><span class="bathrooms"></span></li>
+                    <li class="model-data--list-item"><span
+class="model-data--heading">Rent: </span><span class="rent"></span></li>
+                    <li class="model-data--list-item"><span
+class="model-data--heading">Sq Ft: </span><span class="sqft"></span></li>
                 </ul>
             </li>
         </ul>

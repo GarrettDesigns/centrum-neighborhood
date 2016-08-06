@@ -1348,30 +1348,25 @@ margin: 50px auto 0;
         &.selected {
             background: gc(brand-colors, secondary);
         }
-        &:nth-child(1) {
+        &:nth-child(n+4):nth-child(-n+6) {
+            border-top: 3px solid $white;
+            border-left: 3px solid $white;
+            border-bottom: 3px solid $white;
+        }
+        &:nth-child(6) {
             border-right: 3px solid $white;
         }
-        &:nth-child(-n+2) {
-            border-top: 3px solid $white;
-            border-left: 3px solid $white;
-            border-bottom: 3px solid $white;
-        }
-        &:nth-child(4) {
+        &:nth-child(7) {
             border-right: 3px solid $white;
+            border-bottom: 3px solid $white;
+            border-left: 3px solid $white;
         }
-        &:nth-child(n+2):nth-child(-n+4) {
+        &:nth-child(n+1):nth-child(-n+3) {
             border-top: 3px solid $white;
             border-left: 3px solid $white;
             border-bottom: 3px solid $white;
         }
-        &:nth-child(n+6):nth-child(-n+7) {
-            border-top: 3px solid $white;
-            border-left: 3px solid $white;
-            border-bottom: 3px solid $white;
-        }
-        &:nth-child(5) {
-            border-left: 3px solid $white;
-            border-bottom: 3px solid $white;
+        &:nth-child(3) {
             border-right: 3px solid $white;
         }
         &:last-child {
@@ -1394,9 +1389,6 @@ margin: 50px auto 0;
     }
     &--list {
         @include span(5);
-        &:last-child {
-            @include last;
-        }
         &-item {
             padding: 8px 0;
             font-weight: 500;
@@ -1407,6 +1399,10 @@ margin: 50px auto 0;
 
 .model-data--heading {
     color: $white;
+}
+
+.bedrooms, .bathrooms, .unit, .rent, .sqft {
+    color: gc(brand-colors, secondary);
 }
 
 div[class*="_ibani"] {

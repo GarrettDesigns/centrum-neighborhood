@@ -90,7 +90,23 @@ function assets() {
 
     $api_unit_data = $unit_data;
 
+    $model_data = array();
+
+    foreach( $api_unit_data as $unit_type ) {
+
+        $model_data[$unit_type->FloorPlan->FloorPlanCode][] = array(
+            'unit_number' => $unit_type->Address->UnitNumber,
+            'unit_details' => array(
+                'bedrooms' => $unit_type->UnitDetails->Bedrooms,
+                'bathrooms' => $unit_type->UnitDetails->Bathrooms,
+                'rent' => $unit_type->BaseRentAmount,
+                'sqft' => $unit_type->UnitDetails->GrossSqFtCount
+            )
+        );
+    }
+
     wp_localize_script( 'sage_js', 'api_data', $api_unit_data );
+    wp_localize_script( 'sage_js', 'model_data', $model_data );
 
   // Localize the script with new data
   $map_location_data = array(

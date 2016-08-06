@@ -139,7 +139,7 @@
     // Home page
     'home': {
       init: function() {
-        console.log(api_data);
+        var apiData = api_data;
 
         // JavaScript to be fired on the home page
         var currentSelection = '';
@@ -154,16 +154,30 @@
              var classString = $(this).attr('class').split(' ');
              currentSelection = classString[1];
              lastSelection = currentSelection;
-             console.log(currentSelection);
 
             $('.model-option').hide();
             $('.' + currentSelection + '.model-option').show();
         });
 
         $('.model-option').on('click', function() {
+            var optionValue = $(this).attr('name');
+
             $('.model-option').removeClass('selected');
             $(this).addClass('selected');
+
+        console.log(optionValue);
+            $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
+
+            for(var i = 0; i < model_data[optionValue].length; i++) {
+                $('.unit').append( model_data[optionValue][i].unit_number + ' ');
+            }
+            $('.bedrooms').append( model_data[optionValue][0].unit_details.bedrooms );
+            $('.bathrooms').append( model_data[optionValue][0].unit_details.bathrooms );
+            $('.rent').append( Math.floor(model_data[optionValue][0].unit_details.rent));
+            $('.sqft').append( model_data[optionValue][0].unit_details.sqft );
         });
+
+          console.log(model_data);
 
         var optionClasses = $('.unit-option').attr('class').split();
 
