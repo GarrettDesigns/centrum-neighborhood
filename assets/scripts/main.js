@@ -141,6 +141,7 @@
       init: function() {
         var apiData = api_data;
 
+          console.log(apiData);
         // JavaScript to be fired on the home page
         var currentSelection = '';
         var lastSelection;
@@ -148,6 +149,8 @@
          $('.unit-option').on('click', function() {
              $('.unit-option').removeClass('selected');
              $(this).addClass('selected');
+
+             $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
 
              $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
 
@@ -157,6 +160,7 @@
 
             $('.model-option').hide();
             $('.' + currentSelection + '.model-option').show();
+            $('.' + currentSelection + '.model-option').first().click();
         });
 
         $('.model-option').on('click', function() {
@@ -165,7 +169,6 @@
             $('.model-option').removeClass('selected');
             $(this).addClass('selected');
 
-        console.log(optionValue);
             $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
 
             for(var i = 0; i < model_data[optionValue].length; i++) {
@@ -175,9 +178,8 @@
             $('.bathrooms').append( model_data[optionValue][0].unit_details.bathrooms );
             $('.rent').append( Math.floor(model_data[optionValue][0].unit_details.rent));
             $('.sqft').append( model_data[optionValue][0].unit_details.sqft );
+            $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][0].unit_details.unitID  + '&siteID=3916349');
         });
-
-          console.log(model_data);
 
         var optionClasses = $('.unit-option').attr('class').split();
 
@@ -189,7 +191,10 @@
             $('.unit-option.' + unitType[3]).click();
         });
 
-        $('.floor-plan-viewer').slick();
+          $('.floor-plan-viewer').slick({
+            prevArrow: '<i class="fa fa-arrow-circle-o-left"></i>',
+            nextArrow: '<i class="fa fa-arrow-circle-o-right"></i>'
+          });
 
         $('.map-modal-button').on('click', function(e) {
           e.preventDefault();
@@ -268,15 +273,15 @@
           }
         };
 
-				var centrum = {
-					path: 'M16,0.33A15.67,15.67,0,0,0,.33,16c0,8.65,13.33,26,16.33,30,4.33-5.67,15-21.35,15-30A15.67,15.67,0,0,0,16,.33Zm0.71,20.33a4.23,4.23,0,0,0,2.68-1,0.4,0.4,0,0,1,.52,0l1.56,1.66a0.4,0.4,0,0,1,0,.54,6.86,6.86,0,0,1-4.86,1.94,7.2,7.2,0,1,1,0-14.4,6.72,6.72,0,0,1,4.84,1.86,0.37,0.37,0,0,1,0,.56L19.89,13.5a0.35,0.35,0,0,1-.5,0,4.09,4.09,0,0,0-2.7-1,4,4,0,0,0-3.92,4.12A4,4,0,0,0,16.71,20.67Z',
-					fillColor: '#173e73',
-					fillOpacity: 1,
-					scale: 1.15,
-					strokeColor: '#173e73',
-					strokeWeight: 1,
-					zIndex: 3
-				};
+        var centrum = {
+            path: 'M16,0.33A15.67,15.67,0,0,0,.33,16c0,8.65,13.33,26,16.33,30,4.33-5.67,15-21.35,15-30A15.67,15.67,0,0,0,16,.33Zm0.71,20.33a4.23,4.23,0,0,0,2.68-1,0.4,0.4,0,0,1,.52,0l1.56,1.66a0.4,0.4,0,0,1,0,.54,6.86,6.86,0,0,1-4.86,1.94,7.2,7.2,0,1,1,0-14.4,6.72,6.72,0,0,1,4.84,1.86,0.37,0.37,0,0,1,0,.56L19.89,13.5a0.35,0.35,0,0,1-.5,0,4.09,4.09,0,0,0-2.7-1,4,4,0,0,0-3.92,4.12A4,4,0,0,0,16.71,20.67Z',
+            fillColor: '#173e73',
+            fillOpacity: 1,
+            scale: 1.15,
+            strokeColor: '#173e73',
+            strokeWeight: 1,
+            zIndex: 3
+        };
 
         // Basic options for a simple Google Map
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -289,7 +294,7 @@
             scrollwheel: false,
 
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(41.9137936,-87.6817372),
+            center: new google.maps.LatLng(41.943370, -87.671869),
 
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
@@ -591,7 +596,7 @@
 
         // Create the Google Map using our element and options defined above
         var map;
-				var service;
+		var service;
         var infoBubble;
         var requests = {};
         var markers = [];
@@ -605,7 +610,7 @@
             icon: centrum,
             title: 'Centrum Lakeview',
             zIndex: 999,
-            position: {lat: 41.9137936, lng: -87.6817372}
+            position: {lat: 41.943370, lng: -87.671869}
           });
 
         infoBubble = new InfoBubble({
@@ -649,21 +654,21 @@
 				}
 
 				function callback(results, status) {
-				  if (status !== google.maps.places.PlacesServiceStatus.OK) {
-				    console.error(status);
-				    return;
-				  }
-				  for (var i = 0, result; result === results[i]; i++) {
-				    addMarker(result);
-				  }
-				}
+				  if (status !== google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
+                      setTimeout(function() {
+                          for (var i = 0, result; result === results[i]; i++) {
+                            addMarker(result);
+                          }
+                     }, 200);
+                  }
+                }
 
 				function addMarker(place) {
 				  var marker = new google.maps.Marker({
 				    map: map,
 				    position: place.geometry.location,
 				    icon: categoryIcons[$(place.types).filter(categories)[0]],
-						category: $(place.types).filter(categories)[0]
+					category: $(place.types).filter(categories)[0]
 				  });
 					markers.push(marker);
 
@@ -681,16 +686,14 @@
 
         // When map-legend category is clicked
         $('.map-legend--list-item').on('click', function() {
-          console.log($(this));
           if($(this).hasClass('selected')) {
-            console.log('if');
             $(this).removeClass('selected');
+
             for(var i=0; i < markers.length; i++) {
                 markers[i].setVisible(true);
             }
           }
           else {
-            console.log('else');
             $('.map-legend--list-item').removeClass('selected');
             $(this).addClass('selected');
 
@@ -703,58 +706,6 @@
             }
           }
         });
-        $('.show-contact').on('click', function() {
-          $('.request-info-modal').slideToggle('slow');
-        });
-
-      	var infoModal = $('.request-info-modal');
-      	var calMth = $('.calendar-month');
-      	var bedroomOpt = $('.bedroom-option');
-
-      	var currentDate = new Date().toDateString();
-      	var dateVals = currentDate.split(' ');
-      	var month = dateVals[1];
-
-      	var calYear = $('.calendar-year').find('input');
-      	var currentYear = parseInt(dateVals[3]);
-
-      	calYear.val(currentYear.toString());
-      	bedroomOpt.first().attr('checked', 'checked').addClass('selectedOpt');
-
-      	calMth.find('label').each(function() {
-      		var parentListItem = $(this).parent('li');
-
-      		if($(this).html() === month.toLowerCase()) {
-      			parentListItem.addClass('selectedMth');
-      			parentListItem.find('input[type=radio]').attr('checked', 'checked');
-      		}
-      	});
-
-      	calMth.on('click', function() {
-      		calMth.removeClass('selectedMth');
-      		$(this).addClass('selectedMth');
-      	});
-
-      	bedroomOpt.on('click', function() {
-      		bedroomOpt.removeClass('selectedOpt');
-      		$(this).addClass('selectedOpt');
-      	});
-
-      	$('.previous-year').on('click', function() {
-      		currentYear -= 1;
-      		calYear.val(currentYear.toString());
-      	});
-
-      	$('.next-year').on('click', function() {
-      		currentYear += 1;
-      		calYear.val(currentYear);
-      	});
-
-      	$('.subcription-form').on('submit', function() {
-      		$('input[type=text]').val("");
-      		calYear.val(currentYear.toString());
-          $('.request-info-modal').slideToggle('slow');
-      	});
 
       },
       finalize: function() {

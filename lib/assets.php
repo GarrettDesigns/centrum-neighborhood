@@ -98,6 +98,7 @@ function assets() {
             'unit_number' => $unit_type->Address->UnitNumber,
             'unit_details' => array(
                 'bedrooms' => $unit_type->UnitDetails->Bedrooms,
+                'unitID' => $unit_type->Address->UnitID,
                 'bathrooms' => $unit_type->UnitDetails->Bathrooms,
                 'rent' => $unit_type->BaseRentAmount,
                 'sqft' => $unit_type->UnitDetails->GrossSqFtCount

@@ -33,6 +33,9 @@
 
         $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['rent_amts'][]
             = $unit_type->BaseRentAmount;
+
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_id'] =
+            $unit_type->Address->UnitID;
     }
 
     // Reverse unit_types array to order it starting
@@ -114,22 +117,18 @@
         <ul class="model-data">
             <li class="model-data--list-container">
                 <ul class="model-data--list list-one">
-                    <li class="model-data--list-item"><span
-class="model-data--heading">Unit: </span><span class="unit"></span></li>
-                    <li class="model-data--list-item"><span
-class="model-data--heading">Bedrooms: </span><span class="bedrooms"></span></li>
-                    <li class="model-data--list-item"><span
-class="model-data--heading">Bathrooms: </span><span class="bathrooms"></span></li>
-                    <li class="model-data--list-item"><span
-class="model-data--heading">Rent: </span><span class="rent"></span></li>
-                    <li class="model-data--list-item"><span
-class="model-data--heading">Sq Ft: </span><span class="sqft"></span></li>
+                    <li class="model-data--list-item"><span class="model-data--heading">Unit: </span><span class="unit"></span></li>
+                    <li class="model-data--list-item"><span class="model-data--heading">Bedrooms: </span><span class="bedrooms"></span></li>
+                    <li class="model-data--list-item"><span class="model-data--heading">Bathrooms: </span><span class="bathrooms"></span></li>
+                    <li class="model-data--list-item"><span class="model-data--heading">Rent: </span><span class="rent"></span></li>
+                    <li class="model-data--list-item"><span class="model-data--heading">Sq Ft: </span><span class="sqft"></span></li>
                 </ul>
             </li>
         </ul>
 
-    <a href="#" class="apply-now primary buttons">Apply Now</a>
+    <a href="#" target="_blank" class="apply-now primary buttons">Apply Now</a>
     </section>
+
     <section class="floorplan-view-container">
         <article class="floor-plan-viewer">
             <div class="slider-slide"><img height="600" src="<?php echo get_template_directory_uri(); ?>/dist/images/floor_plan_example.png"></div>

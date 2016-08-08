@@ -1292,10 +1292,9 @@ margin: 50px auto 0;
         margin: 0 auto;
         width: 85%;
         overflow: hidden;
-        border: 3px solid $white;
     }
     &-option {
-        width: 33%;
+        width: 32.6%;
         color: $white;
         float: left;
         padding: 20px 0;
@@ -1304,12 +1303,14 @@ margin: 50px auto 0;
         letter-spacing: 1.5px;
         font-weight: 500;
         border-left: 3px solid $white;
+        border-top: 3px solid $white;
+        border-bottom: 3px solid $white;
         cursor: pointer;
         @include rem((
             font-size: 10px
         ));
-        &:first-child {
-            border: none;
+        &:last-child {
+            border-right: 3px solid $white;
         }
         &.selected {
             background: gc(brand-colors, secondary);
@@ -1379,6 +1380,22 @@ margin: 50px auto 0;
     @include span(6 last);
     width: 50%;
     background: $white;
+    position:relative;
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+}
+
+.fa-arrow-circle-o-left.slick-arrow {
+    left: 20px;
+    font-size: 3rem;
+    z-index: 9999;
+}
+
+.fa-arrow-circle-o-right.slick-arrow {
+    display: none!important;
 }
 
 .model-data {
