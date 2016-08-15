@@ -156,7 +156,8 @@
                 foreach ($floorplan_slides->posts as $slide) {
                 $plan_name = explode('-', $slide->post_name);
                 $plan_name_class = count($plan_name) == 4 ? $plan_name[2] : $plan_name[1];
-                   echo '<img class="' . $plan_name_class . ' slider-slide" src="' . $slide->guid . '">';
+                   echo '<div class="' .
+                       $plan_name_class . ' slider-slide"><img src="' . $slide->guid . '"></div>';
                 }
             ?>
         </article>
