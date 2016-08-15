@@ -11,6 +11,7 @@
     // Define arrays and variable to hold reformatted api data
 
     $unit_types = array();
+    $floor_plan_images = array();
 ?>
 
 <?php
@@ -120,19 +121,44 @@
                     <li class="model-data--list-item"><span class="model-data--heading">Unit: </span><span class="unit"></span></li>
                     <li class="model-data--list-item"><span class="model-data--heading">Bedrooms: </span><span class="bedrooms"></span></li>
                     <li class="model-data--list-item"><span class="model-data--heading">Bathrooms: </span><span class="bathrooms"></span></li>
-                    <li class="model-data--list-item"><span class="model-data--heading">Rent: </span><span class="rent"></span></li>
+                    <li class="model-data--list-item"><span class="model-data--heading">Rent Starting at: </span><span class="rent"></span></li>
                     <li class="model-data--list-item"><span class="model-data--heading">Sq Ft: </span><span class="sqft"></span></li>
                 </ul>
             </li>
         </ul>
 
-    <a href="#" target="_blank" class="apply-now primary buttons">Apply Now</a>
+       <a href="#" target="_blank" class="apply-now primary buttons">Apply Now</a>
     </section>
+
+    <?php
+    $args = array(
+        'post_type' => 'attachment',
+        'post_status' => 'inherit',
+        'post_mime_type' => 'image/jpeg',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'floorplan',
+                'field' => 'slug',
+                'terms' => array('C', 'B9', 'B4', 'B1', 'A7', 'A8', 'A2',
+                'A6'),
+            ),
+        ),
+    );
+
+    $floorplan_slides = new WP_Query( $args );
+
+//    var_dump( $floorplan_slides );
+?>
 
     <section class="floorplan-view-container">
         <article class="floor-plan-viewer">
-            <div class="slider-slide"><img height="600" src="<?php echo get_template_directory_uri(); ?>/dist/images/floor_plan_example.png"></div>
-            <div class="slider-slide"><img height="600" src="<?php echo get_template_directory_uri(); ?>/dist/images/floor_plan_example.png"></div>
+            <?php
+                foreach ($floorplan_slides->posts as $slide) {
+                $plan_name = explode('-', $slide->post_name);
+                $plan_name_class = count($plan_name) == 4 ? $plan_name[2] : $plan_name[1];
+                   echo '<img class="' . $plan_name_class . ' slider-slide" src="' . $slide->guid . '">';
+                }
+            ?>
         </article>
     </section>
 </article>

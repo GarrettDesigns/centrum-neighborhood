@@ -11,6 +11,7 @@
  */
 $sage_includes = [
   'lib/soap.php',                  // Include OneSite Soap API
+  'lib/centrum_api_hooks.php',     // Custom API endpoints for centrum availabilty modal
   'lib/utils.php',                 // Utility functions
   'lib/init.php',                  // Initial theme setup and constants
   'lib/wrapper.php',               // Theme wrapper class

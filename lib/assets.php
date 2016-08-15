@@ -110,19 +110,31 @@ function assets() {
     wp_localize_script( 'sage_js', 'model_data', $model_data );
 
   // Localize the script with new data
-  $map_location_data = array(
-    'lakeview_dining_markers' => get_field('dining_location_coordinates', 12),
-    'lakeview_grocery_markers' => get_field('grocery_location_coordinates', 12),
-    'lakeview_fitness_markers' => get_field('fitness_location_coordinates', 12),
-    'lakeview_salons_markers' => get_field('salons_location_coordinates', 12),
-    'lakeview_coffee_markers' => get_field('coffee_location_coordinates', 12),
-    'lakeview_education_markers' => get_field('education_location_coordinates', 12),
-    'lakeview_retail_markers' => get_field('retail_location_coordinates', 12)
+  $map_floorplan_data = array(
+    'lakeview_dining_markers' => get_field('dining_floorplan_coordinates', 12),
+    'lakeview_grocery_markers' => get_field('grocery_floorplan_coordinates', 12),
+    'lakeview_fitness_markers' => get_field('fitness_floorplan_coordinates', 12),
+    'lakeview_salons_markers' => get_field('salons_floorplan_coordinates', 12),
+    'lakeview_coffee_markers' => get_field('coffee_floorplan_coordinates', 12),
+    'lakeview_education_markers' => get_field('education_floorplan_coordinates', 12),
+    'lakeview_retail_markers' => get_field('retail_floorplan_coordinates', 12)
   );
 
-  wp_localize_script( 'sage_js', 'map_locations', $map_location_data );
+  wp_localize_script( 'sage_js', 'map_floorplans', $map_floorplan_data );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+// add categories for attachments function
+function add_categories_for_attachments() {
+    register_taxonomy_for_object_type( 'category', 'attachment' );
+}
+add_action( 'init' , __NAMESPACE__ . '\\add_categories_for_attachments' );
+
+ // add tags for attachments
+function add_tags_for_attachments() {
+    register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+}
+add_action( 'init' , __NAMESPACE__ . '\\add_tags_for_attachments' );
 
 function my_custom_login() {
 echo '<link rel="stylesheet" type="text/css" href="' . asset_path('styles/custom-login-styles.css') . '" />';
@@ -153,3 +165,31 @@ add_action( 'init', __NAMESPACE__ . '\\login_checked_remember_me' );
 function rememberme_checked() {
 echo "<script>document.getElementById('rememberme').checked = true;</script>";
 }
+
+// register new taxonomy which applies to attachments
+function wptp_add_floorplan_taxonomy() {
+    $labels = array(
+        'name'              => 'Floorplans',
+        'singular_name'     => 'Floorplan',
+        'search_items'      => 'Search Floorplans',
+        'all_items'         => 'All Floorplans',
+        'parent_item'       => 'Parent Floorplan',
+        'parent_item_colon' => 'Parent Floorplan:',
+        'edit_item'         => 'Edit Floorplan',
+        'update_item'       => 'Update Floorplan',
+        'add_new_item'      => 'Add New Floorplan',
+        'new_item_name'     => 'New Floorplan Name',
+        'menu_name'         => 'Floorplan',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'query_var' => 'true',
+        'rewrite' => 'true',
+        'show_admin_column' => 'true',
+    );
+
+    register_taxonomy( 'floorplan', 'attachment', $args );
+}
+add_action( 'init', __NAMESPACE__ . '\\wptp_add_floorplan_taxonomy' );

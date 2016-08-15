@@ -139,12 +139,14 @@
     // Home page
     'home': {
       init: function() {
+
+        // JavaScript to be fired on the home page
+
         var apiData = api_data;
 
-          console.log(apiData);
-        // JavaScript to be fired on the home page
         var currentSelection = '';
         var lastSelection;
+
 
          $('.unit-option').on('click', function() {
              $('.unit-option').removeClass('selected');
@@ -161,10 +163,15 @@
             $('.model-option').hide();
             $('.' + currentSelection + '.model-option').show();
             $('.' + currentSelection + '.model-option').first().click();
+
+
         });
 
         $('.model-option').on('click', function() {
             var optionValue = $(this).attr('name');
+
+            $('.floor-plan-viewer').slick('slickUnfilter').slick('slickFilter', '.' + optionValue.toLowerCase());
+            $('.slider-slide').resize();
 
             $('.model-option').removeClass('selected');
             $(this).addClass('selected');
@@ -179,7 +186,14 @@
             $('.rent').append( Math.floor(model_data[optionValue][0].unit_details.rent));
             $('.sqft').append( model_data[optionValue][0].unit_details.sqft );
             $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][0].unit_details.unitID  + '&siteID=3916349');
+
+          $.get('/wp-json/centrum/v1/floorplan/' + optionValue, function( data ) {
+              for( var i = 0; i < data.length; i++ ) {
+                $('.floor-plan-viewer').append( '<div class="slider-slide"><img height="600" src="' + data[i].guid + '"></div>');
+              }
+          });
         });
+
 
         var optionClasses = $('.unit-option').attr('class').split();
 
