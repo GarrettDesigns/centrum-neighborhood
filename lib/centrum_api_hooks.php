@@ -6,6 +6,7 @@
  * @return string|null Post title for the latest,  * or null if none.
  */
 function centrum_get_floorplans( $data ) {
+
   $floorplan_args = array(
       'post_type' => 'attachment',
       'post_status' => 'inherit',
@@ -18,13 +19,14 @@ function centrum_get_floorplans( $data ) {
       ),
   );
 
-   $floorplans = new WP_Query( $floorplan_args );
+  $floorplans = new WP_Query( $floorplan_args );
 
    return $floorplans;
 }
 
 function centrum_register_api_hooks() {
-    $namespace = 'centrum/v1';
+
+   $namespace = 'centrum/v1';
 
 	register_rest_route( $namespace, '/floorplan/(?P<floorplanCode>.+)', array(
 		'methods' => 'GET',

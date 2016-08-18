@@ -40,6 +40,34 @@ function add_custom_mime_types($mimes){
 add_filter('upload_mimes', __NAMESPACE__ . '\\add_custom_mime_types');
 
 
+// register new taxonomy which applies to attachments
+function wptp_add_floorplan_taxonomy() {
+    $labels = array(
+        'name'              => 'Floorplans',
+        'singular_name'     => 'Floorplan',
+        'search_items'      => 'Search Floorplans',
+        'all_items'         => 'All Floorplans',
+        'parent_item'       => 'Parent Floorplan',
+        'parent_item_colon' => 'Parent Floorplan:',
+        'edit_item'         => 'Edit Floorplan',
+        'update_item'       => 'Update Floorplan',
+        'add_new_item'      => 'Add New Floorplan',
+        'new_item_name'     => 'New Floorplan Name',
+        'menu_name'         => 'Floorplan',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+        'query_var' => 'true',
+        'rewrite' => 'true',
+        'show_admin_column' => 'true',
+    );
+
+    register_taxonomy( 'floorplan', 'attachment', $args );
+}
+add_action( 'init', __NAMESPACE__ . '\\wptp_add_floorplan_taxonomy' );
+
 //
 //    Adds Foundation classes to next/prev buttons
 //

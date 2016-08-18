@@ -67,9 +67,8 @@ function asset_path($filename) {
 
 function assets() {
 
-  wp_enqueue_style('slick_css', asset_path('styles/owl-carousel.css'), false, null);
-  wp_enqueue_style('slick_theme', asset_path('styles/owl-theme.css'), false, null);
-  wp_enqueue_style('stacktable_css', asset_path('styles/stacktable.css'), false, null);
+  wp_enqueue_style('owl_css', asset_path('styles/owl-carousel.css'), false, null);
+  wp_enqueue_style('owl_theme', asset_path('styles/owl-carousel.css'), false, null);
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -78,9 +77,8 @@ function assets() {
 
   wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
   wp_enqueue_script('owl-carousel', asset_path('scripts/owl-carousel.js'), ['jquery'], null, false);
-  wp_enqueue_script('info-bubble', asset_path('scripts/infobubble.js'), ['jquery'], null, false);
-  wp_enqueue_script('stacktable_js', asset_path('scripts/stacktable.js'), ['jquery'], null, false);
   wp_enqueue_script('iconic_js', asset_path('scripts/iconic.min.js'), ['jquery'], null, false);
+  wp_enqueue_script( 'infobubble-js', asset_path( 'scripts/infobubble-js' ), ['jquery'], null, false );
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
 
 	$centrum_data = new \CentrumLivingSoapObject;
@@ -166,30 +164,3 @@ function rememberme_checked() {
 echo "<script>document.getElementById('rememberme').checked = true;</script>";
 }
 
-// register new taxonomy which applies to attachments
-function wptp_add_floorplan_taxonomy() {
-    $labels = array(
-        'name'              => 'Floorplans',
-        'singular_name'     => 'Floorplan',
-        'search_items'      => 'Search Floorplans',
-        'all_items'         => 'All Floorplans',
-        'parent_item'       => 'Parent Floorplan',
-        'parent_item_colon' => 'Parent Floorplan:',
-        'edit_item'         => 'Edit Floorplan',
-        'update_item'       => 'Update Floorplan',
-        'add_new_item'      => 'Add New Floorplan',
-        'new_item_name'     => 'New Floorplan Name',
-        'menu_name'         => 'Floorplan',
-    );
-
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true,
-        'query_var' => 'true',
-        'rewrite' => 'true',
-        'show_admin_column' => 'true',
-    );
-
-    register_taxonomy( 'floorplan', 'attachment', $args );
-}
-add_action( 'init', __NAMESPACE__ . '\\wptp_add_floorplan_taxonomy' );

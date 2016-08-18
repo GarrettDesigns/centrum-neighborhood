@@ -66,8 +66,6 @@
           });
         });
 
-        $('.availability-table').stacktable({myClass: 'stacked-table', headIndex: 4 });
-
         $('.gallery-button').on('click', function(e) {
           e.preventDefault();
           $('.gallery-slider').owlCarousel({
@@ -146,13 +144,12 @@
 
         var currentSelection = '';
         var lastSelection;
-
+        var optionValue;
 
          $('.unit-option').on('click', function() {
              $('.unit-option').removeClass('selected');
              $(this).addClass('selected');
 
-             $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
 
              $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
 
@@ -168,7 +165,7 @@
         });
 
         $('.model-option').on('click', function() {
-            var optionValue = $(this).attr('name');
+            optionValue = $(this).attr('name');
 
             $('.floor-plan-viewer').slick('slickUnfilter').slick('slickFilter', '.' + optionValue.toLowerCase());
             $('.slider-slide').resize();
@@ -176,24 +173,34 @@
             $('.model-option').removeClass('selected');
             $(this).addClass('selected');
 
-            $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
+            $('.bedrooms, .bathrooms, .rent, .sqft, .unit, .unit-list').html('');
 
             for(var i = 0; i < model_data[optionValue].length; i++) {
-                $('.unit').append( model_data[optionValue][i].unit_number + ' ');
+                $('.unit-list').append('<li id="' + i  + '" class="' + model_data[optionValue][i].unit_number + ' unit-list-option">' + model_data[optionValue][i].unit_number + '</li>');
             }
-            $('.bedrooms').append( model_data[optionValue][0].unit_details.bedrooms );
-            $('.bathrooms').append( model_data[optionValue][0].unit_details.bathrooms );
-            $('.rent').append( Math.floor(model_data[optionValue][0].unit_details.rent));
-            $('.sqft').append( model_data[optionValue][0].unit_details.sqft );
-            $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][0].unit_details.unitID  + '&siteID=3916349');
+
+            $('.unit-list').find('li').first().click();
 
           $.get('/wp-json/centrum/v1/floorplan/' + optionValue, function( data ) {
               for( var i = 0; i < data.length; i++ ) {
-                $('.floor-plan-viewer').append( '<div class="slider-slide"><img height="600" src="' + data[i].guid + '"></div>');
               }
           });
         });
 
+          $('.unit-list').on('click', 'li', function() {
+
+            $('.unit-list').find('li').removeClass('selected');
+              $(this).addClass('selected');
+
+            $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
+
+            $('.unit').append( model_data[optionValue][$(this).attr('id')].unit_number );
+            $('.bedrooms').append( model_data[optionValue][$(this).attr('id')].unit_details.bedrooms );
+            $('.bathrooms').append( model_data[optionValue][$(this).attr('id')].unit_details.bathrooms );
+            $('.rent').append( '$' + Math.floor(model_data[optionValue][$(this).attr('id')].unit_details.rent));
+            $('.sqft').append( model_data[optionValue][$(this).attr('id')].unit_details.sqft );
+            $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID  + '&siteID=3916349');
+          });
 
         var optionClasses = $('.unit-option').attr('class').split();
 
@@ -668,21 +675,21 @@
 				}
 
 				function callback(results, status) {
-				  if (status !== google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
-                      setTimeout(function() {
-                          for (var i = 0, result; result === results[i]; i++) {
-                            addMarker(result);
-                          }
-                     }, 200);
-                  }
-                }
+				  if (status !== google.maps.places.PlacesServiceStatus.OK) {
+				    console.error(status);
+				    return;
+				  }
+				  for (var i = 0, result; result = results[i]; i++) {
+				    addMarker(result);
+				  }
+				}
 
 				function addMarker(place) {
 				  var marker = new google.maps.Marker({
 				    map: map,
 				    position: place.geometry.location,
 				    icon: categoryIcons[$(place.types).filter(categories)[0]],
-					category: $(place.types).filter(categories)[0]
+						category: $(place.types).filter(categories)[0]
 				  });
 					markers.push(marker);
 

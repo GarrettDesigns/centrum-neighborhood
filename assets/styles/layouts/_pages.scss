@@ -424,6 +424,12 @@ body.show-nav {
     overflow: hidden;
     display: flex;
     justify-content: space-between;
+    @include breakpoint(max-width $lg-tablet) {
+        width: 90%;
+    }
+    @include breakpoint(max-width $sm-tablet) {
+        display: block;
+    }
 }
 
 .unit-tile {
@@ -436,6 +442,10 @@ body.show-nav {
     text-align: center;
     &:last-child {
         margin-right: 0;
+    }
+    @include breakpoint(max-width $sm-tablet) {
+        width: auto;
+        margin-bottom: 30px;
     }
     &--heading {
         text-transform: uppercase;
@@ -465,6 +475,9 @@ body.show-nav {
          padding: 15px 30px;
          max-width: 70%;
          margin: 0 auto 10px;
+         @include breakpoint(max-width $lg-tablet) {
+             padding: 15px;
+         }
          display: block;
          i {
              float: right;
@@ -649,11 +662,18 @@ a.gallery-button.mobile.primary.buttons {
       width: 100%;
       padding-bottom: 90px;
     }
+    @include breakpoint(max-width $sm-mobile) {
+      width: 100%;
+      padding-bottom: 90px;
+    }
   } // End .features-list--columns
   &--column {
     @extend %display-flexbox;
     flex-flow: row wrap;
     margin-right: 70px;
+    @include breakpoint(max-width $sm-mobile) {
+        margin-right: 0;
+    }
     &-heading {
       margin-left: -32px;
       color: gc(brand-colors, secondary);
@@ -691,7 +711,6 @@ a.gallery-button.mobile.primary.buttons {
     min-height: 800px;
     position: relative;
     @include breakpoint($sm-mobile $lg-tablet) {
-      display: inline-block;
       width: 100%;
   }
 } // End .interior-view-one, .interior-view-two
@@ -700,7 +719,11 @@ a.gallery-button.mobile.primary.buttons {
 .current-availability {
   background: gc(brand-colors, main);
   position: relative;
-  padding-bottom: 130px;
+  padding-bottom: 100px;
+
+  @include breakpoint(max-width $sm-mobile) {
+      padding-bottom: 0;
+  }
 @at-root {
   .availability-table {
     display: table;
@@ -866,8 +889,8 @@ a.gallery-button.mobile.primary.buttons {
     @include breakpoint($sm-mobile $lg-tablet) {
       padding: 20px;
       background: transparentize(gc(brand-colors, main), 0.3);
-      position: static;
       width: 80%;
+      left: 7%;
       margin: 50% auto 0;
   }
 } // End .features--trap-article .left
@@ -890,8 +913,8 @@ a.gallery-button.mobile.primary.buttons {
       @include breakpoint($sm-mobile $lg-tablet) {
         padding: 20px;
         background: transparentize(gc(brand-colors, main), 0.3);
-        position: static;
         width: 80%;
+        right: 7%;
         margin: 50% auto 0;
     }
   } // End .interior-view-two--trap-article .right
@@ -1072,13 +1095,13 @@ a.gallery-button.mobile.primary.buttons {
   text-transform: uppercase;
   .location-title {
     padding: 10px 0;
-}
-a {
-  color: white;
-  &:hover {
-    text-decoration: underline;
   }
-}
+  a {
+     color: white;
+     &:hover {
+       text-decoration: underline;
+     }
+  }
 }
 
 .request-info-modal {
@@ -1096,7 +1119,7 @@ a {
   border: 1px solid white;
   &:hover {
     color: white;
-}
+  }
 }
 
 .show-contact {
@@ -1162,6 +1185,9 @@ a {
         max-width: 430px;
         text-align: center;
         margin: 0 auto;
+        @include breakpoint(max-width $sm-mobile) {
+            padding: 70px 20px 120px;
+        }
         .update {
             &-headline {
                 color: gc(brand-colors, secondary);
@@ -1194,6 +1220,7 @@ a {
         letter-spacing: 1.5px;
         font-weight: 700;
         border-radius: 50px 0 0 50px;
+        outline: none;
         top: 0;
         left:0;
         width: 65%; 
@@ -1203,6 +1230,9 @@ a {
         height: 100%;
         text-transform: uppercase;
         padding: 9px 0 11px 22px;
+        @include breakpoint(max-width $sm-mobile) {
+            width: 61.5%;
+        }
         &::-webkit-input-placeholder {
             @include rem((font-size: 7px));
             font-weight: 700;
@@ -1261,14 +1291,21 @@ a {
     clear: both;
 }
 .slick-slide {
-height: 734px;
+    height: 734px;
+    position: relative;
 }
 .slider-slide {
-margin: 0 auto;
+    margin: 0 auto;
 }
 .slider-slide img {
-margin: 0 auto;
-max-width: 73%;
+    margin: 0 auto;
+    max-width: 73%;
+    @include breakpoint(max-width $sm-laptop) {
+        margin-top: 25%;
+    }
+    @include breakpoint(max-width $sm-mobile) {
+        margin-top: 90%;
+    }
 }
 
 .close-availability {
@@ -1287,6 +1324,9 @@ max-width: 73%;
         padding: 80px 0 40px;
         margin-right: 0;
         background: gc(brand-colors, main);
+        @include breakpoint(max-width $lg-tablet) {
+            @include span(12);
+        }
     }
     &-filter {
         margin: 0 auto;
@@ -1306,9 +1346,54 @@ max-width: 73%;
         border-top: 3px solid $white;
         border-bottom: 3px solid $white;
         cursor: pointer;
+        .unit-list & {
+            padding: 10px 0;
+            width: 16%;
+        }
+        @include breakpoint(max-width $sm-custom-mobile) {
+            .bedroom-text {
+                display: none;
+            }
+        }
+        @include breakpoint(max-width $sm-laptop) {
+            width: 31.67%;
+            @include rem((
+                font-size: 9px
+            ));
+        }
         @include rem((
             font-size: 10px
         ));
+        &:last-child {
+            border-right: 3px solid $white;
+        }
+        &.selected {
+            background: gc(brand-colors, secondary);
+        }
+        &:hover {
+            background: gc(brand-colors, secondary);
+        }
+    }
+}
+
+.unit-list {
+    width: 85%;
+    margin: 20px auto 0;
+    overflow: hidden;
+    clear: both;
+    &-option {
+        color: $white;
+        float: left;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        border-left: 3px solid $white;
+        border-top: 3px solid $white;
+        border-bottom: 3px solid $white;
+        cursor: pointer;
+        padding: 10px 0;
+        width: 16%;
         &:last-child {
             border-right: 3px solid $white;
         }
@@ -1343,6 +1428,14 @@ max-width: 73%;
         text-align: center;
         cursor: pointer;
         float: left;
+        @include breakpoint(max-width $sm-custom-mobile) {
+            .model-text {
+                display: none;
+            }
+        }
+        @include breakpoint(max-width $sm-laptop) {
+            width: 31.67%;
+        }
         &:hover {
             background: gc(brand-colors, secondary);
         }
@@ -1381,6 +1474,20 @@ max-width: 73%;
     width: 50%;
     background: $white;
     position:relative;
+    @include breakpoint(max-width $lg-tablet) {
+        @include span(12);
+    }
+    @include breakpoint(max-width $sm-mobile) {
+        padding-bottom: 145px;
+    }
+}
+
+.floorplan-pdf-download {
+    color: gc(brand-colors, secondary);
+    font-weight: 700;
+    position: absolute;
+    top: 20px;
+    right: 30px;
 }
 
 .slick-arrow {
@@ -1406,6 +1513,12 @@ max-width: 73%;
     }
     &--list {
         @include span(5);
+        @include breakpoint(max-width $lg-tablet) {
+            @include span(7);
+        }
+        @include breakpoint(max-width $sm-mobile) {
+            @include span(12);
+        }
         &-item {
             padding: 8px 0;
             font-weight: 500;

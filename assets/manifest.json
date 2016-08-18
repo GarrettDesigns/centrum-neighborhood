@@ -22,24 +22,11 @@
         "../bower_components/owl.carousel/dist/assets/owl.carousel.min.css"
       ]
     },
-    "owl-theme.css": {
-      "files": [
-        "../bower_components/owl.carousel/dist/assets/owl.theme.default.min.css"
-      ]
-    },
-    "stacktable.css": {
-      "files": [
-        "../bower_components/stacktable.js/stacktable.css"
-      ]
-    },
     "jquery.js": {
       "bower": ["jquery"]
     },
     "stacktable.js": {
       "bower": ["stacktable.js"]
-    },
-		"infobubble.js": {
-      "bower": ["js-info-bubble"]
     },
     "owl-carousel.js": {
       "bower": ["owl.carousel"]
@@ -49,6 +36,9 @@
     },
     "iconic.min.js": {
       "files": ["scripts/iconic.min.js"]
+    },
+    "infobubble-js": {
+        "bower": ["google-map-infobubble"]
     },
     "fonts": {
       "files": ["fonts/**/*"]

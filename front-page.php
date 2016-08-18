@@ -56,9 +56,6 @@
       <div class="background-image"></div>
       <?php get_template_part('templates/content', 'amenities-trap'); ?>
     </section>
-    <!-- <section id="amenities" class="amenities-main">
-      <?php get_template_part('templates/content', 'amenities'); ?>
-    </section> -->
   </article>
 
   <article id="neighborhood" class="neighborhood-hero">
@@ -73,9 +70,9 @@
     <?php get_template_part('templates/content', 'features-main'); ?>
   </article>
 
-	<article class="vendor-logos">
-		<?php get_template_part('templates/content', 'vendor-logos'); ?>
-	</article>
+  <article class="vendor-logos">
+    <?php get_template_part('templates/content', 'vendor-logos'); ?>
+  </article>
 
   <article class="interior-view-one">
     <div class="background-image"></div>
@@ -89,7 +86,6 @@
 
   <article id="availability" class="current-availability">
     <?php get_template_part('templates/content', 'current-availability'); ?>
-    <?php get_template_part('templates/content', 'contact'); ?>
   </article>
 
   <article class="contact-us">

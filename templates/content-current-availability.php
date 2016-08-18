@@ -42,7 +42,7 @@
     // Reverse unit_types array to order it starting
     // with Convertible units
 
-    $ordered_unit_types = array_reverse($unit_types);
+    $ordered_unit_types = array_reverse( $unit_types );
 ?>
 
 <ul class="current-availability--tiles">
@@ -50,7 +50,7 @@
         <li class="unit-tile">
             <h1 class="unit-tile--heading">
                 <?php
-                    if($unit['unit_type'] == "Convertible" ) {
+                    if( $unit['unit_type'] == "Convertible" ) {
                         echo "Studio";
                     } else {
                         echo $unit['bedrooms'] . ' bedroom';
@@ -72,7 +72,7 @@
                     echo $unit['bathrooms'] . ' Bathroom';
                 } ?>
                 <br>
-                <?php if( min( $unit['sqft'] ) == max( $unit['sqft'] ) ) {
+                <?php if ( min( $unit['sqft'] ) == max( $unit['sqft'] ) ) {
                     echo min( $unit['sqft'] );
                 } else {
                     echo min( $unit['sqft'] ) . ' to ' . max( $unit['sqft'] );
@@ -95,25 +95,28 @@
             <?php foreach ( $ordered_unit_types as $unit ) : ?>
                 <li class="unit-option <?php echo $unit['unit_type']; ?>">
                     <?php
-                        if($unit['unit_type'] == "Convertible" ) {
+                        if ( $unit['unit_type'] == "Convertible" ) {
                             echo "Studio";
                         } else {
-                            echo $unit['bedrooms'] . ' bedroom';
+                            echo $unit['bedrooms'] . ' <span class="bedroom-text">bedroom</span>';
                         }
                     ?>
                 </li>
             <?php endforeach; ?>
         </ul>
 
-        <p class="filter-heading">Select a Model Number to view Floor Plans</p>
+        <p class="filter-heading">Select a Model Number to view available units</p>
         <ul class="model-list">
             <?php foreach ( $unit_types as $unit ) : ?>
-                <?php foreach( array_unique( $unit['models'] ) as $model ) : ?>
+                <?php foreach ( array_unique( $unit['models'] ) as $model ) : ?>
                    <li class="<?php echo $unit['unit_type']; ?> model-option"
-                   name="<?php echo $model; ?>"><?php echo 'Model ' . $model;  ?></li>
+                   name="<?php echo $model; ?>"><?php echo '<span class="model-text">Model</span> ' . $model;  ?></li>
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </ul>
+
+        <p class="filter-heading">Select a unit number for additional information</p>
+        <ul class="unit-list"></ul>
 
         <ul class="model-data">
             <li class="model-data--list-container">
@@ -147,17 +150,24 @@
 
     $floorplan_slides = new WP_Query( $args );
 
-//    var_dump( $floorplan_slides );
 ?>
 
     <section class="floorplan-view-container">
         <article class="floor-plan-viewer">
             <?php
-                foreach ($floorplan_slides->posts as $slide) {
-                $plan_name = explode('-', $slide->post_name);
-                $plan_name_class = count($plan_name) == 4 ? $plan_name[2] : $plan_name[1];
-                   echo '<div class="' .
-                       $plan_name_class . ' slider-slide"><img src="' . $slide->guid . '"></div>';
+                foreach ( $floorplan_slides->posts as $slide ) {
+                    $plan_name = explode( '-', $slide->post_name );
+
+                    $pdf_name_array = explode( '-', $slide->post_name );
+                    $pdf_name_pop = array_pop( $pdf_name_array );
+                    $pdf_name = implode( '-', $pdf_name_array );
+
+                    $plan_name_class = count( $plan_name ) == 4 ? $plan_name[2] : $plan_name[1];
+
+                    echo '<div class="' . $plan_name_class . ' slider-slide">';
+                        echo '<a class="floorplan-pdf-download" target="_blank" href="'. wp_upload_dir()['url'] . '/' . $pdf_name . '.pdf">Download PDF</a>';
+                        echo '<img src="' . $slide->guid . '">';
+                    echo '</div>';
                 }
             ?>
         </article>
