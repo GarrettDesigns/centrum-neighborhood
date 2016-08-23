@@ -47,18 +47,18 @@ class JsonManifest {
   }
 }
 
-function asset_path($filename) {
+function asset_path( $filename ) {
   $dist_path = get_template_directory_uri() . DIST_DIR;
-  $directory = dirname($filename) . '/';
-  $file = basename($filename);
+  $directory = dirname( $filename ) . '/';
+  $file = basename( $filename );
   static $manifest;
 
-  if (empty($manifest)) {
+  if ( empty( $manifest ) ) {
     $manifest_path = get_template_directory() . DIST_DIR . 'assets.json';
     $manifest = new JsonManifest($manifest_path);
   }
 
-  if (array_key_exists($file, $manifest->get())) {
+  if ( array_key_exists( $file, $manifest->get() ) ) {
     return $dist_path . $directory . $manifest->get()[$file];
   } else {
     return $dist_path . $directory . $file;
@@ -90,7 +90,7 @@ function assets() {
 
     $model_data = array();
 
-    foreach( $api_unit_data as $unit_type ) {
+    foreach ( $api_unit_data as $unit_type ) {
 
         $model_data[$unit_type->FloorPlan->FloorPlanCode][] = array(
             'unit_number' => $unit_type->Address->UnitNumber,
@@ -163,4 +163,3 @@ add_action( 'init', __NAMESPACE__ . '\\login_checked_remember_me' );
 function rememberme_checked() {
 echo "<script>document.getElementById('rememberme').checked = true;</script>";
 }
-

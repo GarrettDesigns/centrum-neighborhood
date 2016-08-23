@@ -181,16 +181,12 @@
 
             $('.unit-list').find('li').first().click();
 
-          $.get('/wp-json/centrum/v1/floorplan/' + optionValue, function( data ) {
-              for( var i = 0; i < data.length; i++ ) {
-              }
-          });
         });
 
           $('.unit-list').on('click', 'li', function() {
 
             $('.unit-list').find('li').removeClass('selected');
-              $(this).addClass('selected');
+            $(this).addClass('selected');
 
             $('.bedrooms, .bathrooms, .rent, .sqft, .unit').html('');
 
@@ -213,8 +209,8 @@
         });
 
           $('.floor-plan-viewer').slick({
-            prevArrow: '<i class="fa fa-arrow-circle-o-left"></i>',
-            nextArrow: '<i class="fa fa-arrow-circle-o-right"></i>'
+            prevArrow: '<i class="fa fa-angle-left"></i>',
+            nextArrow: '<i class="fa fa-angle-right"></i>'
           });
 
         $('.map-modal-button').on('click', function(e) {

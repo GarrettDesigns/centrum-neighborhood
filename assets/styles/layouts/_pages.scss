@@ -720,6 +720,7 @@ a.gallery-button.mobile.primary.buttons {
   background: gc(brand-colors, main);
   position: relative;
   padding-bottom: 100px;
+  height: 772px;
 
   @include breakpoint(max-width $sm-mobile) {
       padding-bottom: 0;
@@ -1291,7 +1292,7 @@ a.gallery-button.mobile.primary.buttons {
     clear: both;
 }
 .slick-slide {
-    height: 734px;
+    height: 850px;
     position: relative;
 }
 .slider-slide {
@@ -1472,6 +1473,7 @@ a.gallery-button.mobile.primary.buttons {
 .floorplan-view-container {
     @include span(6 last);
     width: 50%;
+    height: 869px;
     background: $white;
     position:relative;
     @include breakpoint(max-width $lg-tablet) {
@@ -1495,14 +1497,16 @@ a.gallery-button.mobile.primary.buttons {
     top: 50%;
 }
 
-.fa-arrow-circle-o-left.slick-arrow {
+.fa-angle-left.slick-arrow {
     left: 20px;
     font-size: 3rem;
     z-index: 9999;
 }
 
-.fa-arrow-circle-o-right.slick-arrow {
-    display: none!important;
+.fa-angle-right.slick-arrow {
+    right: 20px;
+    font-size: 3rem;
+    z-index: 9999;
 }
 
 .model-data {
