@@ -424,10 +424,13 @@ body.show-nav {
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    @include breakpoint(max-width $lg-tablet) {
+    @include breakpoint(max-width $md-laptop) {
         width: 90%;
     }
-    @include breakpoint(max-width $sm-tablet) {
+    @include breakpoint(max-width $sm-laptop) {
+        width: 90%;
+    }
+    @include breakpoint(max-width $md-tablet) {
         display: block;
     }
 }
@@ -442,6 +445,13 @@ body.show-nav {
     text-align: center;
     &:last-child {
         margin-right: 0;
+        @include breakpoint(max-width $md-tablet) {
+            margin-right: auto;
+        }
+    }
+    @include breakpoint(max-width $md-tablet) {
+        width: 70%;
+        margin: 0 auto 20px;
     }
     @include breakpoint(max-width $sm-tablet) {
         width: auto;
@@ -651,7 +661,7 @@ a.gallery-button.mobile.primary.buttons {
     padding-bottom: 40px;
     @extend %display-flexbox;
     justify-content: space-around;
-    @include breakpoint(max-width $sm-laptop) {
+    @include breakpoint(max-width $md-laptop) {
          width: 90%;
     }
     @include breakpoint(max-width $lg-tablet) {
@@ -720,7 +730,7 @@ a.gallery-button.mobile.primary.buttons {
   background: gc(brand-colors, main);
   position: relative;
   padding-bottom: 100px;
-  height: 772px;
+ // height: 772px;
 
   @include breakpoint(max-width $sm-mobile) {
       padding-bottom: 0;
@@ -911,6 +921,9 @@ a.gallery-button.mobile.primary.buttons {
       text-align: center;
       right: 0;
       background: url('../../assets/images/trap-right.png') no-repeat 0 0;
+      &.modal-open {
+          z-index: 0!important;
+      }
       @include breakpoint($sm-mobile $lg-tablet) {
         padding: 20px;
         background: transparentize(gc(brand-colors, main), 0.3);
@@ -986,7 +999,7 @@ a.gallery-button.mobile.primary.buttons {
   z-index: 999;
   cursor: pointer;
   &.mobile {
-    @include breakpoint(max-width $sm-laptop) {
+    @include breakpoint(max-width $md-laptop) {
       padding: 0;
     }
   }
@@ -1166,6 +1179,7 @@ a.gallery-button.mobile.primary.buttons {
 
 .contact-us {
     position: relative;
+    clear: both;
     .background-image {
         position: absolute;
         top: 0;
@@ -1272,16 +1286,20 @@ a.gallery-button.mobile.primary.buttons {
 }
 
 .availability-modal {
-    position: absolute;
-    top: 0;
     background: black;
     height: 100%;
-    left: 0;
     width: 100%;
     display: none;
     z-index: 999;
     &.open {
         display: block;
+        margin-top: -635px;
+        @include breakpoint(max-width $md-tablet) {
+            margin-top: -1556px;
+        }
+        @include breakpoint(max-width $custom-mobile) {
+            margin-top: -1610px;
+        }
     }
 }
 
@@ -1300,12 +1318,28 @@ a.gallery-button.mobile.primary.buttons {
 }
 .slider-slide img {
     margin: 0 auto;
-    max-width: 73%;
-    @include breakpoint(max-width $sm-laptop) {
-        margin-top: 25%;
+    max-width: 69%;
+    @include breakpoint(min-width $md-desktop) {
+        margin: 80px auto 0;
     }
-    @include breakpoint(max-width $sm-mobile) {
-        margin-top: 90%;
+    @include breakpoint(min-width $sm-custom-desktop) {
+        margin: 60px auto 0;
+    }
+    @include breakpoint(min-width $desktop) {
+        margin: 110px auto 0;
+    }
+    @include breakpoint(max-width $md-laptop) {
+        margin-top: 90px;
+        max-width: 60%;
+    }
+    @include breakpoint($custom-sm-laptop $md-laptop) {
+        margin-top: 0;
+    }
+    @include breakpoint(max-width $md-tablet) {
+        margin-top: 140px;
+    }
+    @include breakpoint(max-width $custom-mobile) {
+        margin-top: 60%;
     }
 }
 
@@ -1314,6 +1348,8 @@ a.gallery-button.mobile.primary.buttons {
     border: none;
     outline: none;
     position: absolute;
+    z-index: 9999;
+    opacity: .99;
     top: 20px;
     left: 20px;
 }
@@ -1324,8 +1360,10 @@ a.gallery-button.mobile.primary.buttons {
         width: 50%;
         padding: 80px 0 40px;
         margin-right: 0;
+        z-index: 9999;
+        opacity: .99;
         background: gc(brand-colors, main);
-        @include breakpoint(max-width $lg-tablet) {
+        @include breakpoint(max-width $md-laptop) {
             @include span(12);
         }
     }
@@ -1351,16 +1389,19 @@ a.gallery-button.mobile.primary.buttons {
             padding: 10px 0;
             width: 16%;
         }
-        @include breakpoint(max-width $sm-custom-mobile) {
-            .bedroom-text {
-                display: none;
-            }
+        @include breakpoint(max-width $sm-custom-desktop) {
+            width: 31.6%;
         }
-        @include breakpoint(max-width $sm-laptop) {
+        @include breakpoint(max-width $md-laptop) {
             width: 31.67%;
             @include rem((
                 font-size: 9px
             ));
+        }
+        @include breakpoint(max-width $sm-custom-mobile) {
+            .bedroom-text {
+                display: none;
+            }
         }
         @include rem((
             font-size: 10px
@@ -1429,13 +1470,16 @@ a.gallery-button.mobile.primary.buttons {
         text-align: center;
         cursor: pointer;
         float: left;
+        @include breakpoint(max-width $custom-desktop) {
+            width: 31.67%;
+        }
+        @include breakpoint(max-width $md-laptop) {
+            width: 31.67%;
+        }
         @include breakpoint(max-width $sm-custom-mobile) {
             .model-text {
                 display: none;
             }
-        }
-        @include breakpoint(max-width $sm-laptop) {
-            width: 31.67%;
         }
         &:hover {
             background: gc(brand-colors, secondary);
@@ -1473,10 +1517,10 @@ a.gallery-button.mobile.primary.buttons {
 .floorplan-view-container {
     @include span(6 last);
     width: 50%;
-    height: 869px;
+    height: 809px;
     background: $white;
     position:relative;
-    @include breakpoint(max-width $lg-tablet) {
+    @include breakpoint(max-width $md-laptop) {
         @include span(12);
     }
     @include breakpoint(max-width $sm-mobile) {
@@ -1494,7 +1538,7 @@ a.gallery-button.mobile.primary.buttons {
 
 .slick-arrow {
     position: absolute;
-    top: 50%;
+    top: 45%;
 }
 
 .fa-angle-left.slick-arrow {

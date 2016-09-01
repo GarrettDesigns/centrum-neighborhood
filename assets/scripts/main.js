@@ -154,6 +154,7 @@
              $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
 
              var classString = $(this).attr('class').split(' ');
+             console.log(classString);
              currentSelection = classString[1];
              lastSelection = currentSelection;
 
@@ -195,18 +196,20 @@
             $('.bathrooms').append( model_data[optionValue][$(this).attr('id')].unit_details.bathrooms );
             $('.rent').append( '$' + Math.floor(model_data[optionValue][$(this).attr('id')].unit_details.rent));
             $('.sqft').append( model_data[optionValue][$(this).attr('id')].unit_details.sqft );
-          //  $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID  + '&siteID=3916349');
-$('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/default.aspx?template=esignature_rms&siteID=3916349&unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID);
+            // $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID  + '&siteID=3916349');
+            // $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(' + model_data[optionValue][0].session_id +'))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID  + '&siteID=3916349');
+            $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/default.aspx?template=esignature_rms&SiteID=3916349&unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID);
           });
 
         var optionClasses = $('.unit-option').attr('class').split();
 
-        $('.unit-tile--button').on('click', function(e) {
+        $('.show-availability-modal').on('click', function(e) {
             e.preventDefault();
             $('.availability-modal').addClass('open');
             var unitType = $(this).attr('class').split(' ');
             $('.slider-slide').resize();
             $('.unit-option.' + unitType[3]).click();
+            $('.interior-view-two--trap-article.right').addClass('modal-open');
         });
 
           $('.floor-plan-viewer').slick({
@@ -223,6 +226,7 @@ $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/default.a
 
         $('.close-availability').on('click', function () {
           $('.availability-modal').removeClass('open');
+          $('.interior-view-two--trap-article.right').removeClass('modal-open');
         });
 
         var categoryIcons = {

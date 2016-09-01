@@ -6,7 +6,7 @@ class CentrumLivingSoapObject {
     return array(
       'UserName' => 'D99',
       'Password' => 'D991234',
-      'SiteID' => '3916349',
+      'SiteID' => '3991801',
       'PmcID' => '1049405'
    );
   }

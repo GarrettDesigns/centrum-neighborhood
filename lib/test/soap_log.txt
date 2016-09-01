@@ -1,0 +1,2 @@
+
+Catchable fatal error: Object of class stdClass could not be converted to string in /Users/Garrett/DoejoDev/centrum/centrum-neighborhood/wordpress/wp-content/themes/centrum/lib/test/soap_test.php on line 11

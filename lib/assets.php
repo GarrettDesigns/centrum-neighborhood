@@ -86,6 +86,10 @@ function assets() {
 	$units = $centrum_data->get_availability_info( 'Unit', 'List' );
 	$unit_data = $units->ListResult->UnitObject;
 
+    $header_array = explode(' ', $centrum_data->client->__last_response_headers);
+    preg_match("/(?<=\=)(.*[A-Za-z0-9])/", $header_array[16], $matches);
+
+
     $api_unit_data = $unit_data;
 
     $model_data = array();
@@ -100,7 +104,8 @@ function assets() {
                 'bathrooms' => $unit_type->UnitDetails->Bathrooms,
                 'rent' => $unit_type->BaseRentAmount,
                 'sqft' => $unit_type->UnitDetails->GrossSqFtCount
-            )
+            ),
+            'session_id' => $matches[0],
         );
     }
 
