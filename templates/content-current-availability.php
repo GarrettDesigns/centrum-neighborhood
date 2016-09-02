@@ -8,41 +8,41 @@
 	$units = $apt_info->get_availability_info( 'Unit', 'List' );
 	$unit_data = $units->ListResult->UnitObject;
 
-		// Define arrays and variable to hold reformatted api data
+    // Define arrays and variable to hold reformatted api data
 
-		$unit_types = array();
-		$floor_plan_images = array();
+    $unit_types = array();
+    $floor_plan_images = array();
 ?>
 
 <?php
-		foreach( $unit_data as $unit_type ) {
+    foreach( $unit_data as $unit_type ) {
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['bedrooms'] =
-						$unit_type->UnitDetails->Bedrooms;
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['bedrooms'] =
+                $unit_type->UnitDetails->Bedrooms;
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['bathrooms'] =
-						$unit_type->UnitDetails->Bathrooms;
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['bathrooms'] =
+                $unit_type->UnitDetails->Bathrooms;
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['sqft'][] =
-						$unit_type->UnitDetails->GrossSqFtCount;
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['sqft'][] =
+                $unit_type->UnitDetails->GrossSqFtCount;
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['models'][] =
-						$unit_type->FloorPlan->FloorPlanCode;
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['models'][] =
+                $unit_type->FloorPlan->FloorPlanCode;
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_type']
-						= $unit_type->FloorPlan->FloorPlanGroupName;
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_type']
+                = $unit_type->FloorPlan->FloorPlanGroupName;
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['rent_amts'][]
-						= $unit_type->BaseRentAmount;
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['rent_amts'][]
+                = $unit_type->BaseRentAmount;
 
-				$unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_id'] =
-						$unit_type->Address->UnitID;
-		}
+        $unit_types[$unit_type->FloorPlan->FloorPlanGroupName]['unit_id'] =
+                $unit_type->Address->UnitID;
+    }
 
-		// Reverse unit_types array to order it starting
-		// with Convertible units
+    // Reverse unit_types array to order it starting
+    // with Convertible units
 
-		$ordered_unit_types = array_reverse( $unit_types );
+    $ordered_unit_types = array_reverse( $unit_types );
 ?>
 
 <ul class="current-availability--tiles">
@@ -111,7 +111,7 @@
 				<ul class="model-list">
 						<?php foreach ( $unit_types as $unit ) : ?>
 								<?php foreach ( array_unique( $unit['models'] ) as $model ) : ?>
-									 <li class="<?php echo $unit['unit_type']; ?> model-option"
+									 <li class="model-option <?php echo $unit['unit_type']; ?>"
 									 name="<?php echo $model; ?>"><?php echo '<span class="model-text">Model</span> ' . $model;  ?></li>
 								<?php endforeach; ?>
 						<?php endforeach; ?>
@@ -136,42 +136,53 @@
 		</section>
 
 		<?php
+        $floorplan_terms = get_terms( array( 'taxonomy' => 'floorplan',
+            'hide_empty' => false, ) );
+
+        $floorplan_slugs = wp_list_pluck( $floorplan_terms, 'slug' );
+
 		$args = array(
-				'post_type' => 'attachment',
-				'post_status' => 'inherit',
-				'post_mime_type' => 'image/jpeg',
-				'tax_query' => array(
-						array(
-								'taxonomy' => 'floorplan',
-								'field' => 'slug',
-								'terms' => array('C', 'B9', 'B4', 'B1', 'A7', 'A8', 'A2',
-								'A6'),
-						),
-				),
+            'post_type' => 'attachment',
+            'posts_per_page' => '100',
+            'post_status' => 'inherit',
+            'post_mime_type' => 'image/jpeg',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'floorplan',
+                    'field' => 'slug',
+                    'terms' => $floorplan_slugs,
+                ),
+            ),
 		);
 
 		$floorplan_slides = new WP_Query( $args );
-
 ?>
 
-		<section class="floorplan-view-container">
-				<article class="floor-plan-viewer">
-						<?php
-								foreach ( $floorplan_slides->posts as $slide ) {
-										$plan_name = explode( '-', $slide->post_name );
+    <section class="floorplan-view-container">
+        <article class="floor-plan-viewer">
+            <?php
+                foreach ( $floorplan_slides->posts as $slide ) {
+                    $plan_name = explode( '-', $slide->post_name );
 
-										$pdf_name_array = explode( '-', $slide->post_name );
-										$pdf_name_pop = array_pop( $pdf_name_array );
-										$pdf_name = implode( '-', $pdf_name_array );
+                    $pdf_name_array = explode( '-', $slide->post_name );
+                    $pdf_name_pop = array_pop( $pdf_name_array );
+                    $pdf_name = implode( '-', $pdf_name_array );
 
-										$plan_name_class = count( $plan_name ) == 4 ? $plan_name[2] : $plan_name[1];
+                    var_dump($plan_name);
+                    if ( count( $plan_name ) == 5 ) {
+                        $plan_name_class = $plan_name[2];
+                    } elseif ( count( $plan_name ) == 4 ) {
+                        $plan_name_class = $plan_name[2];
+                    } elseif ( count( $plan_name ) == 3 ) {
+                        $plan_name_class = $plan_name[1];
+                    }
 
-										echo '<div class="' . $plan_name_class . ' slider-slide">';
-											echo '<a class="floorplan-pdf-download" target="_blank" href="'. wp_upload_dir()['url'] . '/' . $pdf_name . '.pdf">Download PDF</a>';
-											echo '<img src="' . $slide->guid . '">';
-										echo '</div>';
-								}
-						?>
-				</article>
-		</section>
+                    echo '<div class="' . $plan_name_class . ' slider-slide">';
+                        echo '<a class="floorplan-pdf-download" target="_blank" href="'. wp_upload_dir()['url'] . '/' . $pdf_name . '.pdf">Download PDF</a>';
+                        echo '<img src="' . $slide->guid . '">';
+                    echo '</div>';
+                }
+            ?>
+        </article>
+    </section>
 </article>

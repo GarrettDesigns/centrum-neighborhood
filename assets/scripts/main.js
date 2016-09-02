@@ -197,7 +197,6 @@
             $('.rent').append( '$' + Math.floor(model_data[optionValue][$(this).attr('id')].unit_details.rent));
             $('.sqft').append( model_data[optionValue][$(this).attr('id')].unit_details.sqft );
             // $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(5rahzua04wyvgg45stjrnq55))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID  + '&siteID=3916349');
-            // $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/(S(' + model_data[optionValue][0].session_id +'))/sites/esignature_rms/details.aspx?unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID  + '&siteID=3916349');
             $('.apply-now').attr('href', 'http://property.onesite.realpage.com/ol2/default.aspx?template=esignature_rms&SiteID=3916349&unitId=' + model_data[optionValue][$(this).attr('id')].unit_details.unitID);
           });
 
