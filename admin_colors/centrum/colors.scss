@@ -1,0 +1,51 @@
+$base-black: #0e0f0b;
+
+$base-color: $base-black;
+$icon-color:  #ceaa3b;
+$highlight-color: #ceaa3b;
+$notification-color: #BF1131;
+$body-background: #eeeeee;
+
+$form-checked: darken(#AFC615, 5%);
+
+@import "../_admin.scss";
+
+body {
+    background: $body-background!important; 
+}
+
+#wpadminbar {
+    background: $icon-color;
+}
+
+#adminmenu a {
+    color: #a0a0a0;
+}
+
+#adminmenu > li:hover  > a,
+#adminmenu li.current > a,
+#adminmenu li.wp-menu-open > a {
+    color: white!important;
+}
+
+#adminmenu .wp-submenu a,
+#adminmenu .wp-has-current-submenu .wp-submenu a,
+.folded #adminmenu .wp-has-current-submenu .wp-submenu a,
+#adminmenu a.wp-has-current-submenu:focus + .wp-submenu a,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu a {
+    color: #a0a0a0;
+}
+#adminmenu .opensub .wp-submenu li.current a,
+#adminmenu .wp-submenu li.current,
+#adminmenu .wp-submenu li.current a,
+#adminmenu .wp-submenu li.current a:focus,
+#adminmenu .wp-submenu li.current a:hover,
+#adminmenu a.wp-has-current-submenu:focus+.wp-submenu li.current a {
+    color: $highlight-color!important;
+}
+#wpadminbar .ab-icon,
+#wpadminbar .ab-icon:before,
+#wpadminbar .ab-item:before,
+#wpadminbar .ab-item:after {
+    color: $base-color; 
+}

@@ -20,6 +20,8 @@ $sage_includes = [
   'lib/assets.php',                // Scripts and stylesheets
   'lib/titles.php',                // Page titles
   'lib/extras.php',                // Custom functions
+  'lib/custom-admin.php',          // Admin area customizations
+  'lib/custom-widgets.php'         // Custom dashboard widgets
 ];
 
 foreach ($sage_includes as $file) {

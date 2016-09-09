@@ -62,5 +62,14 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
+
+  register_sidebar([
+      'name'=> __( 'Contact-Us', 'sage' ),
+      'id' => 'contact-us-form',
+      'before_widget' => '<div class="custom-input-container">',
+      'after_widget' => '</div>',
+      'before_title' => '<p>',
+      'after_title' => '</p>'
+  ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');

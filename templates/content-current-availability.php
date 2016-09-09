@@ -168,7 +168,7 @@
                     $pdf_name_pop = array_pop( $pdf_name_array );
                     $pdf_name = implode( '-', $pdf_name_array );
 
-                    var_dump($plan_name);
+                    var_dump($pdf_name);
                     if ( count( $plan_name ) == 5 ) {
                         $plan_name_class = $plan_name[2];
                     } elseif ( count( $plan_name ) == 4 ) {
