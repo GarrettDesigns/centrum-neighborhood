@@ -1222,15 +1222,14 @@ a.gallery-button.mobile.primary.buttons {
     }
 }
 
-.custom-input {
-    &--container {
+.mc_form_inside {
         position: relative;
         width: 100%;
         height: 30px;
         margin: 0 auto;
         max-width: 500px;
-    }
-    &--input {
+    
+    .mc_input {
         position: absolute;
         letter-spacing: 1.5px;
         font-weight: 700;
@@ -1265,7 +1264,7 @@ a.gallery-button.mobile.primary.buttons {
             font-weight: 700;
         }
     }
-    &--submit-button {
+    #mc_signup_submit {
          position: absolute;
          letter-spacing: 1.5px;
          font-weight: 700;
@@ -1279,11 +1278,13 @@ a.gallery-button.mobile.primary.buttons {
          top:0;
          right: 0;
          width: 30%;
-         height: 10px;
+         height: 52px;
          text-align: center;
          padding: 20px 0;
     }
 }
+.mc_header { display: none; }
+.mc_success_msg, .mc_error_msg { color:#ceaa3b;position:absolute;top:70px;left:-43px;width:120%;}.mc_error_msg{color:red;position:absolute;top:70px;left:117px;}
 
 .availability-modal {
     background: black;
@@ -1493,65 +1494,51 @@ a.gallery-button.mobile.primary.buttons {
         &.selected {
             background: gc(brand-colors, secondary);
         }
+    &.Convertible {
+        &:nth-child(n+1):nth-child(-n+3) {
+            border-left: 3px solid white;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+        &:nth-child(n+4) {
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+        &:last-child, &:nth-child(3n+3) {
+            border-right: 3px solid white;
+        }
+    }
+    &.one {
+        &:nth-child(n+1):nth-child(-n+3) {
+            border-left: 3px solid white;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+        &:nth-child(n+4) {
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+        &:last-child, &:nth-child(3n+3) {
+            border-right: 3px solid white;
+        }
+    }
+    &.two {
+        &:nth-child(n+1):nth-child(-n+3) {
+            border-left: 3px solid white;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+        &:nth-child(n+4) {
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+        }
+        &:last-child, &:nth-child(3n+3) {
+            border-right: 3px solid white;
+        }
+    }
     }
 }
 
-.model-option { 
-    &:nth-child(-n+3) {
-        border-top: 3px solid $white;
-        border-left: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(3) {
-        border-right: 3px solid $white;
-    }
-    &:nth-child(8) {
-        border-right: 3px solid $white;
-    }
-    &:nth-child(11) {
-        border-right: 3px solid $white;
-    }
-    &:nth-child(13) {
-        border-right: 3px solid $white;
-    }
-    &:nth-child(4) {
-        border-left: 3px solid $white;
-        border-right: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(5) {
-        border-right: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(n+6):nth-child(-n+8) {
-        border-top: 3px solid $white;
-        border-left: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(n+9):nth-child(-n+11) {
-        border-left: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(n+12):nth-child(-n+13) {
-        border-left: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(n+14):nth-child(-n+16) {
-        border-top: 3px solid $white;
-        border-left: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(n+17):nth-child(-n+18) {
-        border-left: 3px solid $white;
-        border-bottom: 3px solid $white;
-    }
-    &:nth-child(16) {
-        border-right: 3px solid $white;
-    }
-    &:nth-child(18) {
-        border-right: 3px solid $white;
-    }
-}
 
 .floorplan-view-container {
     @include span(6 last);

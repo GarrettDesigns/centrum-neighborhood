@@ -109,12 +109,20 @@
 
 				<p class="filter-heading">Select a model number to view available units</p>
 				<ul class="model-list">
-						<?php foreach ( $unit_types as $unit ) : ?>
-								<?php foreach ( array_unique( $unit['models'] ) as $model ) : ?>
-									 <li class="model-option <?php echo $unit['unit_type']; ?>"
-									 name="<?php echo $model; ?>"><?php echo '<span class="model-text">Model</span> ' . $model;  ?></li>
-								<?php endforeach; ?>
-						<?php endforeach; ?>
+                    <?php foreach ( $unit_types as $unit ) : ?>
+                         <li>
+                            <ul>
+                                <?php foreach ( array_unique( $unit['models'] ) as $model ) : ?>
+                                     <li class="model-option <?php echo
+                                     $unit['unit_type'] . " "; if (
+                                         $unit['unit_type'] == "1-1" ) { echo "
+                                        one"; } elseif ( $unit['unit_type'] ==
+                                         "2-2" ) { echo "two"; } ?>"
+                                     name="<?php echo $model; ?>"><?php echo '<span class="model-text">Model</span> ' . $model;  ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                         </li>
+                    <?php endforeach; ?>
 				</ul>
 
 				<p class="filter-heading">Select a unit number for additional information</p>
