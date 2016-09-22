@@ -81,11 +81,13 @@
             navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
           });
           galleryModal.removeClass('open');
+          $(this).parents('ul').addClass('modal-open');
           $(this).parents('li').find('.gallery-modal').addClass('open').fadeIn('slow');
         });
 
         $('.gallery-close-button').on('click', function() {
           $('.gallery-modal').fadeOut('slow');
+          $(this).parents('ul').removeClass('modal-open');
         });
 
         $('.close-map').on('click', function() {
@@ -129,6 +131,9 @@
           galleryModal.fadeOut().removeClass('open');
           parentListItems.next().find('.gallery-modal').addClass('open').fadeIn();
         });
+
+
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -154,7 +159,6 @@
              $('.unit-filter').removeClass(lastSelection).addClass(currentSelection);
 
              var classString = $(this).attr('class').split(' ');
-             console.log(classString);
              currentSelection = classString[1];
              lastSelection = currentSelection;
 
@@ -227,6 +231,7 @@
           $('.availability-modal').removeClass('open');
           $('.interior-view-two--trap-article.right').removeClass('modal-open');
         });
+
 
         var categoryIcons = {
           restaurant: {

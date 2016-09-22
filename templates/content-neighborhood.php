@@ -8,7 +8,7 @@
 
 ?>
 
-<ul class="neighborhood-main--lifstyle-list">
+<ul class="neighborhood-main--lifestyle-list">
 	<?php if ( have_rows( 'feature_galleries' ) ) : while ( have_rows( 'feature_galleries' ) ) : the_row(); ?>
 		<li class="neighborhood-main--lifestyle-list-item">
 			<article class="list-item-main">

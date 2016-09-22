@@ -26,7 +26,7 @@ body.show-nav {
 }
 
 .page-header {
-  position: relative; 
+  position: relative;
   min-height: 925px;
   z-index: 0;
   opacity: 1;
@@ -417,6 +417,10 @@ body.show-nav {
   } // End .neighborhood-main--lifestyle-list
 } // End .neighborhood-main
 } // End .neighborhood
+
+.neighborhood-main--lifestyle-list.modal-open {
+  display: inline-block;
+}
 
 .current-availability--tiles {
     width: 75%;
@@ -1228,7 +1232,7 @@ a.gallery-button.mobile.primary.buttons {
         height: 30px;
         margin: 0 auto;
         max-width: 500px;
-    
+
     .mc_input {
         position: absolute;
         letter-spacing: 1.5px;
@@ -1237,7 +1241,7 @@ a.gallery-button.mobile.primary.buttons {
         outline: none;
         top: 0;
         left:0;
-        width: 65%; 
+        width: 65%;
         border: 1px solid $white;
         border-right: none;
         background: none;
@@ -1614,4 +1618,3 @@ div[class*="_ibani"] {
   font-size: 1rem;
   line-height: 1.5;
 }
-

@@ -27,9 +27,9 @@
 			<li class="info-links--item">
 				<a class="info-links--inner primary buttons" href="#">resident portal</a>
 			</li>
-            <li class="info-links--item">
-            <a href="#" class="info-links--inner"><img src="<?php echo esc_html( get_template_directory_uri() ); ?>/dist/images/train.svg"></a>
-            </li>
+			<li style="width:60px;" class="info-links--item">
+				<a class="info-links--inner primary buttons" href="#"><i class="fa fa-train"></i></a>
+			</li>
 		</ul>
 	</nav>
 </section>

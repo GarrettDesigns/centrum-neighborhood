@@ -1,3 +1,16 @@
+<style>
+.amenities-hero .background-image {
+    background: url('<?php the_field( amenities_hero_image' ); ?>');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
 <div class="amenities-main--content">
 	<header class="amenities-main--heading"><span class="inner-heading">Amenities</span></header>
 	<ul class="amenities-main--list">

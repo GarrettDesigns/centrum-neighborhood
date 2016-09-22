@@ -79,10 +79,9 @@
 								} ?> Sq. Ft.<br>From &dollar;<?php echo
 								round( min( $unit['rent_amts'] ) ); ?>/mo.
 						</p>
-                        <a href="<?php if ( wp_is_mobile() ) { echo
-                        'http://property.onesite.realpage.com/ol2/default.aspx?template=esignature_rms&SiteID=3916349&UnitId=13';
-                        } else { echo '#'; } ?>" class="unit-tile--button buttons primary <?php echo
-		$unit['unit_type']; if ( !wp_is_mobile() ) { echo ' show-availability-modal'; } ?>">floor plans <i class="fa fa-chevron-right"></i></a>
+            <a href="<?php if ( wp_is_mobile() ) { echo 'http://property.onesite.realpage.com/ol2/default.aspx?template=esignature_rms&SiteID=3916349&UnitId=13';
+            } else { echo '#'; } ?>" class="unit-tile--button buttons primary <?php echo
+        		$unit['unit_type']; if ( !wp_is_mobile() ) { echo ' show-availability-modal'; } ?>">floor plans <i class="fa fa-chevron-right"></i></a>
 				</li>
 		<?php endforeach; ?>
 </ul>
