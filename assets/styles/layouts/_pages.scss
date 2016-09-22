@@ -422,6 +422,13 @@ body.show-nav {
   display: inline-block;
 }
 
+.neighborhood-main--lifestyle-list-item.modal-open {
+  position: relative;
+  max-height: 1070px;
+  width: 100%;
+  height: 100%;
+}
+
 .current-availability--tiles {
     width: 75%;
     margin: 0 auto;

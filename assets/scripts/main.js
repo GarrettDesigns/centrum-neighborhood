@@ -26,7 +26,7 @@
         var navCloseIcon = $('.main-menu-close');
         var navItems = $('.nav-items-group');
         var pageHeader = $('.page-header');
-		var galleryModal = $('.gallery-modal');
+    		var galleryModal = $('.gallery-modal');
         var mainSiteContainer = $('.main-site-container');
         var mainNavLink = $('.main-menu');
 
@@ -75,19 +75,25 @@
             smartSpeed:450,
             nav: true,
             dots: false,
-            responsiveRefreshRate: 0,
+            responsiveRefreshRate: 200,
+            autoHeight: true,
             responsiveBaseElement: '.gallery-slider',
             loop: true,
             navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
           });
           galleryModal.removeClass('open');
-          $(this).parents('ul').addClass('modal-open');
           $(this).parents('li').find('.gallery-modal').addClass('open').fadeIn('slow');
+          $(this).parents('ul').addClass('modal-open');
+          $(this).parents('li').siblings().hide();
+          $(this).parents('li').addClass('modal-open');
+              console.log(parentList.index('.modal-open'));
         });
 
         $('.gallery-close-button').on('click', function() {
           $('.gallery-modal').fadeOut('slow');
           $(this).parents('ul').removeClass('modal-open');
+          $('.neighborhood-main--lifestyle-list-item').removeClass('modal-open');
+          $('.neighborhood-main--lifestyle-list-item').show();
         });
 
         $('.close-map').on('click', function() {
@@ -123,13 +129,18 @@
           thisItem.parent('article').removeClass('animate-in');
         });
 
+          var lastListItem = $('.neighborhood-main--lifestyle-list-item').last();
+
+          lastListItem.find('.load-next-gallery').hide();
+
         $('.load-next-gallery').on('click', function(e) {
           var thisItem = $(this);
           var parentListItems = thisItem.parents('li');
 
           e.preventDefault();
           galleryModal.fadeOut().removeClass('open');
-          parentListItems.next().find('.gallery-modal').addClass('open').fadeIn();
+          parentListItems.hide().removeClass('modal-open');
+          parentListItems.next().addClass('modal-open').show().find('.gallery-modal').addClass('open').fadeIn();
         });
 
 
